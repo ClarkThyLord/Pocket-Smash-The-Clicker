@@ -11,6 +11,7 @@
     <saved-with-version>24400</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
@@ -51,6 +52,74 @@
                         <instance-variable name="id" sid="201278321147339" type="number" />
                     </instance-variables>
                     <texture original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\particleOne.png" />
+                </object-type>
+                <object-type name="testTouchArea" sid="616471593999579">
+                    <plugin id="Sprite" />
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="255281432454668" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\touchArea.png" />
+                        </animation>
+                    </animation-folder>
+                </object-type>
+                <object-type name="testCursor" sid="557425097391511">
+                    <plugin id="Sprite" />
+                    <instance-variables>
+                        <instance-variable name="touchID" sid="872213436734365" type="number" />
+                        <instance-variable name="originX" sid="385792318307808" type="number" />
+                        <instance-variable name="originY" sid="362821816841521" type="number" />
+                        <instance-variable name="touchX" sid="676885666549665" type="number" />
+                        <instance-variable name="touchY" sid="160609500057258" type="number" />
+                        <instance-variable name="touchDistance" sid="668478229380522" type="number" />
+                        <instance-variable name="touchAngle" sid="871553150615512" type="number" />
+                        <instance-variable name="side" sid="251809865703070" type="string" />
+                        <instance-variable name="speed" sid="854072142149189" type="number" />
+                    </instance-variables>
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="205617596041935" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\cursor.png">
+                                <collision-poly>
+                                    <point x="0.146667" y="0.146667" />
+                                    <point x="0.5" y="0" />
+                                    <point x="0.853333" y="0.146667" />
+                                    <point x="1" y="0.5" />
+                                    <point x="0.853333" y="0.853333" />
+                                    <point x="0.5" y="1" />
+                                    <point x="0.146667" y="0.853333" />
+                                    <point x="0" y="0.5" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
+                    </animation-folder>
+                </object-type>
+                <object-type name="testTarget" sid="600443283417970">
+                    <plugin id="Sprite" />
+                    <instance-variables>
+                        <instance-variable name="touchID" sid="367624610576171" type="number" />
+                        <instance-variable name="originX" sid="118508390687759" type="number" />
+                        <instance-variable name="originY" sid="303982059546913" type="number" />
+                        <instance-variable name="touchX" sid="956261052328159" type="number" />
+                        <instance-variable name="touchY" sid="285109198134576" type="number" />
+                        <instance-variable name="touchDistance" sid="366204530810240" type="number" />
+                        <instance-variable name="touchAngle" sid="205224805978391" type="number" />
+                        <instance-variable name="side" sid="730606847922375" type="string" />
+                        <instance-variable name="speed" sid="108943311622214" type="number" />
+                    </instance-variables>
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="777245028434052" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\target.png">
+                                <collision-poly>
+                                    <point x="0.146667" y="0.146667" />
+                                    <point x="0.5" y="0" />
+                                    <point x="0.853333" y="0.146667" />
+                                    <point x="1" y="0.5" />
+                                    <point x="0.853333" y="0.853333" />
+                                    <point x="0.5" y="1" />
+                                    <point x="0.146667" y="0.853333" />
+                                    <point x="0" y="0.5" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
+                    </animation-folder>
                 </object-type>
             </object-folder>
             <object-type name="testInfo" sid="513606824017814">
