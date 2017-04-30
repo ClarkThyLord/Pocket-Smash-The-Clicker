@@ -9,18 +9,23 @@
     <app-id>com.mycompany.myapp</app-id>
     <unique-id>6mclpim37xk2</unique-id>
     <saved-with-version>24400</saved-with-version>
-    <used-plugins />
+    <used-plugins>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+    </used-plugins>
     <used-behaviors />
     <used-effects />
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
     <window-size>
-        <width>854</width>
-        <height>480</height>
+        <width>1920</width>
+        <height>1080</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
+    <first-layout>testOneL</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -28,8 +33,8 @@
         <prop name="Enable WebGL">On</prop>
         <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Fullscreen scaling">High quality</prop>
-        <prop name="Loader style">Construct 2 splash</prop>
-        <prop name="Orientations">Any</prop>
+        <prop name="Loader style">Progress bar only</prop>
+        <prop name="Orientations">Landscape</prop>
         <prop name="Pause on unfocus">No</prop>
         <prop name="Physics engine">Box2D asm.js</prop>
         <prop name="Preload sounds">Yes</prop>
@@ -37,15 +42,41 @@
         <prop name="Sampling">Linear</prop>
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
-    <object-folder />
+    <object-folder>
+        <object-folder name="test">
+            <object-folder name="one">
+                <object-type name="testParticle" sid="735750163693553">
+                    <plugin id="Particles" />
+                    <instance-variables>
+                        <instance-variable name="id" sid="201278321147339" type="number" />
+                    </instance-variables>
+                    <texture original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\particleOne.png" />
+                </object-type>
+            </object-folder>
+            <object-type name="testInfo" sid="513606824017814">
+                <plugin id="Text" />
+            </object-type>
+        </object-folder>
+        <object-type name="Touch" sid="272257185248334">
+            <plugin id="Touch" />
+        </object-type>
+    </object-folder>
     <families />
     <layout-folder>
         <layout>mainMenuL.xml</layout>
+        <layout>testOneL.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>mainMenuE.xml</event-sheet>
+        <event-sheet>testOneE.xml</event-sheet>
     </event-folder>
-    <global-instances />
+    <global-instances>
+        <global-instance type="Touch" uid="0">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+    </global-instances>
     <sounds-folder />
     <music-folder />
     <files-folder>

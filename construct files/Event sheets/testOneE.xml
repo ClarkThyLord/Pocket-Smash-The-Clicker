@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>testOneE</name>
+    <events>
+        <comment>Info To Show</comment>
+        <event-block sid="469151662721080">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="314288747389381" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="253388367117776" type="testInfo">
+                    <param id="0" name="Text">&quot;INFO&quot; &amp; newline &amp; &quot;A: &quot; &amp; str(round(Touch.Alpha)) &amp; &quot;  B: &quot; &amp; str(round(Touch.Beta)) &amp; &quot;  G: &quot; &amp; str(round(Touch.Gamma)) &amp; newline &amp; &quot;Touches:  &quot; &amp; str(Touch.TouchCount)</param>
+                </action>
+            </actions>
+            <sub-events>
+                <variable constant="0" name="index" sid="728576626625028" static="0" type="number">0</variable>
+                <event-block sid="764081111379092">
+                    <conditions>
+                        <condition id="-12" name="Repeat" sid="419899651024268" type="System">
+                            <param id="0" name="Count">Touch.TouchCount</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Append text" sid="887182851104131" type="testInfo">
+                            <param id="0" name="Text">newline &amp; &quot;Index:&quot; &amp; str(index) &amp; &quot; | X: &quot; &amp; str(round(Touch.XAt(index))) &amp; &quot; | Y: &quot; &amp; str(round(Touch.YAt(index)))</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="118656249445577" type="System">
+                            <param id="0" name="Variable">index</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="195120179023517">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="565068323351753" type="System">
+                            <param id="0" name="Object">testParticle</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="209993259816064" type="testParticle">
+                            <param id="0" name="Instance variable">id</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Append text" sid="948288139048967" type="testInfo">
+                            <param id="0" name="Text">newline &amp; &quot;Object: &quot; &amp; str(testParticle.IID) &amp; &quot; | ID: &quot; &amp; str(testParticle.id)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Handle Of Particle Objects</comment>
+        <event-block sid="559396401708413">
+            <conditions />
+            <actions />
+            <sub-events>
+                <event-block sid="150537393878143">
+                    <conditions>
+                        <condition id="0" name="On any touch start" sid="133452847003680" type="Touch" />
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="964757101242830" type="System">
+                            <param id="0" name="Object to create">testParticle</param>
+                            <param id="1" name="Layer">&quot;floor&quot;</param>
+                            <param id="2" name="X">Touch.XAt(Touch.TouchIndex)</param>
+                            <param id="3" name="Y">Touch.YAt(Touch.TouchIndex)</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="646058035910787" type="testParticle">
+                            <param id="0" name="Instance variable">id</param>
+                            <param id="1" name="Value">Touch.TouchID</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="691915466694778">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="604445692842256" type="System" />
+                        <condition id="-7" name="Compare instance variable" sid="352482511275335" type="testParticle">
+                            <param id="0" name="Instance variable">id</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="314437991707972" type="testParticle">
+                            <param id="0" name="X">Touch.XForID(testParticle.id)</param>
+                            <param id="1" name="Y">Touch.YForID(testParticle.id)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="616749405498116">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="719509456231796" type="Touch" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="407409733009837">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="304446994188208" type="testParticle">
+                                    <param id="0" name="Instance variable">id</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Touch.TouchID</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="148382706702942" type="testParticle" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>
