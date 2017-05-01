@@ -129,6 +129,98 @@
                 </event-block>
             </sub-events>
         </event-block>
+        <event-block sid="274222964266386">
+            <conditions>
+                <condition id="0" name="On any touch start" sid="109348315848265" type="Touch" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="758191554895485">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="263480704774833" type="Touch">
+                            <param id="0" name="Object">testTouchArea</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="722003588999394" type="System">
+                            <param id="0" name="First value">testTarget.touchID</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="548571005259947" type="testTarget">
+                            <param id="0" name="Instance variable">touchID</param>
+                            <param id="1" name="Value">Touch.TouchID</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="764974034850589" type="testTarget">
+                            <param id="0" name="Instance variable">originX</param>
+                            <param id="1" name="Value">round(Touch.XForID(testTarget.touchID))</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="717828558099914" type="testTarget">
+                            <param id="0" name="Instance variable">originY</param>
+                            <param id="1" name="Value">round(Touch.YForID(testTarget.touchID))</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="425116436937550" type="testTarget">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="757417513821446">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="181440603647364" type="System">
+                            <param id="0" name="First value">testCursor.touchID</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="838660401274373" type="testTarget">
+                            <param id="0" name="Instance variable">touchID</param>
+                            <param id="1" name="Value">Touch.TouchID</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="153297342819057" type="testTarget">
+                            <param id="0" name="Instance variable">originX</param>
+                            <param id="1" name="Value">round(Touch.XForID(testTarget.touchID))</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="438540433952079" type="testTarget">
+                            <param id="0" name="Instance variable">originY</param>
+                            <param id="1" name="Value">round(Touch.YForID(testTarget.touchID))</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="974139204555457" type="testTarget">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="319429480964108">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="459262526986708" type="Touch">
+                            <param id="0" name="Object">testTouchArea</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="654438211910205" type="System">
+                            <param id="0" name="First value">testCursor.touchID</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">-1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="806268418090506" type="testCursor">
+                            <param id="0" name="Instance variable">touchID</param>
+                            <param id="1" name="Value">Touch.TouchID</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="373105956317261" type="testCursor">
+                            <param id="0" name="Instance variable">originX</param>
+                            <param id="1" name="Value">round(Touch.XForID(testCursor.touchID))</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="285185367251108" type="testCursor">
+                            <param id="0" name="Instance variable">originY</param>
+                            <param id="1" name="Value">round(Touch.YForID(testCursor.touchID))</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="883071759843194" type="testCursor">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
         <comment>JoyStick Handle</comment>
         <event-group description="" sid="803078961518698" title="JoyStick">
             <sub-events>
@@ -563,61 +655,5 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="274222964266386">
-            <conditions>
-                <condition id="0" name="On any touch start" sid="109348315848265" type="Touch" />
-            </conditions>
-            <actions />
-            <sub-events>
-                <event-block sid="758191554895485">
-                    <conditions>
-                        <condition id="4" inverted="1" name="Is touching object" sid="263480704774833" type="Touch">
-                            <param id="0" name="Object">testTouchArea</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-10" name="Set value" sid="548571005259947" type="testTarget">
-                            <param id="0" name="Instance variable">touchID</param>
-                            <param id="1" name="Value">Touch.TouchID</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="764974034850589" type="testTarget">
-                            <param id="0" name="Instance variable">originX</param>
-                            <param id="1" name="Value">round(Touch.XForID(testTarget.touchID))</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="717828558099914" type="testTarget">
-                            <param id="0" name="Instance variable">originY</param>
-                            <param id="1" name="Value">round(Touch.YForID(testTarget.touchID))</param>
-                        </action>
-                        <action id="-15" name="Set visible" sid="425116436937550" type="testTarget">
-                            <param id="0" name="Visibility">1</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="319429480964108">
-                    <conditions>
-                        <condition id="4" name="Is touching object" sid="459262526986708" type="Touch">
-                            <param id="0" name="Object">testTouchArea</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-10" name="Set value" sid="806268418090506" type="testCursor">
-                            <param id="0" name="Instance variable">touchID</param>
-                            <param id="1" name="Value">Touch.TouchID</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="373105956317261" type="testCursor">
-                            <param id="0" name="Instance variable">originX</param>
-                            <param id="1" name="Value">round(Touch.XForID(testCursor.touchID))</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="285185367251108" type="testCursor">
-                            <param id="0" name="Instance variable">originY</param>
-                            <param id="1" name="Value">round(Touch.YForID(testCursor.touchID))</param>
-                        </action>
-                        <action id="-15" name="Set visible" sid="883071759843194" type="testCursor">
-                            <param id="0" name="Visibility">1</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
-        </event-block>
     </events>
 </c2eventsheet>
