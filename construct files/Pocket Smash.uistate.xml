@@ -33,5 +33,6 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/testTouchArea/" />
         <folder expanded="1" path="animation-folder/testCursor/" />
         <folder expanded="1" path="animation-folder/testTarget/" />
+        <folder expanded="1" path="animation-folder/testDummy/" />
     </folders-expanded>
 </c2uistate>

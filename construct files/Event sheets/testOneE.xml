@@ -63,7 +63,7 @@
                     <conditions />
                     <actions>
                         <action id="1" name="Append text" sid="873743314967193" type="testInfo">
-                            <param id="0" name="Text">newline &amp; newline &amp; &quot;Action&quot; &amp; newline &amp; &quot;ID: &quot; &amp; str(testTarget.touchID) &amp; newline &amp; &quot;ORG X: &quot; &amp; str(testTarget.originX) &amp; &quot;  |ORG Y: &quot; &amp; str(testTarget.originY) &amp; newline &amp; &quot;X: &quot; &amp; str(testTarget.touchX) &amp; &quot;  |Y: &quot; &amp; str(testTarget.touchY) &amp; &quot;  |DIS: &quot; &amp; str(testTarget.touchDistance) &amp; &quot;  |ANG: &quot; &amp; str(testTarget.touchAngle) &amp; newline &amp; &quot;SIDE:  &quot; &amp; str(testTarget.side) &amp; &quot;  |SPEED: &quot; &amp; str(testTarget.speed)</param>
+                            <param id="0" name="Text">newline &amp; newline &amp; &quot;Action&quot; &amp; newline &amp; &quot;ID: &quot; &amp; str(testTarget.touchID) &amp; newline &amp; &quot;ORG X: &quot; &amp; str(testTarget.originX) &amp; &quot;  |ORG Y: &quot; &amp; str(testTarget.originY) &amp; newline &amp; &quot;X: &quot; &amp; str(testTarget.touchX) &amp; &quot;  |Y: &quot; &amp; str(testTarget.touchY) &amp; &quot;  |DIS: &quot; &amp; str(testTarget.touchDistance) &amp; &quot;  |ANG: &quot; &amp; str(testTarget.touchAngle) &amp; newline &amp; &quot;SIDE:  &quot; &amp; str(testTarget.side)</param>
                         </action>
                     </actions>
                 </event-block>
@@ -129,6 +129,7 @@
                 </event-block>
             </sub-events>
         </event-block>
+        <comment>Touch Handle</comment>
         <event-block sid="274222964266386">
             <conditions>
                 <condition id="0" name="On any touch start" sid="109348315848265" type="Touch" />
@@ -224,37 +225,13 @@
         <comment>JoyStick Handle</comment>
         <event-group description="" sid="803078961518698" title="JoyStick">
             <sub-events>
-                <event-block disabled="1" sid="996702940261869">
-                    <conditions>
-                        <condition id="3" name="On touched object" sid="679127581578298" type="Touch">
-                            <param id="0" name="Object">testTouchArea</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-10" name="Set value" sid="616996497127839" type="testCursor">
-                            <param id="0" name="Instance variable">touchID</param>
-                            <param id="1" name="Value">Touch.TouchID</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="120005922856684" type="testCursor">
-                            <param id="0" name="Instance variable">originX</param>
-                            <param id="1" name="Value">round(Touch.XForID(testCursor.touchID))</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="440322526002606" type="testCursor">
-                            <param id="0" name="Instance variable">originY</param>
-                            <param id="1" name="Value">round(Touch.YForID(testCursor.touchID))</param>
-                        </action>
-                        <action id="-15" name="Set visible" sid="390236556647910" type="testCursor">
-                            <param id="0" name="Visibility">1</param>
-                        </action>
-                    </actions>
-                </event-block>
                 <event-block sid="498133185002020">
                     <conditions>
                         <condition id="2" name="Is in touch" sid="796573935068133" type="Touch" />
                         <condition id="-8" name="Compare two values" sid="962508932510195" type="System">
                             <param id="0" name="First value">testCursor.touchID</param>
-                            <param id="1" name="Comparison">5</param>
-                            <param id="2" name="Second value">0</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">-1</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -283,41 +260,41 @@
                         <event-group description="" sid="879910793968864" title="JoyStickChecks">
                             <sub-events>
                                 <comment>direction</comment>
-                                <event-block any="1" sid="802228145807757">
-                                    <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="741366146652441" type="testCursor">
-                                            <param id="0" name="Instance variable">touchAngle</param>
-                                            <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">325</param>
-                                        </condition>
-                                        <condition id="-7" name="Compare instance variable" sid="911542945952987" type="testCursor">
-                                            <param id="0" name="Instance variable">touchAngle</param>
-                                            <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">45</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-10" name="Set value" sid="997898619410509" type="testCursor">
-                                            <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;left&quot;</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
                                 <event-block sid="627795429753626">
                                     <conditions>
                                         <condition id="-7" name="Compare instance variable" sid="380877941011597" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">45</param>
+                                            <param id="2" name="Value">0</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="606504881125220" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">125</param>
+                                            <param id="2" name="Value">45</param>
                                         </condition>
                                     </conditions>
                                     <actions>
                                         <action id="-10" name="Set value" sid="931681827384200" type="testCursor">
+                                            <param id="0" name="Instance variable">side</param>
+                                            <param id="1" name="Value">&quot;up left&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="285758253159470">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="599752752162497" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">45</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="429738296340865" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">90</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="142023834477414" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
                                             <param id="1" name="Value">&quot;up&quot;</param>
                                         </action>
@@ -328,16 +305,36 @@
                                         <condition id="-7" name="Compare instance variable" sid="435167661430498" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">125</param>
+                                            <param id="2" name="Value">90</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="624070317537343" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">205</param>
+                                            <param id="2" name="Value">135</param>
                                         </condition>
                                     </conditions>
                                     <actions>
                                         <action id="-10" name="Set value" sid="404667095454377" type="testCursor">
+                                            <param id="0" name="Instance variable">side</param>
+                                            <param id="1" name="Value">&quot;up right&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="535585163954631">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="595554955267655" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">135</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="406419909255631" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">180</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="655590746113152" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
                                             <param id="1" name="Value">&quot;right&quot;</param>
                                         </action>
@@ -348,18 +345,78 @@
                                         <condition id="-7" name="Compare instance variable" sid="353928010263428" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">205</param>
+                                            <param id="2" name="Value">180</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="536006909982424" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">325</param>
+                                            <param id="2" name="Value">225</param>
                                         </condition>
                                     </conditions>
                                     <actions>
                                         <action id="-10" name="Set value" sid="925258537864448" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
+                                            <param id="1" name="Value">&quot;down right&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="159877454937875">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="343376481265956" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">225</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="925501005576518" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">270</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="867918032540273" type="testCursor">
+                                            <param id="0" name="Instance variable">side</param>
                                             <param id="1" name="Value">&quot;down&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="802228145807757">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="741366146652441" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">270</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="911542945952987" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">315</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="997898619410509" type="testCursor">
+                                            <param id="0" name="Instance variable">side</param>
+                                            <param id="1" name="Value">&quot;down left&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="660595955946761">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="589924843360424" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">315</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="488694318999631" type="testCursor">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">360</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="345664001340056" type="testCursor">
+                                            <param id="0" name="Instance variable">side</param>
+                                            <param id="1" name="Value">&quot;left&quot;</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -466,38 +523,13 @@
         <comment>Action Handle</comment>
         <event-group description="" sid="264106079743919" title="Action">
             <sub-events>
-                <event-block disabled="1" sid="599620003842812">
-                    <conditions>
-                        <condition id="0" name="On any touch start" sid="301487960389799" type="Touch" />
-                        <condition id="4" inverted="1" name="Is touching object" sid="198421905669530" type="Touch">
-                            <param id="0" name="Object">testTouchArea</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-10" name="Set value" sid="943320897454446" type="testTarget">
-                            <param id="0" name="Instance variable">touchID</param>
-                            <param id="1" name="Value">Touch.TouchID</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="112282649039441" type="testTarget">
-                            <param id="0" name="Instance variable">originX</param>
-                            <param id="1" name="Value">round(Touch.XForID(testTarget.touchID))</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="206498871826974" type="testTarget">
-                            <param id="0" name="Instance variable">originY</param>
-                            <param id="1" name="Value">round(Touch.YForID(testTarget.touchID))</param>
-                        </action>
-                        <action id="-15" name="Set visible" sid="325620794801351" type="testTarget">
-                            <param id="0" name="Visibility">1</param>
-                        </action>
-                    </actions>
-                </event-block>
                 <event-block sid="862239706385876">
                     <conditions>
                         <condition id="2" name="Is in touch" sid="973671571014217" type="Touch" />
                         <condition id="-8" name="Compare two values" sid="520531068625530" type="System">
                             <param id="0" name="First value">testTarget.touchID</param>
-                            <param id="1" name="Comparison">5</param>
-                            <param id="2" name="Second value">0</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Second value">-1</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -647,9 +679,208 @@
                             <param id="0" name="Instance variable">side</param>
                             <param id="1" name="Value">&quot;null&quot;</param>
                         </action>
-                        <action id="-10" name="Set value" sid="757995291726829" type="testTarget">
-                            <param id="0" name="Instance variable">speed</param>
-                            <param id="1" name="Value">0</param>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <comment>Dummy Handle</comment>
+        <event-group description="" sid="762433000720474" title="Dummy">
+            <sub-events>
+                <comment>Keyboard Handle</comment>
+                <event-block sid="799867221599113">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="627198515552414" type="Keyboard">
+                            <param id="0" name="Key">87 (W)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="567788979171756" type="testDummy">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="745840462878417">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="930135243057508" type="Keyboard">
+                            <param id="0" name="Key">68 (D)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="551311696450870" type="testDummy">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="685640230717578" type="testDummy">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="975332238166921">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="147013534414072" type="Keyboard">
+                            <param id="0" name="Key">83 (S)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="160061046175350" type="testDummy">
+                            <param id="0" name="Control">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="329858377171733">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="260658876560937" type="Keyboard">
+                            <param id="0" name="Key">65 (A)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="818888371598222" type="testDummy">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="257061180554341" type="testDummy">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Touch Handle</comment>
+                <event-block sid="923667214818143">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="114473510030483" type="testCursor">
+                            <param id="0" name="Instance variable">side</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;up left&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="405377155233019" type="testDummy">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="715666637836643" type="testDummy">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="665290244301909" type="testDummy">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="682263810465915">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="376720532663554" type="testCursor">
+                            <param id="0" name="Instance variable">side</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;up&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="730166336712888" type="testDummy">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="660254941555663">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="131929953571810" type="testCursor">
+                            <param id="0" name="Instance variable">side</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;up right&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="863115035301110" type="testDummy">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="295734517671082" type="testDummy">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="463689930081940" type="testDummy">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="629242885133822">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="657272602751268" type="testCursor">
+                            <param id="0" name="Instance variable">side</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;right&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="957959404062486" type="testDummy">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="733149186965656" type="testDummy">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="754584094049538">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="871004874304968" type="testCursor">
+                            <param id="0" name="Instance variable">side</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;down right&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="106650231496691" type="testDummy">
+                            <param id="0" name="Control">3</param>
+                        </action>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="482771078325628" type="testDummy">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="613897969739942" type="testDummy">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="341451377463883">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="696535103955234" type="testCursor">
+                            <param id="0" name="Instance variable">side</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;down&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="864621611937530" type="testDummy">
+                            <param id="0" name="Control">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="926087631587678">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="213311864887383" type="testCursor">
+                            <param id="0" name="Instance variable">side</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;down left&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="618763080359637" type="testDummy">
+                            <param id="0" name="Control">3</param>
+                        </action>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="660212913115164" type="testDummy">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="460872375290846" type="testDummy">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="739535820293531">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="913281976055937" type="testCursor">
+                            <param id="0" name="Instance variable">side</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;left&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="691673725801782" type="testDummy">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="426622675073182" type="testDummy">
+                            <param id="0" name="State">1</param>
                         </action>
                     </actions>
                 </event-block>
