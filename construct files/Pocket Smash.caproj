@@ -9,18 +9,24 @@
     <app-id>com.mycompany.myapp</app-id>
     <unique-id>6mclpim37xk2</unique-id>
     <saved-with-version>24400</saved-with-version>
-    <used-plugins />
+    <used-plugins>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+    </used-plugins>
     <used-behaviors />
     <used-effects />
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
     <window-size>
-        <width>854</width>
-        <height>480</height>
+        <width>1920</width>
+        <height>1080</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
+    <first-layout>testOneL</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -28,8 +34,8 @@
         <prop name="Enable WebGL">On</prop>
         <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Fullscreen scaling">High quality</prop>
-        <prop name="Loader style">Construct 2 splash</prop>
-        <prop name="Orientations">Any</prop>
+        <prop name="Loader style">Progress bar only</prop>
+        <prop name="Orientations">Landscape</prop>
         <prop name="Pause on unfocus">No</prop>
         <prop name="Physics engine">Box2D asm.js</prop>
         <prop name="Preload sounds">Yes</prop>
@@ -37,15 +43,109 @@
         <prop name="Sampling">Linear</prop>
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
-    <object-folder />
+    <object-folder>
+        <object-folder name="test">
+            <object-folder name="one">
+                <object-type name="testParticle" sid="735750163693553">
+                    <plugin id="Particles" />
+                    <instance-variables>
+                        <instance-variable name="id" sid="201278321147339" type="number" />
+                    </instance-variables>
+                    <texture original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\particleOne.png" />
+                </object-type>
+                <object-type name="testTouchArea" sid="616471593999579">
+                    <plugin id="Sprite" />
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="255281432454668" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\touchArea.png" />
+                        </animation>
+                    </animation-folder>
+                </object-type>
+                <object-type name="testCursor" sid="557425097391511">
+                    <plugin id="Sprite" />
+                    <instance-variables>
+                        <instance-variable name="touchID" sid="872213436734365" type="number" />
+                        <instance-variable name="originX" sid="385792318307808" type="number" />
+                        <instance-variable name="originY" sid="362821816841521" type="number" />
+                        <instance-variable name="touchX" sid="676885666549665" type="number" />
+                        <instance-variable name="touchY" sid="160609500057258" type="number" />
+                        <instance-variable name="touchDistance" sid="668478229380522" type="number" />
+                        <instance-variable name="touchAngle" sid="871553150615512" type="number" />
+                        <instance-variable name="side" sid="251809865703070" type="string" />
+                        <instance-variable name="speed" sid="854072142149189" type="number" />
+                    </instance-variables>
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="205617596041935" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\cursor.png">
+                                <collision-poly>
+                                    <point x="0.146667" y="0.146667" />
+                                    <point x="0.5" y="0" />
+                                    <point x="0.853333" y="0.146667" />
+                                    <point x="1" y="0.5" />
+                                    <point x="0.853333" y="0.853333" />
+                                    <point x="0.5" y="1" />
+                                    <point x="0.146667" y="0.853333" />
+                                    <point x="0" y="0.5" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
+                    </animation-folder>
+                </object-type>
+                <object-type name="testTarget" sid="600443283417970">
+                    <plugin id="Sprite" />
+                    <instance-variables>
+                        <instance-variable name="touchID" sid="367624610576171" type="number" />
+                        <instance-variable name="originX" sid="118508390687759" type="number" />
+                        <instance-variable name="originY" sid="303982059546913" type="number" />
+                        <instance-variable name="touchX" sid="956261052328159" type="number" />
+                        <instance-variable name="touchY" sid="285109198134576" type="number" />
+                        <instance-variable name="touchDistance" sid="366204530810240" type="number" />
+                        <instance-variable name="touchAngle" sid="205224805978391" type="number" />
+                        <instance-variable name="side" sid="730606847922375" type="string" />
+                        <instance-variable name="speed" sid="108943311622214" type="number" />
+                    </instance-variables>
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="777245028434052" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\target.png">
+                                <collision-poly>
+                                    <point x="0.146667" y="0.146667" />
+                                    <point x="0.5" y="0" />
+                                    <point x="0.853333" y="0.146667" />
+                                    <point x="1" y="0.5" />
+                                    <point x="0.853333" y="0.853333" />
+                                    <point x="0.5" y="1" />
+                                    <point x="0.146667" y="0.853333" />
+                                    <point x="0" y="0.5" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
+                    </animation-folder>
+                </object-type>
+            </object-folder>
+            <object-type name="testInfo" sid="513606824017814">
+                <plugin id="Text" />
+            </object-type>
+        </object-folder>
+        <object-type name="Touch" sid="272257185248334">
+            <plugin id="Touch" />
+        </object-type>
+    </object-folder>
     <families />
     <layout-folder>
         <layout>mainMenuL.xml</layout>
+        <layout>testOneL.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>mainMenuE.xml</event-sheet>
+        <event-sheet>testOneE.xml</event-sheet>
     </event-folder>
-    <global-instances />
+    <global-instances>
+        <global-instance type="Touch" uid="0">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+    </global-instances>
     <sounds-folder />
     <music-folder />
     <files-folder>
