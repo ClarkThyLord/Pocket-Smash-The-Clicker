@@ -10,12 +10,15 @@
     <unique-id>6mclpim37xk2</unique-id>
     <saved-with-version>24400</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
-    <used-behaviors />
+    <used-behaviors>
+        <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+    </used-behaviors>
     <used-effects />
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
@@ -102,7 +105,6 @@
                         <instance-variable name="touchDistance" sid="366204530810240" type="number" />
                         <instance-variable name="touchAngle" sid="205224805978391" type="number" />
                         <instance-variable name="side" sid="730606847922375" type="string" />
-                        <instance-variable name="speed" sid="108943311622214" type="number" />
                     </instance-variables>
                     <animation-folder>
                         <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="777245028434052" speed="5">
@@ -121,6 +123,19 @@
                         </animation>
                     </animation-folder>
                 </object-type>
+                <object-type name="testDummy" sid="597393244484073">
+                    <plugin id="Sprite" />
+                    <behaviors>
+                        <behavior-type name="8Direction" sid="238451149381604">
+                            <behavior id="EightDir" />
+                        </behavior-type>
+                    </behaviors>
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="811905000966345" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Desktop Original\Work Space\Programing Work Space\Work\Pocket Smash\res\testOne\dummy.png" />
+                        </animation>
+                    </animation-folder>
+                </object-type>
             </object-folder>
             <object-type name="testInfo" sid="513606824017814">
                 <plugin id="Text" />
@@ -128,6 +143,9 @@
         </object-folder>
         <object-type name="Touch" sid="272257185248334">
             <plugin id="Touch" />
+        </object-type>
+        <object-type name="Keyboard" sid="176736073854451">
+            <plugin id="Keyboard" />
         </object-type>
     </object-folder>
     <families />
@@ -145,6 +163,7 @@
                 <use-mouse-input>Yes</use-mouse-input>
             </properties>
         </global-instance>
+        <global-instance type="Keyboard" uid="7" />
     </global-instances>
     <sounds-folder />
     <music-folder />
