@@ -50,20 +50,20 @@
                     </actions>
                 </event-block>
                 <comment>JoyStick</comment>
-                <event-block sid="686242757341161">
+                <event-block sid="570149651141204">
                     <conditions />
                     <actions>
-                        <action id="1" name="Append text" sid="604047786116239" type="testInfo">
-                            <param id="0" name="Text">newline &amp; newline &amp; &quot;JoyStick&quot; &amp; newline &amp; &quot;ID: &quot; &amp; str(testCursor.touchID) &amp; newline &amp; &quot;ORG X: &quot; &amp; str(testCursor.originX) &amp; &quot;  |ORG Y: &quot; &amp; str(testCursor.originY) &amp; newline &amp; &quot;X: &quot; &amp; str(testCursor.touchX) &amp; &quot;  |Y: &quot; &amp; str(testCursor.touchY) &amp; &quot;  |DIS: &quot; &amp; str(testCursor.touchDistance) &amp; &quot;  |ANG: &quot; &amp; str(testCursor.touchAngle) &amp; newline &amp; &quot;SIDE:  &quot; &amp; str(testCursor.side) &amp; &quot;  |SPEED: &quot; &amp; str(testCursor.speed)</param>
+                        <action id="1" name="Append text" sid="476044678282456" type="testInfo">
+                            <param id="0" name="Text">newline &amp; newline &amp; &quot;JoyStick&quot; &amp; newline &amp; &quot;ID:  &quot; &amp; str(testCursor.touchID) &amp; newline &amp; &quot;ORI X: &quot; &amp; str(testCursor.originX) &amp; &quot; |ORI Y: &quot; &amp; str(testCursor.originY) &amp; &quot; |X: &quot; &amp; str(round(testCursor.X)) &amp; &quot; |Y: &quot; &amp; str(round(testCursor.Y)) &amp; newline &amp; &quot;SIDE:  &quot; &amp; str(testCursor.side) &amp; &quot; |SPEED:  &quot; &amp; str(testCursor.speed)</param>
                         </action>
                     </actions>
                 </event-block>
                 <comment>Action</comment>
-                <event-block sid="588730851029300">
+                <event-block sid="780237560753248">
                     <conditions />
                     <actions>
-                        <action id="1" name="Append text" sid="873743314967193" type="testInfo">
-                            <param id="0" name="Text">newline &amp; newline &amp; &quot;Action&quot; &amp; newline &amp; &quot;ID: &quot; &amp; str(testTarget.touchID) &amp; newline &amp; &quot;ORG X: &quot; &amp; str(testTarget.originX) &amp; &quot;  |ORG Y: &quot; &amp; str(testTarget.originY) &amp; newline &amp; &quot;X: &quot; &amp; str(testTarget.touchX) &amp; &quot;  |Y: &quot; &amp; str(testTarget.touchY) &amp; &quot;  |DIS: &quot; &amp; str(testTarget.touchDistance) &amp; &quot;  |ANG: &quot; &amp; str(testTarget.touchAngle) &amp; newline &amp; &quot;SIDE:  &quot; &amp; str(testTarget.side)</param>
+                        <action id="1" name="Append text" sid="741779094578713" type="testInfo">
+                            <param id="0" name="Text">newline &amp; newline &amp; &quot;Action&quot; &amp; newline &amp; &quot;ID:  &quot; &amp; str(testTarget.touchID) &amp; newline &amp; &quot;ORI X: &quot; &amp; str(testTarget.originX) &amp; &quot; |ORI Y: &quot; &amp; str(testTarget.originY) &amp; &quot; |X: &quot; &amp; str(round(testTarget.X)) &amp; &quot; |Y: &quot; &amp; str(round(testTarget.Y)) &amp; newline &amp; &quot;SIDE:  &quot; &amp; str(testTarget.side) &amp; &quot; |POWER:  &quot; &amp; str(testTarget.power) &amp; newline &amp; &quot;History:&quot; &amp; newline &amp; str(testTarget.history)</param>
                         </action>
                     </actions>
                 </event-block>
@@ -265,18 +265,18 @@
                                         <condition id="-7" name="Compare instance variable" sid="380877941011597" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">0</param>
+                                            <param id="2" name="Value">32</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="606504881125220" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">45</param>
+                                            <param id="2" name="Value">58</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="931681827384200" type="testCursor">
+                                        <action id="-10" name="Set value" sid="773722806326056" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;up left&quot;</param>
+                                            <param id="1" name="Value">1</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -285,18 +285,18 @@
                                         <condition id="-7" name="Compare instance variable" sid="599752752162497" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">45</param>
+                                            <param id="2" name="Value">58</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="429738296340865" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">90</param>
+                                            <param id="2" name="Value">122</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="142023834477414" type="testCursor">
+                                        <action id="-10" name="Set value" sid="462502036022180" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;up&quot;</param>
+                                            <param id="1" name="Value">2</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -305,18 +305,18 @@
                                         <condition id="-7" name="Compare instance variable" sid="435167661430498" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">90</param>
+                                            <param id="2" name="Value">122</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="624070317537343" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">135</param>
+                                            <param id="2" name="Value">148</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="404667095454377" type="testCursor">
+                                        <action id="-10" name="Set value" sid="613958372076407" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;up right&quot;</param>
+                                            <param id="1" name="Value">3</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -325,18 +325,18 @@
                                         <condition id="-7" name="Compare instance variable" sid="595554955267655" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">135</param>
+                                            <param id="2" name="Value">148</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="406419909255631" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">180</param>
+                                            <param id="2" name="Value">212</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="655590746113152" type="testCursor">
+                                        <action id="-10" name="Set value" sid="646704275352549" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;right&quot;</param>
+                                            <param id="1" name="Value">4</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -345,18 +345,18 @@
                                         <condition id="-7" name="Compare instance variable" sid="353928010263428" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">180</param>
+                                            <param id="2" name="Value">212</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="536006909982424" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">225</param>
+                                            <param id="2" name="Value">238</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="925258537864448" type="testCursor">
+                                        <action id="-10" name="Set value" sid="797391667145278" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;down right&quot;</param>
+                                            <param id="1" name="Value">5</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -365,18 +365,18 @@
                                         <condition id="-7" name="Compare instance variable" sid="343376481265956" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">225</param>
+                                            <param id="2" name="Value">238</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="925501005576518" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">270</param>
+                                            <param id="2" name="Value">302</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="867918032540273" type="testCursor">
+                                        <action id="-10" name="Set value" sid="141514508706171" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;down&quot;</param>
+                                            <param id="1" name="Value">6</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -385,38 +385,38 @@
                                         <condition id="-7" name="Compare instance variable" sid="741366146652441" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">270</param>
+                                            <param id="2" name="Value">302</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="911542945952987" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">315</param>
+                                            <param id="2" name="Value">328</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="997898619410509" type="testCursor">
+                                        <action id="-10" name="Set value" sid="138206711265562" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;down left&quot;</param>
+                                            <param id="1" name="Value">7</param>
                                         </action>
                                     </actions>
                                 </event-block>
-                                <event-block sid="660595955946761">
+                                <event-block any="1" sid="660595955946761">
                                     <conditions>
                                         <condition id="-7" name="Compare instance variable" sid="589924843360424" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">315</param>
+                                            <param id="2" name="Value">328</param>
                                         </condition>
                                         <condition id="-7" name="Compare instance variable" sid="488694318999631" type="testCursor">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">360</param>
+                                            <param id="2" name="Value">32</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="345664001340056" type="testCursor">
+                                        <action id="-10" name="Set value" sid="904731850265881" type="testCursor">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;left&quot;</param>
+                                            <param id="1" name="Value">8</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -508,9 +508,13 @@
                             <param id="0" name="Instance variable">touchAngle</param>
                             <param id="1" name="Value">0</param>
                         </action>
-                        <action id="-10" name="Set value" sid="792082728944068" type="testCursor">
+                        <action id="-10" name="Set value" sid="404763491575300" type="testCursor">
+                            <param id="0" name="Instance variable">touchAngle</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="286704063711565" type="testCursor">
                             <param id="0" name="Instance variable">side</param>
-                            <param id="1" name="Value">&quot;null&quot;</param>
+                            <param id="1" name="Value">0</param>
                         </action>
                         <action id="-10" name="Set value" sid="626115210592756" type="testCursor">
                             <param id="0" name="Instance variable">speed</param>
@@ -521,120 +525,280 @@
             </sub-events>
         </event-group>
         <comment>Action Handle</comment>
-        <event-group description="" sid="264106079743919" title="Action">
+        <event-group description="" sid="492352859249082" title="Action">
             <sub-events>
-                <event-block sid="862239706385876">
+                <event-block sid="613910948651749">
                     <conditions>
-                        <condition id="2" name="Is in touch" sid="973671571014217" type="Touch" />
-                        <condition id="-8" name="Compare two values" sid="520531068625530" type="System">
+                        <condition id="2" name="Is in touch" sid="475023782840171" type="Touch" />
+                        <condition id="-8" name="Compare two values" sid="478351463977345" type="System">
                             <param id="0" name="First value">testTarget.touchID</param>
                             <param id="1" name="Comparison">1</param>
                             <param id="2" name="Second value">-1</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-3" name="Set position" sid="336718217509550" type="testTarget">
+                        <action id="-3" name="Set position" sid="577624096536206" type="testTarget">
                             <param id="0" name="X">Touch.XForID(testTarget.touchID)</param>
                             <param id="1" name="Y">Touch.YForID(testTarget.touchID)</param>
                         </action>
-                        <action id="-10" name="Set value" sid="168364194189404" type="testTarget">
+                        <action id="-10" name="Set value" sid="498158614428368" type="testTarget">
                             <param id="0" name="Instance variable">touchX</param>
                             <param id="1" name="Value">round(testTarget.X - testTarget.originX)</param>
                         </action>
-                        <action id="-10" name="Set value" sid="753925305211452" type="testTarget">
+                        <action id="-10" name="Set value" sid="513428059345663" type="testTarget">
                             <param id="0" name="Instance variable">touchY</param>
                             <param id="1" name="Value">round(testTarget.Y - testTarget.originY)</param>
                         </action>
-                        <action id="-10" name="Set value" sid="769874454213422" type="testTarget">
+                        <action id="-10" name="Set value" sid="414426786048149" type="testTarget">
                             <param id="0" name="Instance variable">touchDistance</param>
                             <param id="1" name="Value">abs(round(distance(testTarget.originX, testTarget.originY, testTarget.X, testTarget.Y)))</param>
                         </action>
-                        <action id="-10" name="Set value" sid="617738352062582" type="testTarget">
+                        <action id="-10" name="Set value" sid="209751047275670" type="testTarget">
                             <param id="0" name="Instance variable">touchAngle</param>
                             <param id="1" name="Value">round(angle(testTarget.originX, testTarget.originY, testTarget.X, testTarget.Y)) + 180</param>
                         </action>
                     </actions>
                     <sub-events>
-                        <event-group description="" sid="825980843349095" title="ActionChecks">
+                        <event-group description="" sid="430163127289026" title="ActionChecks">
                             <sub-events>
                                 <comment>direction</comment>
-                                <event-block any="1" sid="938682447398124">
+                                <event-block sid="784379222122640">
                                     <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="115453959255018" type="testTarget">
+                                        <condition id="-7" name="Compare instance variable" sid="475832995426502" type="testTarget">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">325</param>
+                                            <param id="2" name="Value">32</param>
                                         </condition>
-                                        <condition id="-7" name="Compare instance variable" sid="661074236241021" type="testTarget">
+                                        <condition id="-7" name="Compare instance variable" sid="609452429100978" type="testTarget">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">45</param>
+                                            <param id="2" name="Value">58</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="235917412510320" type="testTarget">
+                                        <action id="-10" name="Set value" sid="579506390575254" type="testTarget">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;left&quot;</param>
+                                            <param id="1" name="Value">1</param>
                                         </action>
                                     </actions>
                                 </event-block>
-                                <event-block sid="417434303976254">
+                                <event-block sid="620039106744585">
                                     <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="563462198905074" type="testTarget">
+                                        <condition id="-7" name="Compare instance variable" sid="719852606668659" type="testTarget">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">45</param>
+                                            <param id="2" name="Value">58</param>
                                         </condition>
-                                        <condition id="-7" name="Compare instance variable" sid="596375446358219" type="testTarget">
+                                        <condition id="-7" name="Compare instance variable" sid="570923915328165" type="testTarget">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">125</param>
+                                            <param id="2" name="Value">122</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="958043596404424" type="testTarget">
+                                        <action id="-10" name="Set value" sid="864115995136934" type="testTarget">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;up&quot;</param>
+                                            <param id="1" name="Value">2</param>
                                         </action>
                                     </actions>
                                 </event-block>
-                                <event-block sid="358753493114263">
+                                <event-block sid="768909536676549">
                                     <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="511398932530986" type="testTarget">
+                                        <condition id="-7" name="Compare instance variable" sid="152835826930029" type="testTarget">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">125</param>
+                                            <param id="2" name="Value">122</param>
                                         </condition>
-                                        <condition id="-7" name="Compare instance variable" sid="962256158615313" type="testTarget">
+                                        <condition id="-7" name="Compare instance variable" sid="399206240393228" type="testTarget">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">205</param>
+                                            <param id="2" name="Value">148</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="857565434277439" type="testTarget">
+                                        <action id="-10" name="Set value" sid="642723074497210" type="testTarget">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;right&quot;</param>
+                                            <param id="1" name="Value">3</param>
                                         </action>
                                     </actions>
                                 </event-block>
-                                <event-block sid="955680685491124">
+                                <event-block sid="787344340916459">
                                     <conditions>
-                                        <condition id="-7" name="Compare instance variable" sid="657156065559550" type="testTarget">
+                                        <condition id="-7" name="Compare instance variable" sid="625122588605833" type="testTarget">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">205</param>
+                                            <param id="2" name="Value">148</param>
                                         </condition>
-                                        <condition id="-7" name="Compare instance variable" sid="449780039922955" type="testTarget">
+                                        <condition id="-7" name="Compare instance variable" sid="715722799696887" type="testTarget">
                                             <param id="0" name="Instance variable">touchAngle</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">325</param>
+                                            <param id="2" name="Value">212</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-10" name="Set value" sid="810041120332139" type="testTarget">
+                                        <action id="-10" name="Set value" sid="912210054957759" type="testTarget">
                                             <param id="0" name="Instance variable">side</param>
-                                            <param id="1" name="Value">&quot;down&quot;</param>
+                                            <param id="1" name="Value">4</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="553036988247839">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="703140111407138" type="testTarget">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">212</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="904694155975055" type="testTarget">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">238</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="235952301511687" type="testTarget">
+                                            <param id="0" name="Instance variable">side</param>
+                                            <param id="1" name="Value">5</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="238227071996906">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="861953410942403" type="testTarget">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">238</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="330398251920383" type="testTarget">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">302</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="295237151940667" type="testTarget">
+                                            <param id="0" name="Instance variable">side</param>
+                                            <param id="1" name="Value">6</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="563283409799613">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="954300987788450" type="testTarget">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">302</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="512795110565509" type="testTarget">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">328</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="300754770245991" type="testTarget">
+                                            <param id="0" name="Instance variable">side</param>
+                                            <param id="1" name="Value">7</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block any="1" sid="201223614459492">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="977043754598058" type="testTarget">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">328</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="906618300474992" type="testTarget">
+                                            <param id="0" name="Instance variable">touchAngle</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">32</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="138664123506746" type="testTarget">
+                                            <param id="0" name="Instance variable">side</param>
+                                            <param id="1" name="Value">8</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>power</comment>
+                                <event-block sid="611832929846218">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="112486351321089" type="testTarget">
+                                            <param id="0" name="Instance variable">touchDistance</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">75</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="469333185006491" type="testTarget">
+                                            <param id="0" name="Instance variable">power</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="976747597786312">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="575480278361147" type="testTarget">
+                                            <param id="0" name="Instance variable">touchDistance</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">75</param>
+                                        </condition>
+                                        <condition id="-7" name="Compare instance variable" sid="729995971183223" type="testTarget">
+                                            <param id="0" name="Instance variable">touchDistance</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">150</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="897876709799421" type="testTarget">
+                                            <param id="0" name="Instance variable">power</param>
+                                            <param id="1" name="Value">2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="841616560482938">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="681486801739016" type="testTarget">
+                                            <param id="0" name="Instance variable">touchDistance</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">150</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="994044821062982" type="testTarget">
+                                            <param id="0" name="Instance variable">power</param>
+                                            <param id="1" name="Value">3</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>history</comment>
+                                <event-block sid="778134516450302">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="156055205350227" type="System">
+                                            <param id="0" name="First value">len(testTarget.history)</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Second value">6</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="909498561983160" type="testTarget">
+                                            <param id="0" name="Instance variable">history</param>
+                                            <param id="1" name="Value">&quot;&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="360270008297026">
+                                    <conditions>
+                                        <condition id="-6" name="Every X seconds" sid="691604889353588" type="System">
+                                            <param id="0" name="Interval (seconds)">0.3</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Add to" sid="218090997723901" type="testTarget">
+                                            <param id="0" name="Instance variable">history</param>
+                                            <param id="1" name="Value">str(testTarget.side)</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -642,42 +806,50 @@
                         </event-group>
                     </sub-events>
                 </event-block>
-                <event-block sid="730365053867940">
+                <event-block sid="683880428724467">
                     <conditions>
-                        <condition id="1" name="On any touch end" sid="340454539652804" type="Touch" />
-                        <condition id="-8" name="Compare two values" sid="500460589799269" type="System">
+                        <condition id="1" name="On any touch end" sid="472109704102991" type="Touch" />
+                        <condition id="-8" name="Compare two values" sid="322590944828267" type="System">
                             <param id="0" name="First value">Touch.TouchID</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Second value">testTarget.touchID</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-15" name="Set visible" sid="671523490447966" type="testTarget">
+                        <action id="-15" name="Set visible" sid="175063721253095" type="testTarget">
                             <param id="0" name="Visibility">0</param>
                         </action>
-                        <action id="-10" name="Set value" sid="492416188203753" type="testTarget">
+                        <action id="-10" name="Set value" sid="606898987513293" type="testTarget">
                             <param id="0" name="Instance variable">touchID</param>
                             <param id="1" name="Value">-1</param>
                         </action>
-                        <action id="-10" name="Set value" sid="564416433186588" type="testTarget">
+                        <action id="-10" name="Set value" sid="620872403720340" type="testTarget">
                             <param id="0" name="Instance variable">touchX</param>
                             <param id="1" name="Value">0</param>
                         </action>
-                        <action id="-10" name="Set value" sid="149189195360131" type="testTarget">
+                        <action id="-10" name="Set value" sid="349952434556296" type="testTarget">
                             <param id="0" name="Instance variable">touchY</param>
                             <param id="1" name="Value">0</param>
                         </action>
-                        <action id="-10" name="Set value" sid="154938130566648" type="testTarget">
+                        <action id="-10" name="Set value" sid="297787858318124" type="testTarget">
                             <param id="0" name="Instance variable">touchDistance</param>
                             <param id="1" name="Value">0</param>
                         </action>
-                        <action id="-10" name="Set value" sid="691117762690159" type="testTarget">
+                        <action id="-10" name="Set value" sid="477550239518005" type="testTarget">
                             <param id="0" name="Instance variable">touchAngle</param>
                             <param id="1" name="Value">0</param>
                         </action>
-                        <action id="-10" name="Set value" sid="100709405909619" type="testTarget">
+                        <action id="-10" name="Set value" sid="179054225893421" type="testTarget">
+                            <param id="0" name="Instance variable">touchAngle</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="436235189668434" type="testTarget">
                             <param id="0" name="Instance variable">side</param>
-                            <param id="1" name="Value">&quot;null&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="165765805300604" type="testTarget">
+                            <param id="0" name="Instance variable">power</param>
+                            <param id="1" name="Value">0</param>
                         </action>
                     </actions>
                 </event-block>
@@ -744,10 +916,10 @@
                 <comment>Touch Handle</comment>
                 <event-block sid="923667214818143">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="114473510030483" type="testCursor">
+                        <condition id="-7" name="Compare instance variable" sid="519803052339080" type="testCursor">
                             <param id="0" name="Instance variable">side</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;up left&quot;</param>
+                            <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -764,10 +936,10 @@
                 </event-block>
                 <event-block sid="682263810465915">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="376720532663554" type="testCursor">
+                        <condition id="-7" name="Compare instance variable" sid="728345389011480" type="testCursor">
                             <param id="0" name="Instance variable">side</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;up&quot;</param>
+                            <param id="2" name="Value">2</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -778,10 +950,10 @@
                 </event-block>
                 <event-block sid="660254941555663">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="131929953571810" type="testCursor">
+                        <condition id="-7" name="Compare instance variable" sid="809461031805520" type="testCursor">
                             <param id="0" name="Instance variable">side</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;up right&quot;</param>
+                            <param id="2" name="Value">3</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -798,10 +970,10 @@
                 </event-block>
                 <event-block sid="629242885133822">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="657272602751268" type="testCursor">
+                        <condition id="-7" name="Compare instance variable" sid="381237914142168" type="testCursor">
                             <param id="0" name="Instance variable">side</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;right&quot;</param>
+                            <param id="2" name="Value">4</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -815,10 +987,10 @@
                 </event-block>
                 <event-block sid="754584094049538">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="871004874304968" type="testCursor">
+                        <condition id="-7" name="Compare instance variable" sid="240589639285399" type="testCursor">
                             <param id="0" name="Instance variable">side</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;down right&quot;</param>
+                            <param id="2" name="Value">5</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -835,10 +1007,10 @@
                 </event-block>
                 <event-block sid="341451377463883">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="696535103955234" type="testCursor">
+                        <condition id="-7" name="Compare instance variable" sid="613283196655412" type="testCursor">
                             <param id="0" name="Instance variable">side</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;down&quot;</param>
+                            <param id="2" name="Value">6</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -849,10 +1021,10 @@
                 </event-block>
                 <event-block sid="926087631587678">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="213311864887383" type="testCursor">
+                        <condition id="-7" name="Compare instance variable" sid="725200951627247" type="testCursor">
                             <param id="0" name="Instance variable">side</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;down left&quot;</param>
+                            <param id="2" name="Value">7</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -869,10 +1041,10 @@
                 </event-block>
                 <event-block sid="739535820293531">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="913281976055937" type="testCursor">
+                        <condition id="-7" name="Compare instance variable" sid="527663944459249" type="testCursor">
                             <param id="0" name="Instance variable">side</param>
                             <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">&quot;left&quot;</param>
+                            <param id="2" name="Value">8</param>
                         </condition>
                     </conditions>
                     <actions>
