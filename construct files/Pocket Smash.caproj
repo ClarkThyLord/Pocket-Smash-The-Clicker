@@ -74,7 +74,7 @@
                         <instance-variable name="touchY" sid="160609500057258" type="number" />
                         <instance-variable name="touchDistance" sid="668478229380522" type="number" />
                         <instance-variable name="touchAngle" sid="871553150615512" type="number" />
-                        <instance-variable name="side" sid="251809865703070" type="string" />
+                        <instance-variable name="side" sid="566278812978226" type="number" />
                         <instance-variable name="speed" sid="854072142149189" type="number" />
                     </instance-variables>
                     <animation-folder>
@@ -104,7 +104,9 @@
                         <instance-variable name="touchY" sid="285109198134576" type="number" />
                         <instance-variable name="touchDistance" sid="366204530810240" type="number" />
                         <instance-variable name="touchAngle" sid="205224805978391" type="number" />
-                        <instance-variable name="side" sid="730606847922375" type="string" />
+                        <instance-variable name="side" sid="143727219378617" type="number" />
+                        <instance-variable name="history" sid="152063995558976" type="string" />
+                        <instance-variable name="power" sid="737036394796396" type="number" />
                     </instance-variables>
                     <animation-folder>
                         <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="777245028434052" speed="5">

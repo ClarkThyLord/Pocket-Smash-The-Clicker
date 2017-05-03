@@ -162,7 +162,7 @@
                         <touchY>0</touchY>
                         <touchDistance>0</touchDistance>
                         <touchAngle>0</touchAngle>
-                        <side>null</side>
+                        <side>0</side>
                         <speed>0</speed>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
@@ -195,7 +195,9 @@
                         <touchY>0</touchY>
                         <touchDistance>0</touchDistance>
                         <touchAngle>0</touchAngle>
-                        <side></side>
+                        <side>0</side>
+                        <history></history>
+                        <power>0</power>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
