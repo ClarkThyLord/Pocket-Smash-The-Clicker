@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>testOneE</name>
     <events>
+<<<<<<< HEAD
         <event-block sid="794977731638036">
             <conditions>
                 <condition id="-20" name="Is on mobile device" sid="314475196818089" type="System" />
@@ -33,6 +34,9 @@
                 </action>
             </actions>
         </event-block>
+=======
+        <include>mainMenuE</include>
+>>>>>>> origin/master
         <comment>Info To Show</comment>
         <event-block sid="469151662721080">
             <conditions>
