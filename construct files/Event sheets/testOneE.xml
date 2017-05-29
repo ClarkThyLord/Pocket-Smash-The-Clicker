@@ -3,7 +3,6 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>testOneE</name>
     <events>
-        <include>mainMenuE</include>
         <comment>Info To Show</comment>
         <event-block sid="469151662721080">
             <conditions>
