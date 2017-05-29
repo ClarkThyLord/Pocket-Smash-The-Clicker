@@ -10,10 +10,12 @@
     <unique-id>6mclpim37xk2</unique-id>
     <saved-with-version>24400</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Button" version="1">Button</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
     <used-behaviors>
@@ -148,6 +150,51 @@
         </object-type>
         <object-type name="Keyboard" sid="176736073854451">
             <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="MainMenu" sid="562392130331310">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu.png" />
+        </object-type>
+        <object-type name="MainMenuGames" sid="974242708791818">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu-Games.png" />
+        </object-type>
+        <object-type name="MainMenuHUB" sid="200066778718174">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu-HUB.png" />
+        </object-type>
+        <object-type name="MainMenuOptions" sid="548862398368179">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu-Options.png" />
+        </object-type>
+        <object-type name="PopoutGames" sid="653761192484926">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu-Games-popout.png" />
+        </object-type>
+        <object-type name="PopoutHUB" sid="540631755628299">
+            <plugin id="TiledBg" />
+            <texture original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu-Hub-popout.png" />
+        </object-type>
+        <object-type name="Button" sid="334076477608016">
+            <plugin id="Button" />
+        </object-type>
+        <object-type name="ButtonGames" sid="846327242828342">
+            <plugin id="Button" />
+        </object-type>
+        <object-type name="ButtonHUB" sid="410053774613412">
+            <plugin id="Button" />
+        </object-type>
+        <object-type name="ButtonOptions" sid="659933585776582">
+            <plugin id="Button" />
+        </object-type>
+        <object-type name="ButtonPopout1" sid="553807966104322">
+            <plugin id="Button" />
+        </object-type>
+        <object-type name="ButtonPopout2" sid="167201410885809">
+            <plugin id="Button" />
+        </object-type>
+        <object-type name="ButtonPopout3" sid="864241899546009">
+            <plugin id="Button" />
         </object-type>
     </object-folder>
     <families />
