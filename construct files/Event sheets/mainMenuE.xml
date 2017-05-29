@@ -2,5 +2,232 @@
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>mainMenuE</name>
-    <events />
+    <events>
+        <event-group description="" sid="717225434202020" title="Main Menu" />
+        <event-block sid="602763837628081">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="857993613915765" type="Touch">
+                    <param id="0" name="Object">MainMenuGames</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="290143611258739" type="MainMenuGames">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="320518925025792" type="MainMenuHUB">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="175273094065041" type="MainMenuOptions">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="861253220067112" type="PopOut">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="883194762039047" type="SpriteGamesFind">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="726849905898384" type="SpriteGamesPractice">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="486331655202585" type="SpriteStorage">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="366115501308141" type="SpriteStore">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="743195967001506" type="SpriteMissions">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="807151396661308" type="SpriteGamesPractice">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="733934987820618">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="888582984163766" type="Touch">
+                    <param id="0" name="Object">MainMenuHUB</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="644739802740906" type="MainMenuHUB">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="566778020694515" type="MainMenuGames">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="769285829977227" type="MainMenuOptions">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="143793205833677" type="PopOut">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="403829500474122" type="SpriteMissions">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="798363763868757" type="SpriteStorage">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="316657774893027" type="SpriteStore">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="961737017427999" type="SpriteGamesFind">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="406342031533656" type="SpriteGamesPractice">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="648510238797041" type="SpriteGamesPrivate">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="351639648307699">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="291479015819901" type="Touch">
+                    <param id="0" name="Object">MainMenuOptions</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="136061903649365" type="MainMenuOptions">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="816808542349159" type="MainMenuGames">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="237739181147465" type="MainMenuHUB">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="124247753191278" type="SpriteGamesFind">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="813459256221269" type="SpriteGamesPractice">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="775433501136759" type="SpriteStore">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="873763856970254" type="SpriteStorage">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="478651055606669" type="SpriteStore">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="941535186745468" type="SpriteMissions">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="964789795351673" type="PopOut">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="902998282678030">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="453868263794516" type="Touch">
+                    <param id="0" name="Object">SpriteGamesPractice</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="723550541046945" type="SpriteGamesPractice">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="567988650987515" type="SpriteGamesPrivate">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="861452634946979" type="SpriteGamesFind">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="586882373987885">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="822737857413395" type="Touch">
+                    <param id="0" name="Object">SpriteGamesPrivate</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="159784627424521" type="SpriteGamesPrivate">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="674958190057324" type="SpriteGamesPractice">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="191972623234617" type="SpriteGamesFind">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="803623010146565">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="268048442164664" type="Touch">
+                    <param id="0" name="Object">SpriteGamesFind</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="424127343979792" type="SpriteGamesFind">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="462688386069977" type="SpriteGamesPractice">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="869216413766131" type="SpriteGamesPrivate">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="987367972161885">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="951025097742273" type="Touch">
+                    <param id="0" name="Object">SpriteMissions</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="676025394311055" type="SpriteMissions">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="843088026937141" type="SpriteStorage">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="394391846191843" type="SpriteStore">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="668531960859907">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="673363899910069" type="Touch">
+                    <param id="0" name="Object">SpriteStorage</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="490457961348972" type="SpriteStorage">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="541683786044005" type="SpriteMissions">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="969905134283960" type="SpriteStore">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="566347436073947">
+            <conditions>
+                <condition id="4" name="Is touching object" sid="470058339766789" type="Touch">
+                    <param id="0" name="Object">SpriteStore</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="5" name="Set frame" sid="220466701145785" type="SpriteStore">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="162442449734215" type="SpriteStorage">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="835254714077474" type="SpriteMissions">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
 </c2eventsheet>
