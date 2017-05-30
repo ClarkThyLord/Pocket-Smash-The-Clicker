@@ -17,29 +17,20 @@
                 <action id="5" name="Set frame" sid="320518925025792" type="MainMenuHUB">
                     <param id="0" name="Frame number">1</param>
                 </action>
-                <action id="5" name="Set frame" sid="175273094065041" type="MainMenuOptions">
-                    <param id="0" name="Frame number">1</param>
-                </action>
                 <action id="-15" name="Set visible" sid="861253220067112" type="PopOut">
                     <param id="0" name="Visibility">1</param>
                 </action>
-                <action id="-15" name="Set visible" sid="883194762039047" type="SpriteGamesFind">
-                    <param id="0" name="Visibility">1</param>
+                <action id="-4" name="Set layer visible" sid="106341968970978" type="System">
+                    <param id="0" name="Layer">&quot;PopoutGames&quot;</param>
+                    <param id="1" name="Visibility">1</param>
                 </action>
-                <action id="-15" name="Set visible" sid="726849905898384" type="SpriteGamesPractice">
-                    <param id="0" name="Visibility">1</param>
+                <action id="-4" name="Set layer visible" sid="837195584994589" type="System">
+                    <param id="0" name="Layer">&quot;PopoutHUB&quot;</param>
+                    <param id="1" name="Visibility">0</param>
                 </action>
-                <action id="-15" name="Set visible" sid="486331655202585" type="SpriteStorage">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="366115501308141" type="SpriteStore">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="743195967001506" type="SpriteMissions">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="807151396661308" type="SpriteGamesPractice">
-                    <param id="0" name="Visibility">1</param>
+                <action id="-4" name="Set layer visible" sid="737662840159222" type="System">
+                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
+                    <param id="1" name="Visibility">1</param>
                 </action>
             </actions>
         </event-block>
@@ -56,40 +47,31 @@
                 <action id="5" name="Set frame" sid="566778020694515" type="MainMenuGames">
                     <param id="0" name="Frame number">1</param>
                 </action>
-                <action id="5" name="Set frame" sid="769285829977227" type="MainMenuOptions">
-                    <param id="0" name="Frame number">1</param>
-                </action>
                 <action id="-15" name="Set visible" sid="143793205833677" type="PopOut">
                     <param id="0" name="Visibility">1</param>
                 </action>
-                <action id="-15" name="Set visible" sid="403829500474122" type="SpriteMissions">
-                    <param id="0" name="Visibility">1</param>
+                <action id="-4" name="Set layer visible" sid="717591967904081" type="System">
+                    <param id="0" name="Layer">&quot;PopoutGames&quot;</param>
+                    <param id="1" name="Visibility">0</param>
                 </action>
-                <action id="-15" name="Set visible" sid="798363763868757" type="SpriteStorage">
-                    <param id="0" name="Visibility">1</param>
+                <action id="-4" name="Set layer visible" sid="851761674491630" type="System">
+                    <param id="0" name="Layer">&quot;PopoutHUB&quot;</param>
+                    <param id="1" name="Visibility">1</param>
                 </action>
-                <action id="-15" name="Set visible" sid="316657774893027" type="SpriteStore">
-                    <param id="0" name="Visibility">1</param>
-                </action>
-                <action id="-15" name="Set visible" sid="961737017427999" type="SpriteGamesFind">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="406342031533656" type="SpriteGamesPractice">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="648510238797041" type="SpriteGamesPrivate">
-                    <param id="0" name="Visibility">0</param>
+                <action id="-4" name="Set layer visible" sid="215630751467713" type="System">
+                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
+                    <param id="1" name="Visibility">1</param>
                 </action>
             </actions>
         </event-block>
         <event-block sid="351639648307699">
             <conditions>
-                <condition id="4" name="Is touching object" sid="291479015819901" type="Touch">
+                <condition id="4" name="Is touching object" sid="178622377632782" type="Touch">
                     <param id="0" name="Object">MainMenuOptions</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="5" name="Set frame" sid="136061903649365" type="MainMenuOptions">
+                <action id="5" name="Set frame" sid="948461855984895" type="MainMenuOptions">
                     <param id="0" name="Frame number">0</param>
                 </action>
                 <action id="5" name="Set frame" sid="816808542349159" type="MainMenuGames">
@@ -98,37 +80,31 @@
                 <action id="5" name="Set frame" sid="237739181147465" type="MainMenuHUB">
                     <param id="0" name="Frame number">1</param>
                 </action>
-                <action id="-15" name="Set visible" sid="124247753191278" type="SpriteGamesFind">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="813459256221269" type="SpriteGamesPractice">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="775433501136759" type="SpriteStore">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="873763856970254" type="SpriteStorage">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="478651055606669" type="SpriteStore">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-15" name="Set visible" sid="941535186745468" type="SpriteMissions">
-                    <param id="0" name="Visibility">0</param>
-                </action>
                 <action id="-15" name="Set visible" sid="964789795351673" type="PopOut">
                     <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="311754546711027" type="System">
+                    <param id="0" name="Layer">&quot;PopoutGames&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="179556417087126" type="System">
+                    <param id="0" name="Layer">&quot;PopoutHUB&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="152256278687385" type="System">
+                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
+                    <param id="1" name="Visibility">0</param>
                 </action>
             </actions>
         </event-block>
         <event-block sid="902998282678030">
             <conditions>
-                <condition id="4" name="Is touching object" sid="453868263794516" type="Touch">
-                    <param id="0" name="Object">SpriteGamesPractice</param>
+                <condition id="4" name="Is touching object" sid="318531176050281" type="Touch">
+                    <param id="0" name="Object">Sprite</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="5" name="Set frame" sid="723550541046945" type="SpriteGamesPractice">
+                <action id="5" name="Set frame" sid="108087750849771" type="Sprite">
                     <param id="0" name="Frame number">0</param>
                 </action>
                 <action id="5" name="Set frame" sid="567988650987515" type="SpriteGamesPrivate">
@@ -136,6 +112,10 @@
                 </action>
                 <action id="5" name="Set frame" sid="861452634946979" type="SpriteGamesFind">
                     <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="708200715216862" type="System">
+                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
+                    <param id="1" name="Visibility">0</param>
                 </action>
             </actions>
         </event-block>
@@ -149,11 +129,15 @@
                 <action id="5" name="Set frame" sid="159784627424521" type="SpriteGamesPrivate">
                     <param id="0" name="Frame number">0</param>
                 </action>
-                <action id="5" name="Set frame" sid="674958190057324" type="SpriteGamesPractice">
-                    <param id="0" name="Frame number">1</param>
-                </action>
                 <action id="5" name="Set frame" sid="191972623234617" type="SpriteGamesFind">
                     <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="263196371160122" type="Sprite">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="596133473856086" type="System">
+                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
+                    <param id="1" name="Visibility">0</param>
                 </action>
             </actions>
         </event-block>
@@ -167,11 +151,15 @@
                 <action id="5" name="Set frame" sid="424127343979792" type="SpriteGamesFind">
                     <param id="0" name="Frame number">0</param>
                 </action>
-                <action id="5" name="Set frame" sid="462688386069977" type="SpriteGamesPractice">
-                    <param id="0" name="Frame number">1</param>
-                </action>
                 <action id="5" name="Set frame" sid="869216413766131" type="SpriteGamesPrivate">
                     <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="5" name="Set frame" sid="878018647783860" type="Sprite">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="118175886911882" type="System">
+                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
+                    <param id="1" name="Visibility">0</param>
                 </action>
             </actions>
         </event-block>
@@ -191,6 +179,10 @@
                 <action id="5" name="Set frame" sid="394391846191843" type="SpriteStore">
                     <param id="0" name="Frame number">1</param>
                 </action>
+                <action id="-4" name="Set layer visible" sid="639645819330186" type="System">
+                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="668531960859907">
@@ -208,6 +200,10 @@
                 </action>
                 <action id="5" name="Set frame" sid="969905134283960" type="SpriteStore">
                     <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="137347599567232" type="System">
+                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
+                    <param id="1" name="Visibility">0</param>
                 </action>
             </actions>
         </event-block>
@@ -227,7 +223,12 @@
                 <action id="5" name="Set frame" sid="835254714077474" type="SpriteMissions">
                     <param id="0" name="Frame number">1</param>
                 </action>
+                <action id="-4" name="Set layer visible" sid="177504043958138" type="System">
+                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
             </actions>
         </event-block>
+        <comment>How is it?</comment>
     </events>
 </c2eventsheet>

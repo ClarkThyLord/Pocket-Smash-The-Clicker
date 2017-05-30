@@ -211,26 +211,6 @@
                 <plugin id="TiledBg" />
                 <texture original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu.png" />
             </object-type>
-            <object-type name="MainMenuOptions" sid="395555484267764">
-                <plugin id="Sprite" />
-                <animation-folder>
-                    <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="726594183397221" speed="5">
-                        <frame duration="1" hotspotX="1.62437" hotspotY="0.884615" original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu-Options.png" />
-                        <frame duration="1" hotspotX="0.500846" hotspotY="0.5">
-                            <collision-poly>
-                                <point x="0.0338409" y="0.153846" />
-                                <point x="0.499154" y="0" />
-                                <point x="0.966159" y="0.153846" />
-                                <point x="1" y="0.5" />
-                                <point x="0.966159" y="0.846154" />
-                                <point x="0.499154" y="1" />
-                                <point x="0.0338409" y="0.846154" />
-                                <point x="0" y="0.5" />
-                            </collision-poly>
-                        </frame>
-                    </animation>
-                </animation-folder>
-            </object-type>
             <object-type name="SpriteStore" sid="338073351494236">
                 <plugin id="Sprite" />
                 <animation-folder>
@@ -287,18 +267,67 @@
                     </animation>
                 </animation-folder>
             </object-type>
-            <object-type name="SpriteGamesPractice" sid="503590874799349">
-                <plugin id="Sprite" />
-                <animation-folder>
-                    <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="714161607795753" speed="5">
-                        <frame duration="1" hotspotX="4.7125" hotspotY="0.641791" original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu-Games-popout-Practice.png" />
-                        <frame duration="1" hotspotX="1.535" hotspotY="0.567164" original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu-Games-popout.png" />
-                    </animation>
-                </animation-folder>
-            </object-type>
             <object-type name="PopOut" sid="971767829739091">
                 <plugin id="TiledBg" />
                 <texture original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\Mainmenu-Games-popout.png" />
+            </object-type>
+            <object-type name="MainMenuOptions" sid="265445366818961">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="423033059228962" speed="5">
+                        <frame duration="1" hotspotX="0.500846" hotspotY="0.5" original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\OptionsSpriteblack.png">
+                            <collision-poly>
+                                <point x="0.0338409" y="0.153846" />
+                                <point x="0.499154" y="0" />
+                                <point x="0.966159" y="0.153846" />
+                                <point x="1" y="0.5" />
+                                <point x="0.966159" y="0.846154" />
+                                <point x="0.499154" y="1" />
+                                <point x="0.0338409" y="0.846154" />
+                                <point x="0" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.500846" hotspotY="0.5" original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\OptionsSprite.png">
+                            <collision-poly>
+                                <point x="0.0338409" y="0.153846" />
+                                <point x="0.499154" y="0" />
+                                <point x="0.966159" y="0.153846" />
+                                <point x="1" y="0.5" />
+                                <point x="0.966159" y="0.846154" />
+                                <point x="0.499154" y="1" />
+                                <point x="0.0338409" y="0.846154" />
+                                <point x="0" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="Sprite" sid="193087920753406">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="374270163582219" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.502488" original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\PracticeSpriteblack.png">
+                            <collision-poly>
+                                <point x="0.01" y="0.0199005" />
+                                <point x="0.5" y="0" />
+                                <point x="0.99" y="0.0199005" />
+                                <point x="0.99" y="0.980099" />
+                                <point x="0.5" y="1" />
+                                <point x="0.01" y="0.980099" />
+                            </collision-poly>
+                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.502488" original-source="C:\Users\User D\Documents\GitHub\Pocket-Smash\res\mainMenu\PracticeSprite.png">
+                            <collision-poly>
+                                <point x="0.01" y="0.0199005" />
+                                <point x="0.5" y="0" />
+                                <point x="0.99" y="0.0199005" />
+                                <point x="0.99" y="0.980099" />
+                                <point x="0.5" y="1" />
+                                <point x="0.01" y="0.980099" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
             </object-type>
         </object-folder>
         <object-type name="Touch" sid="272257185248334">
