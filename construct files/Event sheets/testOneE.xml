@@ -6,7 +6,7 @@
         <comment>Info To Show</comment>
         <event-block sid="469151662721080">
             <conditions>
-                <condition id="-1" name="Every tick" sid="314288747389381" type="System" />
+                <condition id="-20" inverted="1" name="Is on mobile device" sid="701451642040372" type="System" />
             </conditions>
             <actions>
                 <action id="0" name="Set text" sid="253388367117776" type="testInfo">

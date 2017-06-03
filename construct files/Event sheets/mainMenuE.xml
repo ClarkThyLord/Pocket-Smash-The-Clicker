@@ -167,7 +167,11 @@
                                     <param id="0" name="Object">practiceButtonMainMenu</param>
                                 </condition>
                             </conditions>
-                            <actions />
+                            <actions>
+                                <action id="-25" name="Go to layout (by name)" sid="901501613355448" type="System">
+                                    <param id="0" name="Layout">&quot;testOneL&quot;</param>
+                                </action>
+                            </actions>
                         </event-block>
                         <comment>null handler</comment>
                         <event-block sid="661986707430688">

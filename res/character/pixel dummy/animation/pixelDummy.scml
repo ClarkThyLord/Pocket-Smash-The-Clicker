@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11" pixel_mode="1">
+    <folder id="0" name="bodyParts">
+        <file id="0" name="bodyParts/body.png" width="72" height="86" pivot_x="0.5" pivot_y="0.75"/>
+        <file id="1" name="bodyParts/head.png" width="90" height="90" pivot_x="0.5" pivot_y="0.085"/>
+        <file id="2" name="bodyParts/eyes.png" width="41" height="20" pivot_x="0.51" pivot_y="0.5"/>
+        <file id="3" name="bodyParts/mouth.png" width="26" height="14" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="bodyParts/headGear.png" width="130" height="90" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <entity id="0" name="main">
+        <obj_info name="main_body" realname="body" type="sprite">
+            <frames>
+                <i folder="0" file="0"/>
+            </frames>
+        </obj_info>
+        <obj_info name="main_head" realname="head" type="sprite">
+            <frames>
+                <i folder="0" file="1"/>
+            </frames>
+        </obj_info>
+        <obj_info name="main_eyes" realname="eyes" type="sprite">
+            <frames>
+                <i folder="0" file="2"/>
+            </frames>
+        </obj_info>
+        <obj_info name="main_mouth" realname="mouth" type="sprite">
+            <frames>
+                <i folder="0" file="3"/>
+            </frames>
+        </obj_info>
+        <obj_info name="main_headGear" realname="headGear" type="sprite">
+            <frames>
+                <i folder="0" file="4"/>
+            </frames>
+        </obj_info>
+        <animation id="0" name="null" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="body" folder="0" file="0" abs_x="-36" abs_y="21.5" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" name="head" folder="0" file="1" abs_x="-40" abs_y="84.35" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" name="headGear" folder="0" file="4" abs_x="-60" abs_y="110" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="4" key="0" z_index="2"/>
+                    <object_ref id="3" name="mouth" folder="0" file="3" abs_x="-4" abs_y="26" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" name="eyes" folder="0" file="2" abs_x="-11.91" abs_y="49" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="2" key="0" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" obj="0" name="body">
+                <key id="0" spin="0">
+                    <object folder="0" file="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" obj="1" name="head">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="5" y="2"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="2" name="eyes">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="9" y="39"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="3" name="mouth">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-4" y="26"/>
+                </key>
+            </timeline>
+            <timeline id="4" obj="4" name="headGear">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="5" y="65"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
