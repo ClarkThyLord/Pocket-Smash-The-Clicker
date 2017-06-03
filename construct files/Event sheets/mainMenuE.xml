@@ -3,232 +3,898 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>mainMenuE</name>
     <events>
-        <event-group description="" sid="717225434202020" title="Main Menu" />
-        <event-block sid="602763837628081">
+        <event-block sid="844700824850502">
             <conditions>
-                <condition id="4" name="Is touching object" sid="857993613915765" type="Touch">
-                    <param id="0" name="Object">MainMenuGames</param>
+                <condition id="-9" name="Layer is visible" sid="778337498231480" type="System">
+                    <param id="0" name="Layer">&quot;popOutGames&quot;</param>
                 </condition>
             </conditions>
-            <actions>
-                <action id="5" name="Set frame" sid="290143611258739" type="MainMenuGames">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="320518925025792" type="MainMenuHUB">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-15" name="Set visible" sid="861253220067112" type="PopOut">
-                    <param id="0" name="Visibility">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="106341968970978" type="System">
-                    <param id="0" name="Layer">&quot;PopoutGames&quot;</param>
-                    <param id="1" name="Visibility">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="837195584994589" type="System">
-                    <param id="0" name="Layer">&quot;PopoutHUB&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="737662840159222" type="System">
-                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
-                    <param id="1" name="Visibility">1</param>
-                </action>
-            </actions>
+            <actions />
+            <sub-events>
+                <comment>&quot;find&quot; button handlers</comment>
+                <event-block sid="986675569582567">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <comment>touch hangler</comment>
+                        <event-block sid="968527425098672">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="886618380789378" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="663713272888654" type="Touch">
+                                    <param id="0" name="Object">findButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="267778764780428" type="findButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;selected&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>select handler</comment>
+                        <event-block sid="677139806789798">
+                            <conditions>
+                                <condition id="1" name="On any touch end" sid="190705693874635" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="928001794305371" type="Touch">
+                                    <param id="0" name="Object">findButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <comment>null handler</comment>
+                        <event-block sid="519489238742042">
+                            <conditions />
+                            <actions />
+                            <sub-events>
+                                <event-block sid="172529942431752">
+                                    <conditions>
+                                        <condition id="2" name="Is in touch" sid="436059925909149" type="Touch" />
+                                        <condition id="4" inverted="1" name="Is touching object" sid="344282658398980" type="Touch">
+                                            <param id="0" name="Object">findButtonMainMenu</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="955382100040160" type="findButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="159591739823111">
+                                    <conditions>
+                                        <condition id="2" inverted="1" name="Is in touch" sid="343842430788425" type="Touch" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="939677141974785" type="findButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>&quot;private&quot; button handlers</comment>
+                <event-block sid="275897650185245">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <comment>touch hangler</comment>
+                        <event-block sid="174894656369028">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="107976743385260" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="593715886810411" type="Touch">
+                                    <param id="0" name="Object">privateButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="409147005435664" type="privateButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;selected&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>select handler</comment>
+                        <event-block sid="245507987012383">
+                            <conditions>
+                                <condition id="1" name="On any touch end" sid="564725393284577" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="898754609046283" type="Touch">
+                                    <param id="0" name="Object">privateButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <comment>null handler</comment>
+                        <event-block sid="780692481373792">
+                            <conditions />
+                            <actions />
+                            <sub-events>
+                                <event-block sid="922900159025720">
+                                    <conditions>
+                                        <condition id="2" name="Is in touch" sid="543340606362880" type="Touch" />
+                                        <condition id="4" inverted="1" name="Is touching object" sid="880775018824896" type="Touch">
+                                            <param id="0" name="Object">privateButtonMainMenu</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="115499623042731" type="privateButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="763703732995710">
+                                    <conditions>
+                                        <condition id="2" inverted="1" name="Is in touch" sid="536191234640429" type="Touch" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="551624957981715" type="privateButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>&quot;practice&quot; button handlers</comment>
+                <event-block sid="403486462209350">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <comment>touch hangler</comment>
+                        <event-block sid="367233822440186">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="346615455957239" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="598652966296639" type="Touch">
+                                    <param id="0" name="Object">practiceButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="517576761847769" type="practiceButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;selected&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>select handler</comment>
+                        <event-block sid="144719907918808">
+                            <conditions>
+                                <condition id="1" name="On any touch end" sid="224823368235850" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="487568229774144" type="Touch">
+                                    <param id="0" name="Object">practiceButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <comment>null handler</comment>
+                        <event-block sid="661986707430688">
+                            <conditions />
+                            <actions />
+                            <sub-events>
+                                <event-block sid="701827722517638">
+                                    <conditions>
+                                        <condition id="2" name="Is in touch" sid="413325898641368" type="Touch" />
+                                        <condition id="4" inverted="1" name="Is touching object" sid="847820790714787" type="Touch">
+                                            <param id="0" name="Object">practiceButtonMainMenu</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="453601014936136" type="practiceButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="740730548932824">
+                                    <conditions>
+                                        <condition id="2" inverted="1" name="Is in touch" sid="930872664776224" type="Touch" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="609196033129983" type="practiceButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
         </event-block>
-        <event-block sid="733934987820618">
+        <event-block sid="412514975608491">
             <conditions>
-                <condition id="4" name="Is touching object" sid="888582984163766" type="Touch">
-                    <param id="0" name="Object">MainMenuHUB</param>
+                <condition id="-9" name="Layer is visible" sid="482026994504695" type="System">
+                    <param id="0" name="Layer">&quot;popOutHub&quot;</param>
                 </condition>
             </conditions>
-            <actions>
-                <action id="5" name="Set frame" sid="644739802740906" type="MainMenuHUB">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="566778020694515" type="MainMenuGames">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-15" name="Set visible" sid="143793205833677" type="PopOut">
-                    <param id="0" name="Visibility">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="717591967904081" type="System">
-                    <param id="0" name="Layer">&quot;PopoutGames&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="851761674491630" type="System">
-                    <param id="0" name="Layer">&quot;PopoutHUB&quot;</param>
-                    <param id="1" name="Visibility">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="215630751467713" type="System">
-                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
-                    <param id="1" name="Visibility">1</param>
-                </action>
-            </actions>
+            <actions />
+            <sub-events>
+                <comment>&quot;store&quot; button handlers</comment>
+                <event-block sid="501414373261422">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <comment>touch hangler</comment>
+                        <event-block sid="474373268230853">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="366594065761319" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="543287153800795" type="Touch">
+                                    <param id="0" name="Object">storeButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="469143881904849" type="storeButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;selected&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>select handler</comment>
+                        <event-block sid="569632596749050">
+                            <conditions>
+                                <condition id="1" name="On any touch end" sid="892611412164114" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="983272128273733" type="Touch">
+                                    <param id="0" name="Object">storeButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <comment>null handler</comment>
+                        <event-block sid="518102479214806">
+                            <conditions />
+                            <actions />
+                            <sub-events>
+                                <event-block sid="516287640890816">
+                                    <conditions>
+                                        <condition id="2" name="Is in touch" sid="119165508597912" type="Touch" />
+                                        <condition id="4" inverted="1" name="Is touching object" sid="435204393426449" type="Touch">
+                                            <param id="0" name="Object">storeButtonMainMenu</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="751130145267701" type="storeButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="952650202443207">
+                                    <conditions>
+                                        <condition id="2" inverted="1" name="Is in touch" sid="456945391726151" type="Touch" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="383152458349776" type="storeButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>&quot;storage&quot; button handlers</comment>
+                <event-block sid="495197520544894">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <comment>touch hangler</comment>
+                        <event-block sid="832985047735541">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="209981180118031" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="118835089349422" type="Touch">
+                                    <param id="0" name="Object">storageButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="494275597157448" type="storageButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;selected&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>select handler</comment>
+                        <event-block sid="986391117804147">
+                            <conditions>
+                                <condition id="1" name="On any touch end" sid="695190078398613" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="510627031213740" type="Touch">
+                                    <param id="0" name="Object">storageButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <comment>null handler</comment>
+                        <event-block sid="798588892697013">
+                            <conditions />
+                            <actions />
+                            <sub-events>
+                                <event-block sid="578869985983552">
+                                    <conditions>
+                                        <condition id="2" name="Is in touch" sid="733042867850280" type="Touch" />
+                                        <condition id="4" inverted="1" name="Is touching object" sid="592132150516516" type="Touch">
+                                            <param id="0" name="Object">storageButtonMainMenu</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="352962833043502" type="storageButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="265164624528811">
+                                    <conditions>
+                                        <condition id="2" inverted="1" name="Is in touch" sid="991866817130016" type="Touch" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="819325601365552" type="storageButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>&quot;missions&quot; button handlers</comment>
+                <event-block sid="237735809074325">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <comment>touch hangler</comment>
+                        <event-block sid="531212948570427">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="793013542284669" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="637407129301404" type="Touch">
+                                    <param id="0" name="Object">missionButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="447452642864525" type="missionButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;selected&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>select handler</comment>
+                        <event-block sid="635608423631244">
+                            <conditions>
+                                <condition id="1" name="On any touch end" sid="975237469448220" type="Touch" />
+                                <condition id="4" name="Is touching object" sid="173096444420619" type="Touch">
+                                    <param id="0" name="Object">missionButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <comment>null handler</comment>
+                        <event-block sid="899407209748515">
+                            <conditions />
+                            <actions />
+                            <sub-events>
+                                <event-block sid="727548379619500">
+                                    <conditions>
+                                        <condition id="2" name="Is in touch" sid="508884346042871" type="Touch" />
+                                        <condition id="4" inverted="1" name="Is touching object" sid="793914939807565" type="Touch">
+                                            <param id="0" name="Object">missionButtonMainMenu</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="759334274379064" type="missionButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="829772884795304">
+                                    <conditions>
+                                        <condition id="2" inverted="1" name="Is in touch" sid="878845535669823" type="Touch" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="961541132241519" type="missionButtonMainMenu">
+                                            <param id="0" name="Animation">&quot;null&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
         </event-block>
-        <event-block sid="351639648307699">
+        <comment>Games Handlers</comment>
+        <comment>change handler</comment>
+        <event-block sid="529552911060167">
             <conditions>
-                <condition id="4" name="Is touching object" sid="178622377632782" type="Touch">
-                    <param id="0" name="Object">MainMenuOptions</param>
+                <condition id="-9" name="Layer is visible" sid="184181710352947" type="System">
+                    <param id="0" name="Layer">&quot;popOutGames&quot;</param>
                 </condition>
             </conditions>
-            <actions>
-                <action id="5" name="Set frame" sid="948461855984895" type="MainMenuOptions">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="816808542349159" type="MainMenuGames">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="5" name="Set frame" sid="237739181147465" type="MainMenuHUB">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-15" name="Set visible" sid="964789795351673" type="PopOut">
-                    <param id="0" name="Visibility">0</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="311754546711027" type="System">
-                    <param id="0" name="Layer">&quot;PopoutGames&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="179556417087126" type="System">
-                    <param id="0" name="Layer">&quot;PopoutHUB&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="152256278687385" type="System">
-                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-            </actions>
+            <actions />
+            <sub-events>
+                <event-block sid="941519905942102">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="796910171693665" type="Touch" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="475775502807511">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="641272251740670" type="Touch">
+                                    <param id="0" name="Object">gameButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <event-block sid="494408831146193">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="298603781648129" type="System" />
+                                <condition id="4" name="Is touching object" sid="535044846364566" type="Touch">
+                                    <param id="0" name="Object">hubButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="648518776058879" type="System">
+                                    <param id="0" name="Layer">&quot;popOutGames&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="966099866776372" type="System">
+                                    <param id="0" name="Layer">&quot;popOutOptions&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="615154810498997">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="647842199166342" type="System" />
+                                <condition id="4" name="Is touching object" sid="509271386233980" type="Touch">
+                                    <param id="0" name="Object">optionsButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="159563638472891" type="System">
+                                    <param id="0" name="Layer">&quot;popOutGames&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="659988320333077" type="System">
+                                    <param id="0" name="Layer">&quot;popOutHub&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="984628365160061">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="139113050069402" type="System" />
+                                <condition id="4" inverted="1" name="Is touching object" sid="559784324360378" type="Touch">
+                                    <param id="0" name="Object">popUpMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="311582925529598" type="System">
+                                    <param id="0" name="Layer">&quot;popOutGames&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="228395478536007" type="System">
+                                    <param id="0" name="Layer">&quot;popOutHub&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="644190464084593" type="System">
+                                    <param id="0" name="Layer">&quot;popOutOptions&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="867311858101823" type="System">
+                                    <param id="0" name="Layer">&quot;effectLayer&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
         </event-block>
-        <event-block sid="902998282678030">
+        <comment>button handler</comment>
+        <event-block sid="369920177097020">
+            <conditions />
+            <actions />
+            <sub-events>
+                <comment>Animation &quot;touch&quot; handler</comment>
+                <event-block sid="404383545323763">
+                    <conditions>
+                        <condition id="2" name="Is in touch" sid="938247054464122" type="Touch" />
+                        <condition id="4" name="Is touching object" sid="582213846420009" type="Touch">
+                            <param id="0" name="Object">gameButtonMainMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="576237736499573" type="gameButtonMainMenu">
+                            <param id="0" name="Animation">&quot;selected&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Select handler</comment>
+                <event-block sid="625397009984354">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="974135710307882" type="Touch" />
+                        <condition id="4" name="Is touching object" sid="666726826512862" type="Touch">
+                            <param id="0" name="Object">gameButtonMainMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set layer visible" sid="114925789994040" type="System">
+                            <param id="0" name="Layer">&quot;popOutGames&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="427057314393895" type="System">
+                            <param id="0" name="Layer">&quot;effectLayer&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Animation &quot;null&quot; handlers</comment>
+                <event-block sid="663726530946726">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <event-block sid="112765323723180">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="767011804563936" type="Touch" />
+                                <condition id="4" inverted="1" name="Is touching object" sid="115985182434073" type="Touch">
+                                    <param id="0" name="Object">gameButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="464682901281269" type="gameButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;null&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="211877204051462">
+                            <conditions>
+                                <condition id="2" inverted="1" name="Is in touch" sid="431326953172773" type="Touch" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="614097432649447" type="gameButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;null&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Hub Handlers</comment>
+        <comment>change handler</comment>
+        <event-block sid="769448814064620">
             <conditions>
-                <condition id="4" name="Is touching object" sid="318531176050281" type="Touch">
-                    <param id="0" name="Object">Sprite</param>
+                <condition id="-9" name="Layer is visible" sid="599026472727854" type="System">
+                    <param id="0" name="Layer">&quot;popOutHub&quot;</param>
                 </condition>
             </conditions>
-            <actions>
-                <action id="5" name="Set frame" sid="108087750849771" type="Sprite">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="567988650987515" type="SpriteGamesPrivate">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="5" name="Set frame" sid="861452634946979" type="SpriteGamesFind">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="708200715216862" type="System">
-                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-            </actions>
+            <actions />
+            <sub-events>
+                <event-block sid="355733319831666">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="894165044623518" type="Touch" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="257413704289239">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="259181612779994" type="Touch">
+                                    <param id="0" name="Object">hubButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <event-block sid="630684393694205">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="699538081807443" type="System" />
+                                <condition id="4" name="Is touching object" sid="906868721004154" type="Touch">
+                                    <param id="0" name="Object">gameButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="734930728905867" type="System">
+                                    <param id="0" name="Layer">&quot;popOutHub&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="383677139971645" type="System">
+                                    <param id="0" name="Layer">&quot;popOutOptions&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="764097139259049">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="379400392968764" type="System" />
+                                <condition id="4" name="Is touching object" sid="705829074572882" type="Touch">
+                                    <param id="0" name="Object">optionsButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="465860705105840" type="System">
+                                    <param id="0" name="Layer">&quot;popOutGames&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="383771368515254" type="System">
+                                    <param id="0" name="Layer">&quot;popOutHub&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="214363308125169">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="876321247180673" type="System" />
+                                <condition id="4" inverted="1" name="Is touching object" sid="177386758716835" type="Touch">
+                                    <param id="0" name="Object">popUpMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="846866233231689" type="System">
+                                    <param id="0" name="Layer">&quot;popOutGames&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="215422216915486" type="System">
+                                    <param id="0" name="Layer">&quot;popOutHub&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="958102311520951" type="System">
+                                    <param id="0" name="Layer">&quot;popOutOptions&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="269778119888418" type="System">
+                                    <param id="0" name="Layer">&quot;effectLayer&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
         </event-block>
-        <event-block sid="586882373987885">
+        <comment>button handler</comment>
+        <event-block sid="889483588944510">
+            <conditions />
+            <actions />
+            <sub-events>
+                <comment>Animation &quot;touch&quot; handler</comment>
+                <event-block sid="734455625279419">
+                    <conditions>
+                        <condition id="2" name="Is in touch" sid="620942102865992" type="Touch" />
+                        <condition id="4" name="Is touching object" sid="859393228713771" type="Touch">
+                            <param id="0" name="Object">hubButtonMainMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="692854728382104" type="hubButtonMainMenu">
+                            <param id="0" name="Animation">&quot;selected&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Select handler</comment>
+                <event-block sid="292590353190331">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="203332391373658" type="Touch" />
+                        <condition id="4" name="Is touching object" sid="275297780077345" type="Touch">
+                            <param id="0" name="Object">hubButtonMainMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set layer visible" sid="107389940038288" type="System">
+                            <param id="0" name="Layer">&quot;popOutHub&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="858096631823525" type="System">
+                            <param id="0" name="Layer">&quot;effectLayer&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Animation &quot;null&quot; handlers</comment>
+                <event-block sid="316690035831259">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <event-block sid="458099580818145">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="826968010973390" type="Touch" />
+                                <condition id="4" inverted="1" name="Is touching object" sid="496960420942620" type="Touch">
+                                    <param id="0" name="Object">hubButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="691498207460110" type="hubButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;null&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="278808331264011">
+                            <conditions>
+                                <condition id="2" inverted="1" name="Is in touch" sid="730187041854264" type="Touch" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="276869745885236" type="hubButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;null&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>Options Handlers</comment>
+        <comment>change handler</comment>
+        <event-block sid="278590768166959">
             <conditions>
-                <condition id="4" name="Is touching object" sid="822737857413395" type="Touch">
-                    <param id="0" name="Object">SpriteGamesPrivate</param>
+                <condition id="-9" name="Layer is visible" sid="532799556926422" type="System">
+                    <param id="0" name="Layer">&quot;popOutOptions&quot;</param>
                 </condition>
             </conditions>
-            <actions>
-                <action id="5" name="Set frame" sid="159784627424521" type="SpriteGamesPrivate">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="191972623234617" type="SpriteGamesFind">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="5" name="Set frame" sid="263196371160122" type="Sprite">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="596133473856086" type="System">
-                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-            </actions>
+            <actions />
+            <sub-events>
+                <event-block sid="221548182207514">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="509669216481880" type="Touch" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="153817695460074">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="906997352096217" type="Touch">
+                                    <param id="0" name="Object">optionsButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <event-block sid="961719922311423">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="157368953016845" type="System" />
+                                <condition id="4" name="Is touching object" sid="673392546527652" type="Touch">
+                                    <param id="0" name="Object">gameButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="913999254376347" type="System">
+                                    <param id="0" name="Layer">&quot;popOutHub&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="158856639651670" type="System">
+                                    <param id="0" name="Layer">&quot;popOutOptions&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="714464515520533">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="520369167926653" type="System" />
+                                <condition id="4" name="Is touching object" sid="823784082024368" type="Touch">
+                                    <param id="0" name="Object">hubButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="964714977694428" type="System">
+                                    <param id="0" name="Layer">&quot;popOutGames&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="529516328307532" type="System">
+                                    <param id="0" name="Layer">&quot;popOutOptions&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="856570413503191">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="224251365257284" type="System" />
+                                <condition id="4" inverted="1" name="Is touching object" sid="729739206001787" type="Touch">
+                                    <param id="0" name="Object">popUpMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="275143557772508" type="System">
+                                    <param id="0" name="Layer">&quot;popOutGames&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="826708399177539" type="System">
+                                    <param id="0" name="Layer">&quot;popOutHub&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="850477721827834" type="System">
+                                    <param id="0" name="Layer">&quot;popOutOptions&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="732823147982239" type="System">
+                                    <param id="0" name="Layer">&quot;effectLayer&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
         </event-block>
-        <event-block sid="803623010146565">
-            <conditions>
-                <condition id="4" name="Is touching object" sid="268048442164664" type="Touch">
-                    <param id="0" name="Object">SpriteGamesFind</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="5" name="Set frame" sid="424127343979792" type="SpriteGamesFind">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="869216413766131" type="SpriteGamesPrivate">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="5" name="Set frame" sid="878018647783860" type="Sprite">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="118175886911882" type="System">
-                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-            </actions>
+        <comment>button handler</comment>
+        <event-block sid="334439220400089">
+            <conditions />
+            <actions />
+            <sub-events>
+                <comment>Animation &quot;touch&quot; handler</comment>
+                <event-block sid="112781751074218">
+                    <conditions>
+                        <condition id="2" name="Is in touch" sid="573661238676757" type="Touch" />
+                        <condition id="4" name="Is touching object" sid="824609919614908" type="Touch">
+                            <param id="0" name="Object">optionsButtonMainMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="336229560863547" type="optionsButtonMainMenu">
+                            <param id="0" name="Animation">&quot;selected&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Select handler</comment>
+                <event-block sid="842153857404101">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="108642828922269" type="Touch" />
+                        <condition id="4" name="Is touching object" sid="639501521967681" type="Touch">
+                            <param id="0" name="Object">optionsButtonMainMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set layer visible" sid="320775281277331" type="System">
+                            <param id="0" name="Layer">&quot;popOutOptions&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="966166692569560" type="System">
+                            <param id="0" name="Layer">&quot;effectLayer&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Animation &quot;null&quot; handlers</comment>
+                <event-block sid="998186959789967">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <event-block sid="814727760721264">
+                            <conditions>
+                                <condition id="2" name="Is in touch" sid="702889442985015" type="Touch" />
+                                <condition id="4" inverted="1" name="Is touching object" sid="744728007105017" type="Touch">
+                                    <param id="0" name="Object">optionsButtonMainMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="174568345837400" type="optionsButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;null&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="854012262647633">
+                            <conditions>
+                                <condition id="2" inverted="1" name="Is in touch" sid="434347265112620" type="Touch" />
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="456143528287953" type="optionsButtonMainMenu">
+                                    <param id="0" name="Animation">&quot;null&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
         </event-block>
-        <event-block sid="987367972161885">
-            <conditions>
-                <condition id="4" name="Is touching object" sid="951025097742273" type="Touch">
-                    <param id="0" name="Object">SpriteMissions</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="5" name="Set frame" sid="676025394311055" type="SpriteMissions">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="843088026937141" type="SpriteStorage">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="5" name="Set frame" sid="394391846191843" type="SpriteStore">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="639645819330186" type="System">
-                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="668531960859907">
-            <conditions>
-                <condition id="4" name="Is touching object" sid="673363899910069" type="Touch">
-                    <param id="0" name="Object">SpriteStorage</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="5" name="Set frame" sid="490457961348972" type="SpriteStorage">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="541683786044005" type="SpriteMissions">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="5" name="Set frame" sid="969905134283960" type="SpriteStore">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="137347599567232" type="System">
-                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="566347436073947">
-            <conditions>
-                <condition id="4" name="Is touching object" sid="470058339766789" type="Touch">
-                    <param id="0" name="Object">SpriteStore</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="5" name="Set frame" sid="220466701145785" type="SpriteStore">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="162442449734215" type="SpriteStorage">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="5" name="Set frame" sid="835254714077474" type="SpriteMissions">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="177504043958138" type="System">
-                    <param id="0" name="Layer">&quot;Layer 0&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-            </actions>
-        </event-block>
-        <comment>How is it?</comment>
     </events>
 </c2eventsheet>
