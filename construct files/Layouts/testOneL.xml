@@ -78,6 +78,12 @@
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <moveSide>0</moveSide>
+                        <moveSpeed>0</moveSpeed>
+                        <attackSide>0</attackSide>
+                        <attackSpeed>0</attackSpeed>
+                    </instance-variables>
                     <behavior-instances>
                         <behavior-instance type="8Direction">
                             <properties>

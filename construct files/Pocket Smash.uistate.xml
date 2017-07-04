@@ -24,8 +24,8 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <families-expanded root="1" />
     <folders-expanded>
         <folder expanded="1" path="object-folder/" />
-        <folder expanded="0" path="object-folder/test/" />
-        <folder expanded="0" path="object-folder/test/one/" />
+        <folder expanded="1" path="object-folder/test/" />
+        <folder expanded="1" path="object-folder/test/one/" />
         <folder expanded="1" path="object-folder/mainMenu/" />
         <folder expanded="1" path="layout-folder/" />
         <folder expanded="1" path="event-folder/" />

@@ -127,6 +127,12 @@
                 </object-type>
                 <object-type name="testDummy" sid="597393244484073">
                     <plugin id="Sprite" />
+                    <instance-variables>
+                        <instance-variable name="moveSide" sid="757594402540623" type="number" />
+                        <instance-variable name="moveSpeed" sid="980033866316375" type="number" />
+                        <instance-variable name="attackSide" sid="498468580434397" type="number" />
+                        <instance-variable name="attackSpeed" sid="895119033091123" type="number" />
+                    </instance-variables>
                     <behaviors>
                         <behavior-type name="8Direction" sid="238451149381604">
                             <behavior id="EightDir" />
