@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="7" version="2.1" version_name="Godot Engine v2.1.4.stable.official">
 	<ext_resource path="res://source/start screen/background.gd" type="Script" index="2"></ext_resource>
-	<ext_resource path="res://assets/backgrounds/forest_day.png" type="Texture" index="3"></ext_resource>
 	<ext_resource path="res://assets/fonts/Karmatic Arcade.fnt" type="BitmapFont" index="1"></ext_resource>
 	<ext_resource path="res://assets/logos/pocket smash/pocket smash.png" type="Texture" index="0"></ext_resource>
+	<ext_resource path="res://assets/backgrounds/forest_day.png" type="Texture" index="3"></ext_resource>
 	<resource type="Animation" path="local://1">
 		<string name="resource/name"> "default" </string>
 		<real name="length"> 1 </real>
@@ -44,7 +44,7 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "names" </string>
-			<string_array  len="51">
+			<string_array  len="53">
 				<string> "root" </string>
 				<string> "Node2D" </string>
 				<string> "logo" </string>
@@ -91,10 +91,12 @@
 				<string> "Area2D" </string>
 				<string> "transform/scale" </string>
 				<string> "z/z" </string>
+				<string> "centered" </string>
 				<string> "bounds" </string>
 				<string> "shape" </string>
 				<string> "trigger" </string>
 				<string> "_update_shape_index" </string>
+				<string> "__meta__" </string>
 				<string> "CollisionShape2D" </string>
 			</string_array>
 			<string> "node_count" </string>
@@ -103,9 +105,9 @@
 			<array  len="0" shared="false">
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="135"> 				-1, -1, 1, 0, -1, 0, 0, 0, 0, 5, 2, -1, 2, 3, 0, 4, 1, 0, 0, 0, 22, 6, -1, 15, 7, 2, 8, 3, 9, 3, 10, 4, 11, 5, 12, 6, 13, 7, 14, 8, 15, 9, 16, 10, 17, 11, 18, 12, 19, 13, 20, 5, 21, 14, 0, 2, 0, 32, 23, -1, 8, 24, 12, 25, 15, 26, 16, 27, 17, 28, 3, 29, 13, 30, 18, 31, 19, 0, 0, 0, 43, 33, -1, 9, 34, 3, 35, 20, 36, 21, 37, 3, 38, 22, 39, 23, 40, 24, 41, 13, 42, 25, 0, 4, 0, 5, 4, -1, 4, 3, 26, 44, 27, 45, 14, 4, 28, 0, 4, 0, 50, 46, -1, 5, 3, 29, 44, 30, 47, 20, 48, 3, 49, 5, 0 </int_array>
+			<int_array  len="137"> 				-1, -1, 1, 0, -1, 0, 0, 0, 0, 5, 2, -1, 2, 3, 0, 4, 1, 0, 0, 0, 22, 6, -1, 15, 7, 2, 8, 3, 9, 3, 10, 4, 11, 5, 12, 6, 13, 7, 14, 8, 15, 9, 16, 10, 17, 11, 18, 12, 19, 13, 20, 5, 21, 14, 0, 2, 0, 32, 23, -1, 8, 24, 12, 25, 15, 26, 16, 27, 17, 28, 3, 29, 13, 30, 18, 31, 19, 0, 0, 0, 43, 33, -1, 9, 34, 3, 35, 20, 36, 21, 37, 3, 38, 22, 39, 23, 40, 24, 41, 13, 42, 25, 0, 4, 0, 5, 4, -1, 4, 44, 26, 45, 14, 4, 27, 46, 28, 0, 4, 0, 52, 47, -1, 6, 3, 29, 44, 30, 48, 20, 49, 3, 50, 5, 51, 31, 0 </int_array>
 			<string> "variants" </string>
-			<array  len="31" shared="false">
+			<array  len="32" shared="false">
 				<vector2> 500, 300 </vector2>
 				<resource  external="0">  </resource>
 				<vector2> 0.5, 0.5 </vector2>
@@ -128,16 +130,20 @@
 				</array>
 				<string> "default" </string>
 				<resource  resource_type="Shape2D" path="local://2">  </resource>
-				<matrix32> 53.8917, -0, 0, 31.4456, 503.391, 298.037 </matrix32>
+				<matrix32> 51.9231, -0, 0, 30, 515, 300 </matrix32>
 				<vector2> 0, 1 </vector2>
 				<real> 98 </real>
 				<real> 0.1 </real>
 				<resource  external="2">  </resource>
-				<vector2> 510.136, 298.613 </vector2>
-				<vector2> 0.593805, 0.593805 </vector2>
+				<vector2> 0.6, 0.6 </vector2>
 				<resource  external="3">  </resource>
-				<vector2> 503.391, 298.037 </vector2>
-				<vector2> 53.8917, 31.4456 </vector2>
+				<bool> False </bool>
+				<vector2> 515, 300 </vector2>
+				<vector2> 51.9231, 30 </vector2>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
 			</array>
 			<string> "version" </string>
 			<int> 2 </int>
