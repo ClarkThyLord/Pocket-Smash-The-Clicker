@@ -7,8 +7,10 @@ extends Area2D
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	pass
+	set_process_input(true)
 
-func _input_event(viewport, event, shape_idx):
+
+func _input(event):
 	if event.type == InputEvent.MOUSE_BUTTON and event.button_index == BUTTON_LEFT and event.pressed:
-		get_tree().change_scene("res://source/main menu/main menu.xml")
+		get_tree().change_scene("res://source/scenes/main menu.xml")
+	

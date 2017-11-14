@@ -4,22 +4,24 @@ extends Area2D
 # var a = 2
 # var b = "textvar"
 
-onready var ANI = get_node("text/animations")
-export var LOCATION = ""
+export(String, FILE) var LOCATION = "";
+
+onready var ANI = get_node("animations")
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	pass
+	set_process_input(true)
+	connect("mouse_enter", self, "_mouse_enter")
+	connect("mouse_exit", self, "_mouse_exit")
 
-func _input_event(viewport, event, shape_idx):
+func _input(event):
 	if event.type == InputEvent.MOUSE_BUTTON and event.button_index == BUTTON_LEFT and event.pressed:
+		ANI.play("press")
 		get_tree().change_scene(LOCATION)
 
-
-func _on_mouse_enter():
+func _mouse_enter():
 	ANI.play("hover")
 
-
-func _on_mouse_exit():
+func _mouse_exit():
 	ANI.play("default")
