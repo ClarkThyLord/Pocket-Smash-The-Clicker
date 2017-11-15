@@ -6,12 +6,16 @@ extends Node2D
 
 export(String, DIR) var PATH = ""
 
+var ON = 0
+var SIZE = 0
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	var dir = Directory.new()
 	if dir.open(PATH) == OK:
 		dir.list_dir_begin()
+		var POS = 400
 		while true:
 			# Get the file
 			var file = dir.get_next()
@@ -26,5 +30,10 @@ func _ready():
 			if file.extension() == "xml":
 				print(PATH + "/" + file)
 			
-				var instance = load(PATH + "/" + file).instance().set_name(file)
-				get_node("../root").add_child(instance)
+				var instance = load(PATH + "/" + file).instance()
+				instance.set_name(file)
+				instance.set_pos(Vector2(POS, 350))
+				self.add_child(instance)
+				
+				SIZE += 1
+				POS += 375

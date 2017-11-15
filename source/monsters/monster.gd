@@ -1,4 +1,4 @@
-extends Sprite
+extends Area2D
 
 # class member variables go here, for example:
 # var a = 2
@@ -14,7 +14,7 @@ export(int) var DMG = 10
 export(int) var FEED = 10
 export(int) var POWER = 100
 
-onready var ANI = getNode("animations")
+onready var ANI = get_node("animations")
 
 func _ready():
 	# Called every time the node is added to the scene.
