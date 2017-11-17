@@ -8,8 +8,8 @@ This project is a game for the 2017 game jam hosted by GitHub on itch.io, more a
 Made possible thanks to:
 
 * GitHub
-* Godot
-* Paint.net
+* [Phaser](https://github.com/photonstorm/phaser-ce)
+* [Paint.net](https://www.getpaint.net/)
 
 # About Game
 
