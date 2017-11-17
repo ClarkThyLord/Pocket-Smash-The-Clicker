@@ -1,3 +1,8 @@
+// Object containing save state
+var SAVE = {};
+// Object containing game's configuration
+var CONFIG = {};
+
 // Object containing all the scenes
 var GAME = {};
 
@@ -24,6 +29,7 @@ GAME.BOOT.prototype = {
     }
   },
   preload: function() {
+    // Load preload things
     this.load.image("mm_icon", "./res/main menu/icon.png");
     this.load.image("mm_load", "./res/main menu/load.jpg");
   },
