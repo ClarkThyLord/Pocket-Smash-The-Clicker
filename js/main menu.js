@@ -4,9 +4,10 @@ GAME.MAINMENU = function(game) {
   this.attack = null;
   this.defence = null;
 
-  this.musicIcon = null;
-  this.musicMute = false;
-  this.music = null;
+  this.saveIcon = null;
+
+  this.soundIcon = null;
+  this.sound = null;
 };
 
 GAME.MAINMENU.prototype = {
@@ -30,7 +31,6 @@ GAME.MAINMENU.prototype = {
     right_arrow.inputEnabled = true;
     right_arrow.events.onInputDown.add(this.moveRight, this);
 
-
     var heart = this.add.sprite(275, 490, "icon_heart");
     heart.anchor.x = heart.anchor.y = 0.5;
     heart.scale.x = heart.scale.y = 0.25;
@@ -52,14 +52,29 @@ GAME.MAINMENU.prototype = {
     this.defence.anchor.x = 0;
     this.defence.anchor.y = 0.5;
 
-    this.musicIcon = this.add.sprite(50, 550, "noise_on");
-    this.musicIcon.anchor.x = this.musicIcon.anchor.y = 0.5;
-    this.musicIcon.scale.x = this.musicIcon.scale.y = 0.5;
-    this.musicIcon.inputEnabled = true;
-    this.musicIcon.events.onInputDown.add(this.toggleNoise, this);
+    this.saveIcon = this.add.sprite(750, 50, "icon_save");
+    this.saveIcon.anchor.x = this.saveIcon.anchor.y = 0.5;
+    this.saveIcon.alpha = 0;
 
-    this.music = this.add.audio("music");
-    this.music.play("", 0, 1, true);
+    // According to config
+    if (CONFIGURATION.music == true) {
+      this.soundIcon = this.add.sprite(50, 550, "noise_on");
+      this.soundIcon.anchor.x = this.soundIcon.anchor.y = 0.5;
+      this.soundIcon.scale.x = this.soundIcon.scale.y = 0.5;
+      this.soundIcon.inputEnabled = true;
+      this.soundIcon.events.onInputDown.add(this.toggleNoise, this);
+
+      this.sound = this.add.audio("music");
+      this.sound.play("", 0, 1, true);
+    } else {
+      this.soundIcon = this.add.sprite(50, 550, "noise_off");
+      this.soundIcon.anchor.x = this.soundIcon.anchor.y = 0.5;
+      this.soundIcon.scale.x = this.soundIcon.scale.y = 0.5;
+      this.soundIcon.inputEnabled = true;
+      this.soundIcon.events.onInputDown.add(this.toggleNoise, this);
+
+      this.sound = this.add.audio("music");
+    }
   },
   moveLeft: function(obj) {
     console.log("Moving left!");
@@ -69,15 +84,30 @@ GAME.MAINMENU.prototype = {
   },
   toggleNoise: function(obj) {
     console.log("Toggle noise!");
-    if (this.musicMute == false) {
-      this.musicIcon.loadTexture("noise_off");
-      this.music.stop();
-      this.musicMute = true;
+    if (CONFIGURATION.music == true) {
+      this.soundIcon.loadTexture("noise_off");
+      this.sound.stop();
+      CONFIGURATION.music = false;
     } else {
-      this.musicIcon.loadTexture("noise_on");
-      this.music.play("", 0, 1, true);
-      this.musicMute = false;
+      this.soundIcon.loadTexture("noise_on");
+      this.sound.play("", 0, 1, true);
+      CONFIGURATION.music = true;
     }
+    this.saveConfig();
+  },
+  saveConfig: function() {
+    this.saveIcon.alpha = 100;
+    var save = JSON.stringify(CONFIGURATION);
+    console.log("Saving configuration ---\n" + save);
+    localStorage.setItem("POCKET-SMASH-CONFIGURATION", save);
+    this.saveIcon.alpha = 0;
+  },
+  saveGame: function() {
+    this.saveIcon.alpha = 100;
+    var save = JSON.stringify(SAVE);
+    console.log("Saving game ---\n" + save);
+    localStorage.setItem("POCKET-SMASH-SAVE", save);
+    this.saveIcon.alpha = 0;
   },
   update: function() {
 

@@ -11,6 +11,17 @@ GAME.PRELOAD.prototype = {
     this.icon = this.add.sprite(0, 0, 'mm_icon');
     this.load.setPreloadSprite(this.icon);
 
+    // Load data; if non then setup data
+    CONFIGURATION = JSON.parse(localStorage.getItem("POCKET-SMASH-CONFIGURATION")) || {
+      "music": true
+    };
+    SAVE = JSON.parse(localStorage.getItem("POCKET-SMASH-SAVE")) || {
+
+    };
+
+    // FOR DEBUGGING
+    console.log("LOADED ---\nCONFIGURATION: " + JSON.stringify(CONFIGURATION) + "\nSAVE: " + JSON.stringify(SAVE));
+
     // Load main menu things
     this.load.image("mm_background", "./res/main menu/menu.jpg");
     this.load.image("mm_arrow", "./res/main menu/arrow.png");
@@ -23,6 +34,8 @@ GAME.PRELOAD.prototype = {
     this.load.image("game_cacus", "./res/game/monsters/cacus.png");
 
     // Load global stuff
+    this.load.image("icon_save", "./res/shared/icon.png");
+
     this.load.image("noise_on", "./res/main menu/noise_on.png");
     this.load.image("noise_off", "./res/main menu/noise_off.png");
 

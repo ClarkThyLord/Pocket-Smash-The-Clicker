@@ -1,7 +1,7 @@
+// Object containing game's configuration
+var CONFIGURATION = {};
 // Object containing save state
 var SAVE = {};
-// Object containing game's configuration
-var CONFIG = {};
 
 // Object containing all the scenes
 var GAME = {};
