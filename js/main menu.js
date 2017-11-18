@@ -1,5 +1,9 @@
 GAME.MAINMENU = function(game) {
   // Setup variables
+  this.selected = null;
+  this.monsters = null;
+
+  this.type = null;
   this.life = null;
   this.attack = null;
   this.defence = null;
@@ -15,14 +19,14 @@ GAME.MAINMENU.prototype = {
   create: function() {
     this.add.sprite(0, 0, 'mm_background');
 
+    var instructions = this.add.sprite(400, 150, "mm_instructions");
+    instructions.anchor.x = instructions.anchor.y = 0.5;
+
     var left_arrow = this.add.sprite(50, 325, "mm_arrow");
     left_arrow.alpha = 0.3;
     left_arrow.anchor.x = left_arrow.anchor.y = 0.5;
     left_arrow.inputEnabled = true;
     left_arrow.events.onInputDown.add(this.moveLeft, this);
-
-    var circle = this.add.sprite(400, 300, "mm_circle");
-    circle.anchor.x = circle.anchor.y = 0.5;
 
     var right_arrow = this.add.sprite(750, 325, "mm_arrow");
     right_arrow.alpha = 0.3;
@@ -30,6 +34,15 @@ GAME.MAINMENU.prototype = {
     right_arrow.angle = 180;
     right_arrow.inputEnabled = true;
     right_arrow.events.onInputDown.add(this.moveRight, this);
+
+    var restart = this.add.sprite(700, 575, "mm_restart");
+    restart.anchor.x = restart.anchor.y = 0.5;
+    restart.inputEnabled = true;
+    restart.events.onInputDown.add(this.restartGame, this);
+
+    this.type = this.add.sprite(225, 530, "icon_unknown");
+    this.type.anchor.x = this.type.anchor.y = 0.5;
+    this.type.scale.x = this.type.scale.y = 0.25;
 
     var heart = this.add.sprite(275, 490, "icon_heart");
     heart.anchor.x = heart.anchor.y = 0.5;
@@ -56,6 +69,25 @@ GAME.MAINMENU.prototype = {
     this.saveIcon.anchor.x = this.saveIcon.anchor.y = 0.5;
     this.saveIcon.alpha = 0;
 
+    this.monsters = this.add.group();
+    var x = 400;
+    for (var monster_name in SAVE.monsters) {
+      var refrence = MONSTERS[SAVE.monsters[monster_name]];
+
+      var monster = this.add.sprite(x, 300, "game_" + SAVE.monsters[monster_name]);
+      monster.anchor.x = monster.anchor.y = 0.5;
+      monster.data.name = SAVE.monsters[monster_name];
+      monster.inputEnabled = true;
+      monster.events.onInputDown.add(this.selectMonster, this);
+      this.monsters.add(monster);
+      x += 150;
+    }
+
+    this.selectMonster(this.monsters.getFirst());
+
+    left_arrow.bringToTop();
+    right_arrow.bringToTop();
+
     // According to config
     if (CONFIGURATION.music == true) {
       this.soundIcon = this.add.sprite(50, 550, "noise_on");
@@ -78,9 +110,43 @@ GAME.MAINMENU.prototype = {
   },
   moveLeft: function(obj) {
     console.log("Moving left!");
+    this.monsters.forEach(function(monster) {
+      monster.x -= 150;
+    });
   },
   moveRight: function(obj) {
     console.log("Moving right!");
+    this.monsters.forEach(function(monster) {
+      monster.x += 150;
+    });
+  },
+  selectMonster: function(obj) {
+    console.log("Selected Monster ---");
+    console.log(obj.data.name);
+
+    if (this.selected === null) {
+      obj.scale.x = obj.scale.y = 1.25;
+    } else if (obj.data.name === this.selected.data.name) {
+      console.log("Monster choosen!");
+    } else {
+      console.log("Another selected!");
+      this.selected.scale.x = this.selected.scale.y = 1.25;
+
+      obj.scale.x = obj.scale.y = 1.25;
+    }
+  },
+  restartGame: function(obj) {
+    console.log("Restarted game!");
+    SAVE = {
+      "money": 0,
+      "items": [
+
+      ],
+      "monsters": [
+        "cacus"
+      ]
+    };
+    this.saveGame();
   },
   toggleNoise: function(obj) {
     console.log("Toggle noise!");
@@ -100,14 +166,18 @@ GAME.MAINMENU.prototype = {
     var save = JSON.stringify(CONFIGURATION);
     console.log("Saving configuration ---\n" + save);
     localStorage.setItem("POCKET-SMASH-CONFIGURATION", save);
-    this.saveIcon.alpha = 0;
+    setTimeout(function(saveIcon) {
+      saveIcon.alpha = 0;
+    }, 1000, this.saveIcon);
   },
   saveGame: function() {
     this.saveIcon.alpha = 100;
     var save = JSON.stringify(SAVE);
     console.log("Saving game ---\n" + save);
     localStorage.setItem("POCKET-SMASH-SAVE", save);
-    this.saveIcon.alpha = 0;
+    setTimeout(function(saveIcon) {
+      saveIcon.alpha = 0;
+    }, 1000, this.saveIcon);
   },
   update: function() {
 
