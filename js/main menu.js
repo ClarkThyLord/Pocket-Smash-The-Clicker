@@ -19,14 +19,18 @@ GAME.MAINMENU.prototype = {
   create: function() {
     this.add.sprite(0, 0, 'mm_background');
 
+    var gui = [];
+
     var instructions = this.add.sprite(400, 150, "mm_instructions");
     instructions.anchor.x = instructions.anchor.y = 0.5;
+    gui.push(instructions);
 
     var left_arrow = this.add.sprite(50, 325, "mm_arrow");
     left_arrow.alpha = 0.3;
     left_arrow.anchor.x = left_arrow.anchor.y = 0.5;
     left_arrow.inputEnabled = true;
     left_arrow.events.onInputDown.add(this.moveLeft, this);
+    gui.push(left_arrow);
 
     var right_arrow = this.add.sprite(750, 325, "mm_arrow");
     right_arrow.alpha = 0.3;
@@ -34,40 +38,50 @@ GAME.MAINMENU.prototype = {
     right_arrow.angle = 180;
     right_arrow.inputEnabled = true;
     right_arrow.events.onInputDown.add(this.moveRight, this);
+    gui.push(right_arrow);
 
     var restart = this.add.sprite(700, 575, "mm_restart");
     restart.anchor.x = restart.anchor.y = 0.5;
     restart.inputEnabled = true;
     restart.events.onInputDown.add(this.restartGame, this);
+    gui.push(restart);
 
-    this.type = this.add.sprite(225, 530, "icon_unknown");
+    this.type = this.add.sprite(190, 530, "icon_unknown");
     this.type.anchor.x = this.type.anchor.y = 0.5;
-    this.type.scale.x = this.type.scale.y = 0.25;
+    this.type.scale.x = this.type.scale.y = 0.50;
+    gui.push(this.type);
 
-    var heart = this.add.sprite(275, 490, "icon_heart");
+    var heart = this.add.sprite(275, 470, "icon_heart");
     heart.anchor.x = heart.anchor.y = 0.5;
     heart.scale.x = heart.scale.y = 0.25;
-    this.life = this.add.sprite(325, 490, "icon_life");
+    this.life = this.add.sprite(325, 470, "icon_life");
     this.life.anchor.x = 0;
     this.life.anchor.y = 0.5;
+    gui.push(heart);
+    gui.push(this.life);
 
-    var sword = this.add.sprite(275, 530, "icon_sword");
+    var sword = this.add.sprite(275, 520, "icon_sword");
     sword.anchor.x = sword.anchor.y = 0.5;
     sword.scale.x = sword.scale.y = 0.25;
-    this.attack = this.add.sprite(325, 530, "icon_attack");
+    this.attack = this.add.sprite(325, 520, "icon_attack");
     this.attack.anchor.x = 0;
     this.attack.anchor.y = 0.5;
+    gui.push(sword);
+    gui.push(this.attack);
 
-    var shield = this.add.sprite(275, 575, "icon_shield");
+    var shield = this.add.sprite(275, 570, "icon_shield");
     shield.anchor.x = shield.anchor.y = 0.5;
     shield.scale.x = shield.scale.y = 0.25;
-    this.defence = this.add.sprite(325, 575, "icon_defence");
+    this.defence = this.add.sprite(325, 570, "icon_defence");
     this.defence.anchor.x = 0;
     this.defence.anchor.y = 0.5;
+    gui.push(shield);
+    gui.push(this.defence);
 
     this.saveIcon = this.add.sprite(750, 50, "icon_save");
     this.saveIcon.anchor.x = this.saveIcon.anchor.y = 0.5;
     this.saveIcon.alpha = 0;
+    gui.push(this.saveIcon);
 
     this.monsters = this.add.group();
     var x = 400;
@@ -79,14 +93,21 @@ GAME.MAINMENU.prototype = {
       monster.data.name = SAVE.monsters[monster_name];
       monster.inputEnabled = true;
       monster.events.onInputDown.add(this.selectMonster, this);
+      var text = this.add.text(0, 110, SAVE.monsters[monster_name], FONT);
+      text.anchor.x = text.anchor.y = 0.5;
       this.monsters.add(monster);
+      monster.addChild(text);
       x += 150;
     }
 
+    // Select the first monster
     this.selectMonster(this.monsters.getFirst());
 
-    left_arrow.bringToTop();
-    right_arrow.bringToTop();
+    // Bring GUI to top
+    for (var key in gui) {
+      var obj = gui[key];
+      obj.bringToTop();
+    }
 
     // According to config
     if (CONFIGURATION.music == true) {
@@ -124,15 +145,33 @@ GAME.MAINMENU.prototype = {
     console.log("Selected Monster ---");
     console.log(obj.data.name);
 
+    var info;
     if (this.selected === null) {
+      console.log("First select!");
       obj.scale.x = obj.scale.y = 1.25;
+
+      info = MONSTERS[obj.data.name];
+      this.type.loadTexture("icon_" + info.type);
+      this.life.scale.x = 0.05 * (info.life / 25);
+      this.attack.scale.x = 0.05 * (info.attack / 10);
+      this.defence.scale.x = 0.05 * (info.defence / 15);
+
+      this.selected = obj;
     } else if (obj.data.name === this.selected.data.name) {
       console.log("Monster choosen!");
     } else {
       console.log("Another selected!");
-      this.selected.scale.x = this.selected.scale.y = 1.25;
+      this.selected.scale.x = this.selected.scale.y = 1;
 
       obj.scale.x = obj.scale.y = 1.25;
+
+      info = MONSTERS[obj.data.name];
+      this.type.loadTexture("icon_" + info.type);
+      this.life.crop(new Phaser.Rectangle(0, 0, 5 * (info.life / 25), 25));
+      this.attack.crop(new Phaser.Rectangle(0, 0, 5 * (info.attack / 10), 25));
+      this.defence.crop(new Phaser.Rectangle(0, 0, 5 * (info.defence / 15), 25));
+
+      this.selected = obj;
     }
   },
   restartGame: function(obj) {

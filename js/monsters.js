@@ -3,9 +3,10 @@ var MONSTERS = {
   "cacus": {
 
     "name": "cacus",
-    "health": 100,
-    "defence": 25,
+    "type": "earth",
+    "life": 100,
     "attack": 12,
+    "defence": 25,
     "drops": [
       "potion",
       "potion",

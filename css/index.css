@@ -1,8 +1,15 @@
+@font-face {
+    font-family: "Karmatic_Arcade";
+    src: url("Karmatic Arcade.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
 
   text-align: center;
   color: rgb(255, 255, 255);
-  text-shadow: 0px 0px 10px;
 
   background-color: rgb(42, 42, 42);
 

@@ -2,6 +2,13 @@
 var CONFIGURATION = {};
 // Object containing save state
 var SAVE = {};
+// Object containing font properties
+var FONT = {
+  font: "25px Karmatic_Arcade",
+  fill: "rgb(255, 255, 255)",
+  boundsAlignH: "center",
+  boundsAlignV: "middle"
+};
 
 // Object containing all the scenes
 var GAME = {};
