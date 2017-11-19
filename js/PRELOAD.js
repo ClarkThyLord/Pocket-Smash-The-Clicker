@@ -21,7 +21,13 @@ GAME.PRELOAD.prototype = {
 
       ],
       "monsters": [
-        "cacus"
+        "cacus",
+        "ugo",
+        "bree",
+        "bun",
+        "bunnu",
+        "frea",
+        "lolo",
       ]
     };
 
@@ -49,7 +55,7 @@ GAME.PRELOAD.prototype = {
     this.load.image("icon_earth", "./res/shared/earth.png");
     this.load.image("icon_wind", "./res/shared/wind.png");
     this.load.image("icon_water", "./res/shared/water.png");
-    this.load.image("icon_heart", "./res/shared/fire.png");
+    this.load.image("icon_fire", "./res/shared/fire.png");
     this.load.image("icon_dark", "./res/shared/dark.png");
     this.load.image("icon_light", "./res/shared/light.png");
     this.load.image("icon_meme", "./res/shared/meme.png");

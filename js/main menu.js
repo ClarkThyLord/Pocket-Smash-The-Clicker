@@ -1,5 +1,6 @@
 GAME.MAINMENU = function(game) {
   // Setup variables
+  this.current = 1;
   this.selected = null;
   this.monsters = null;
 
@@ -97,7 +98,7 @@ GAME.MAINMENU.prototype = {
       text.anchor.x = text.anchor.y = 0.5;
       this.monsters.add(monster);
       monster.addChild(text);
-      x += 150;
+      x += 250;
     }
 
     // Select the first monster
@@ -130,16 +131,22 @@ GAME.MAINMENU.prototype = {
     }
   },
   moveLeft: function(obj) {
-    console.log("Moving left!");
-    this.monsters.forEach(function(monster) {
-      monster.x -= 150;
-    });
+    if (this.current !== 1) {
+      console.log("Moving left!");
+      this.current -= 1;
+      this.monsters.forEach(function(monster) {
+        monster.x += 250;
+      });
+    }
   },
   moveRight: function(obj) {
-    console.log("Moving right!");
-    this.monsters.forEach(function(monster) {
-      monster.x += 150;
-    });
+    if (this.current !== this.monsters.total) {
+      console.log("Moving right!");
+      this.current += 1;
+      this.monsters.forEach(function(monster) {
+        monster.x -= 250;
+      });
+    }
   },
   selectMonster: function(obj) {
     console.log("Selected Monster ---");
@@ -152,9 +159,9 @@ GAME.MAINMENU.prototype = {
 
       info = MONSTERS[obj.data.name];
       this.type.loadTexture("icon_" + info.type);
-      this.life.scale.x = 0.05 * (info.life / 25);
-      this.attack.scale.x = 0.05 * (info.attack / 10);
-      this.defence.scale.x = 0.05 * (info.defence / 15);
+      this.life.scale.x = 0.05 * (info.life / 10);
+      this.attack.scale.x = 0.05 * (info.attack / 3);
+      this.defence.scale.x = 0.05 * (info.defence / 5);
 
       this.selected = obj;
     } else if (obj.data.name === this.selected.data.name) {
@@ -167,9 +174,9 @@ GAME.MAINMENU.prototype = {
 
       info = MONSTERS[obj.data.name];
       this.type.loadTexture("icon_" + info.type);
-      this.life.crop(new Phaser.Rectangle(0, 0, 5 * (info.life / 25), 25));
-      this.attack.crop(new Phaser.Rectangle(0, 0, 5 * (info.attack / 10), 25));
-      this.defence.crop(new Phaser.Rectangle(0, 0, 5 * (info.defence / 15), 25));
+      this.life.scale.x = 0.05 * (info.life / 10);
+      this.attack.scale.x = 0.05 * (info.attack / 3);
+      this.defence.scale.x = 0.05 * (info.defence / 5);
 
       this.selected = obj;
     }
@@ -182,7 +189,13 @@ GAME.MAINMENU.prototype = {
 
       ],
       "monsters": [
-        "cacus"
+        "cacus",
+        "ugo",
+        "bree",
+        "bun",
+        "bunnu",
+        "frea",
+        "lolo",
       ]
     };
     this.saveGame();
