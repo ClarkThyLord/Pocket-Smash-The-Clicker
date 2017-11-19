@@ -16,23 +16,27 @@ GAME.PRELOAD.prototype = {
       "music": true
     };
     SAVE = JSON.parse(localStorage.getItem("POCKET-SMASH-SAVE")) || {
-      "money": 0,
-      "items": [
+      "player": {
+        "level": 0,
+        "xp": 0,
+        "money": 0,
+        "items": [
 
-      ],
+        ],
+        "life_boost": 0,
+        "dmg_boost": 0,
+        "def_boost": 0,
+        "ult_boost": 0
+      },
+      "monster": {
+
+      },
       "monsters": [
         "cacus",
         "ugo",
-        "bree",
-        "bun",
-        "bunnu",
-        "frea",
-        "lolo",
+        "seriosity"
       ]
     };
-
-    // FOR DEBUGGING
-    console.log("LOADED ---\nCONFIGURATION: " + JSON.stringify(CONFIGURATION) + "\nSAVE: " + JSON.stringify(SAVE));
 
     // Load main menu things
     this.load.image("mm_background", "./res/main menu/menu.jpg");
@@ -40,12 +44,19 @@ GAME.PRELOAD.prototype = {
     this.load.image("mm_instructions", "./res/main menu/instructions.png");
     this.load.image("mm_restart", "./res/main menu/restart.png");
 
-    // Load game stuff
+    // Load this stuff
+    this.load.image("icon_retire", "./res/game/retire.png");
+
+    for (var key in AREAS) {
+      this.load.image(AREAS[key].name + "_background", "./res/game/" + AREAS[key].name + ".jpg");
+    }
     for (var monster_name in MONSTERS) {
-      this.load.image("game_" + monster_name, "./res/game/monsters/" + monster_name + ".png");
+      this.load.image("this_" + monster_name, "./res/game/monsters/" + monster_name + ".png");
     }
 
     // Load global stuff
+    this.load.image("icon_store", "./res/shared/store.png");
+
     this.load.image("icon_save", "./res/shared/icon.png");
 
     this.load.image("noise_on", "./res/main menu/noise_on.png");
@@ -75,8 +86,13 @@ GAME.PRELOAD.prototype = {
   update: function() {
     // Make sure music has finished loading
     if (this.cache.isSoundDecoded("music") && this.ready == false) {
-      this.ready = true;
-      this.state.start("MAINMENU");
+      if (Object.keys(SAVE.monster).length !== 0) {
+        this.ready = true;
+        this.state.start("GAME");
+      } else {
+        this.ready = true;
+        this.state.start("MAINMENU");
+      }
     }
   },
   render: function() {

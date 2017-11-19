@@ -13,10 +13,7 @@ var FONT = {
 // Object containing all the scenes
 var GAME = {};
 
-GAME.BOOT = function(game) {
-  // Setup variables
-  // NOTHING
-};
+GAME.BOOT = function(game) {};
 
 GAME.BOOT.prototype = {
   init: function() {

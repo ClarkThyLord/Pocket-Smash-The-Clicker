@@ -6,6 +6,7 @@ window.onload = function() {
   game.state.add('BOOT', GAME.BOOT);
   game.state.add('PRELOAD', GAME.PRELOAD);
   game.state.add('MAINMENU', GAME.MAINMENU);
+  game.state.add('GAME', GAME.GAME);
 
   //	Start of game
   game.state.start('BOOT');

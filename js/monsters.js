@@ -1,9 +1,10 @@
 var MONSTERS = {
-
   "cacus": {
 
     "name": "cacus",
     "type": "earth",
+    "level": 0,
+    "xp": 0,
     "life": 100,
     "attack": 12,
     "defence": 25,
@@ -25,6 +26,8 @@ var MONSTERS = {
 
     "name": "bree",
     "type": "water",
+    "level": 0,
+    "xp": 0,
     "life": 145,
     "attack": 10,
     "defence": 15,
@@ -46,6 +49,8 @@ var MONSTERS = {
 
     "name": "bun",
     "type": "wind",
+    "level": 0,
+    "xp": 0,
     "life": 75,
     "attack": 17,
     "defence": 13,
@@ -67,6 +72,8 @@ var MONSTERS = {
 
     "name": "bunnu",
     "type": "light",
+    "level": 0,
+    "xp": 0,
     "life": 175,
     "attack": 9,
     "defence": 11,
@@ -88,6 +95,8 @@ var MONSTERS = {
 
     "name": "frea",
     "type": "dark",
+    "level": 0,
+    "xp": 0,
     "life": 65,
     "attack": 20,
     "defence": 23,
@@ -109,6 +118,8 @@ var MONSTERS = {
 
     "name": "lolo",
     "type": "meme",
+    "level": 0,
+    "xp": 0,
     "life": 44,
     "attack": 25,
     "defence": 85,
@@ -130,6 +141,8 @@ var MONSTERS = {
 
     "name": "pase",
     "type": "meme",
+    "level": 0,
+    "xp": 0,
     "life": 310,
     "attack": 5,
     "defence": 31,
@@ -151,6 +164,8 @@ var MONSTERS = {
 
     "name": "seriosity",
     "type": "meme",
+    "level": 0,
+    "xp": 0,
     "life": 12,
     "attack": 42,
     "defence": 99,
@@ -172,6 +187,8 @@ var MONSTERS = {
 
     "name": "so",
     "type": "meme",
+    "level": 0,
+    "xp": 0,
     "life": 122,
     "attack": 13,
     "defence": 44,
@@ -193,6 +210,8 @@ var MONSTERS = {
 
     "name": "ugo",
     "type": "fire",
+    "level": 0,
+    "xp": 0,
     "life": 67,
     "attack": 22,
     "defence": 22,
