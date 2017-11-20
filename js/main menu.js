@@ -87,24 +87,16 @@ GAME.MAINMENU.prototype = {
 
     this.setupMonsters();
 
-    // According to config
-    if (CONFIGURATION.music == true) {
-      this.soundIcon = this.add.sprite(50, 550, "noise_on");
-      this.soundIcon.anchor.x = this.soundIcon.anchor.y = 0.5;
-      this.soundIcon.scale.x = this.soundIcon.scale.y = 0.5;
-      this.soundIcon.inputEnabled = true;
-      this.soundIcon.events.onInputDown.add(this.toggleNoise, this);
+    // Setup music according to config
+    this.soundIcon = (CONFIGURATION.music) ? this.add.sprite(50, 550, "noise_on") : this.add.sprite(50, 550, "noise_off");
+    this.soundIcon.anchor.x = this.soundIcon.anchor.y = 0.5;
+    this.soundIcon.scale.x = this.soundIcon.scale.y = 0.5;
+    this.soundIcon.inputEnabled = true;
+    this.soundIcon.events.onInputDown.add(this.toggleNoise, this);
 
-      this.sound = this.add.audio("music");
+    this.sound = this.add.audio("music");
+    if (CONFIGURATION.music) {
       this.sound.play("", 0, 1, true);
-    } else {
-      this.soundIcon = this.add.sprite(50, 550, "noise_off");
-      this.soundIcon.anchor.x = this.soundIcon.anchor.y = 0.5;
-      this.soundIcon.scale.x = this.soundIcon.scale.y = 0.5;
-      this.soundIcon.inputEnabled = true;
-      this.soundIcon.events.onInputDown.add(this.toggleNoise, this);
-
-      this.sound = this.add.audio("music");
     }
   },
   setupMonsters: function() {
@@ -184,6 +176,7 @@ GAME.MAINMENU.prototype = {
     } else {
       SAVE.monster = Object.assign({}, MONSTERS[obj.data.name]);
       this.saveGame();
+      this.sound.destroy();
       this.state.start("GAME");
     }
   },
