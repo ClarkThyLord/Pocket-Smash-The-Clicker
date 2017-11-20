@@ -24,7 +24,7 @@ GAME.PRELOAD.prototype = {
 
         ],
         "life_boost": 0,
-        "dmg_boost": 0,
+        "dmg_boost": 1.25,
         "def_boost": 0,
         "ult_boost": 0
       },
@@ -44,7 +44,8 @@ GAME.PRELOAD.prototype = {
     this.load.image("mm_instructions", "./res/main menu/instructions.png");
     this.load.image("mm_restart", "./res/main menu/restart.png");
 
-    // Load this stuff
+    // Load game stuff
+    this.load.image("icon_ult", "./res/game/ultimate.jpg");
     this.load.image("icon_retire", "./res/game/retire.png");
 
     for (var key in AREAS) {
