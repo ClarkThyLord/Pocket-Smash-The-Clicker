@@ -111,7 +111,7 @@ GAME.MAINMENU.prototype = {
     for (var monster_name in SAVE.monsters) {
       var refrence = MONSTERS[SAVE.monsters[monster_name]];
 
-      var monster = this.add.sprite(x, 300, "this_" + SAVE.monsters[monster_name]);
+      var monster = this.add.sprite(x, 300, "monster_" + SAVE.monsters[monster_name]);
       monster.anchor.x = monster.anchor.y = 0.5;
       monster.data.name = SAVE.monsters[monster_name];
       monster.inputEnabled = true;

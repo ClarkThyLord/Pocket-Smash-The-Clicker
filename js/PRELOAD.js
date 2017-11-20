@@ -51,7 +51,7 @@ GAME.PRELOAD.prototype = {
       this.load.image(AREAS[key].name + "_background", "./res/game/" + AREAS[key].name + ".jpg");
     }
     for (var monster_name in MONSTERS) {
-      this.load.image("this_" + monster_name, "./res/game/monsters/" + monster_name + ".png");
+      this.load.image("monster_" + monster_name, "./res/game/monsters/" + monster_name + ".png");
     }
 
     // Load global stuff

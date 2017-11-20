@@ -11,6 +11,7 @@ GAME.GAME.prototype = {
     this.enemy = null;
 
     this.life_player = null;
+    this.player = null;
 
     this.gui = [];
 
@@ -33,16 +34,6 @@ GAME.GAME.prototype = {
     store.inputEnabled = true;
     store.events.onInputDown.add(this.store, this);
     this.gui.push(store);
-
-    this.life_enemy = this.add.sprite(50, 565, "icon_life");
-    this.life_enemy.anchor.x = 0;
-    this.life_enemy.anchor.y = 0.5;
-    this.gui.push(this.life_enemy);
-
-    this.life_player = this.add.sprite(550, 510, "icon_life");
-    this.life_player.anchor.x = 0;
-    this.life_player.anchor.y = 0.5;
-    this.gui.push(this.life_player);
 
     this.saveIcon = this.add.sprite(750, 50, "icon_save");
     this.saveIcon.anchor.x = this.saveIcon.anchor.y = 0.5;
@@ -89,10 +80,28 @@ GAME.GAME.prototype = {
     }
   },
   setupPlayer: function() {
+    this.player = this.add.sprite(160, 570, "monster_" + SAVE.monster.name);
+    this.player.anchor.x = 0.5;
+    this.player.anchor.y = 1;
 
+    this.life_player = this.add.sprite(50, 565, "icon_life");
+    this.life_player.anchor.y = 0.5;
+    this.life_player.scale.x = 0.05 * (SAVE.monster.life / 10);
+    this.gui.push(this.life_player);
   },
   setupMonster: function() {
+    var pick = Math.floor(Math.random() * AREAS[this.area].monsters.length);
 
+    console.log(AREAS[this.area].monsters[pick]);
+
+    this.enemy = this.add.sprite(660, 525, "monster_" + AREAS[this.area].monsters[pick]);
+    this.enemy.anchor.x = 0.5;
+    this.enemy.anchor.y = 1;
+
+    this.life_enemy = this.add.sprite(550, 510, "icon_life");
+    this.life_enemy.anchor.y = 0.5;
+    this.life_enemy.scale.x = 0.05 * (MONSTERS[AREAS[this.area].monsters[pick]].life / 10);
+    this.gui.push(this.life_enemy);
 
     // Bring GUI to the top
     for (var key in this.gui) {
