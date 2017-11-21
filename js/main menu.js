@@ -23,10 +23,6 @@ GAME.MAINMENU.prototype = {
     // Start of scene setup
     this.add.sprite(0, 0, 'mm_background');
 
-    var instructions = this.add.sprite(400, 150, "mm_instructions");
-    instructions.anchor.x = instructions.anchor.y = 0.5;
-    this.gui.push(instructions);
-
     var left_arrow = this.add.sprite(50, 325, "mm_arrow");
     left_arrow.alpha = 0.3;
     left_arrow.anchor.x = left_arrow.anchor.y = 0.5;
@@ -42,11 +38,17 @@ GAME.MAINMENU.prototype = {
     right_arrow.events.onInputDown.add(this.moveRight, this);
     this.gui.push(right_arrow);
 
-    var restart = this.add.sprite(700, 575, "mm_restart");
+    var restart = this.add.sprite(695, 515, "mm_restart");
     restart.anchor.x = restart.anchor.y = 0.5;
     restart.inputEnabled = true;
     restart.events.onInputDown.add(this.restartGame, this);
     this.gui.push(restart);
+
+    var store = this.add.sprite(695, 570, "icon_store");
+    store.anchor.x = store.anchor.y = 0.5;
+    store.inputEnabled = true;
+    store.events.onInputDown.add(this.store, this);
+    this.gui.push(store);
 
     this.type = this.add.sprite(190, 530, "icon_unknown");
     this.type.anchor.x = this.type.anchor.y = 0.5;
@@ -98,6 +100,12 @@ GAME.MAINMENU.prototype = {
     if (CONFIGURATION.music) {
       this.sound.play("", 0, 1, true);
     }
+  },
+  store: function() {
+    console.log("STORE!");
+    this.saveGame();
+    this.sound.destroy();
+    this.state.start("STORE");
   },
   setupMonsters: function() {
     if (this.monsters === null) {

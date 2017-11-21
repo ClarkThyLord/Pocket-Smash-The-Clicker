@@ -40,8 +40,5 @@ GAME.BOOT.prototype = {
   },
   create: function() {
     this.state.start("PRELOAD");
-  },
-  render: function() {
-    // NOTHING
   }
 };

@@ -13,6 +13,8 @@ GAME.GAME.prototype = {
 
     this.gui = [];
 
+    this.money = null;
+
     this.saveIcon = null;
 
     this.soundIcon = null;
@@ -23,18 +25,24 @@ GAME.GAME.prototype = {
     // Start of scene setup
     this.setupArea();
 
+    var money = this.add.sprite(150, 50, "icon_money");
+    money.anchor.x = money.anchor.y = 0.5;
+    this.money = this.add.text(50, 0, SAVE.player.money, FONT);
+    this.money.anchor.y = 0.5;
+    money.addChild(this.money);
+
     this.text = this.add.text(400, 150, "TAP ON THE ENEMY TO ATTACK!!!\nTAP ON YOUR MONSTER TO CHARGE ULT!!!", FONT);
     this.text.anchor.x = 0.5;
     this.text.anchor.y = 0.1;
     this.gui.push(this.text);
 
-    var retire = this.add.sprite(475, 50, "game_retire");
+    var retire = this.add.sprite(485, 30, "game_retire");
     retire.anchor.x = retire.anchor.y = 0.5;
     retire.inputEnabled = true;
     retire.events.onInputDown.add(this.retire, this);
     this.gui.push(retire);
 
-    var store = this.add.sprite(700, 50, "icon_store");
+    var store = this.add.sprite(695, 30, "icon_store");
     store.anchor.x = store.anchor.y = 0.5;
     store.inputEnabled = true;
     store.events.onInputDown.add(this.store, this);
@@ -297,7 +305,6 @@ GAME.GAME.prototype = {
   },
   updateText: function(text) {
     this.text.setText(text);
-  },
-  update: function() {},
-  render: function() {}
+    this.money.setText(SAVE.player.money);
+  }
 };

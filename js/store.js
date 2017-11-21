@@ -6,12 +6,22 @@ GAME.STORE.prototype = {
     // Setup variables
     this.gui = [];
 
+    this.money = null;
+
     this.saveIcon = null;
 
     this.soundIcon = null;
     this.sound = null;
 
     // Start of scene setup
+    this.add.sprite(0, 0, "store_background");
+
+    var back = this.add.sprite(695, 570, "store_back");
+    back.anchor.x = back.anchor.y = 0.5;
+    back.inputEnabled = true;
+    back.events.onInputDown.add(this.back, this);
+    this.gui.push(back);
+
     this.saveIcon = this.add.sprite(750, 50, "icon_save");
     this.saveIcon.anchor.x = this.saveIcon.anchor.y = 0.5;
     this.saveIcon.alpha = 0;
@@ -30,9 +40,13 @@ GAME.STORE.prototype = {
     }
   },
   back: function() {
-    SAVE.monster = {};
     this.saveGame();
-    this.state.start("GAME");
+    this.sound.destroy();
+    if (Object.keys(SAVE.monster).length === 0) {
+      this.state.start("MAINMENU");
+    } else {
+      this.state.start("GAME");
+    }
   },
   setupItems: function() {
     // Bring GUI to the top
@@ -68,11 +82,5 @@ GAME.STORE.prototype = {
     setTimeout(function(saveIcon) {
       saveIcon.alpha = 0;
     }, 1000, this.saveIcon);
-  },
-  update: function() {
-    // NOTHING
-  },
-  render: function() {
-    // NOTHING
   }
 };

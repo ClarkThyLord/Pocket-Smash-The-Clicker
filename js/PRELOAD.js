@@ -7,8 +7,8 @@ GAME.PRELOAD = function(game) {
 
 GAME.PRELOAD.prototype = {
   preload: function() {
-    this.add.sprite(0, 0, 'mm_load');
-    this.icon = this.add.sprite(0, 0, 'mm_icon');
+    this.add.sprite(0, 0, "mm_load");
+    this.icon = this.add.sprite(0, 0, "mm_icon");
     this.load.setPreloadSprite(this.icon);
 
     // Load data; if non then setup data
@@ -41,7 +41,6 @@ GAME.PRELOAD.prototype = {
     // Load main menu things
     this.load.image("mm_background", "./res/main menu/menu.jpg");
     this.load.image("mm_arrow", "./res/main menu/arrow.png");
-    this.load.image("mm_instructions", "./res/main menu/instructions.png");
     this.load.image("mm_restart", "./res/main menu/restart.png");
 
     // Load game stuff
@@ -57,13 +56,18 @@ GAME.PRELOAD.prototype = {
       this.load.image("monster_" + monster_name, "./res/game/monsters/" + monster_name + ".png");
     }
 
+    // Load store stuff
+    this.load.image("store_background", "./res/store/store.jpg");
+    this.load.image("store_back", "./res/store/back.png");
+
     // Load global stuff
+    this.load.image("icon_money", "./res/shared/money.png");
     this.load.image("icon_store", "./res/shared/store.png");
 
     this.load.image("icon_save", "./res/shared/icon.png");
 
-    this.load.image("noise_on", "./res/main menu/noise_on.png");
-    this.load.image("noise_off", "./res/main menu/noise_off.png");
+    this.load.image("noise_on", "./res/shared/noise_on.png");
+    this.load.image("noise_off", "./res/shared/noise_off.png");
 
     this.load.image("icon_unknown", "./res/shared/unknown.png");
     this.load.image("icon_earth", "./res/shared/earth.png");
@@ -81,7 +85,7 @@ GAME.PRELOAD.prototype = {
     this.load.image("icon_shield", "./res/shared/shield.png");
     this.load.image("icon_defence", "./res/shared/defence.jpg");
 
-    this.load.audio("music", ["./res/main menu/music.mp3"]);
+    this.load.audio("music", ["./res/shared/music.mp3"]);
   },
   create: function() {
     this.icon.cropEnabled = false;
@@ -97,8 +101,5 @@ GAME.PRELOAD.prototype = {
         this.state.start("MAINMENU");
       }
     }
-  },
-  render: function() {
-    // NOTHING
   }
 };
