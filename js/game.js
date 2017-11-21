@@ -56,10 +56,6 @@ GAME.GAME.prototype = {
     this.setupPlayer();
     this.setupMonster();
 
-    // FOR DEBUGGIN
-    console.log(this.player.data);
-    console.log(this.enemy.data);
-
     // Bring GUI to the top
     for (var key in this.gui) {
       var obj = this.gui[key];
@@ -81,7 +77,6 @@ GAME.GAME.prototype = {
     this.loop = this.time.events.loop(100, this.attack, this);
   },
   store: function() {
-    console.log("STORE!");
     this.saveGame();
     this.sound.destroy();
     this.state.start("STORE");
@@ -94,8 +89,8 @@ GAME.GAME.prototype = {
   },
   setupArea: function() {
     this.area = Math.floor(SAVE.monster.level / 5.5);
-    if (this.area > 15) {
-      area = 15;
+    if (this.area > 1) {
+      this.area = 1;
     }
 
     if (this.background == null) {
@@ -129,25 +124,20 @@ GAME.GAME.prototype = {
     this.gui.push(this.player.ult);
   },
   playerCheck: function() {
-    console.log("PLAYER CHECK!");
     if (this.player.data.xp / (150 * this.player.data.level) >= 1) {
-      console.log("Level Up ---");
-
       this.updateText("LEVEL UP!!!");
 
-      console.log(this.player.data);
       this.player.data.xp = this.player.data.xp - (150 * this.player.data.level);
       this.player.data.level += 1;
 
-      if (this.player.data.life < 150) {
+      if (this.player.data.life < 600) {
         this.player.data.life += this.player.data.life * 0.3;
       }
 
       this.player.data.attack += this.player.data.attack * 0.13;
       this.player.data.defence += this.player.data.defence * 0.13;
 
-      console.log(this.player.data);
-
+      this.saveGame();
       this.setupArea();
     }
   },
@@ -193,7 +183,9 @@ GAME.GAME.prototype = {
   },
   monsterDEATH: function() {
     // Heal the player
-    this.player.data.life += (this.area + 1) * 50;
+    if (this.player.data.life < 600) {
+      this.player.data.life += (this.area + 1) * 50;
+    }
 
     // Give the player xp
     this.player.data.xp += this.enemy.data.level * 11;
@@ -202,20 +194,13 @@ GAME.GAME.prototype = {
     var loot = this.enemy.data.drops[Math.floor(Math.random() * 10)];
 
     if (loot != null) {
-      console.log("Loot: " + loot);
       if (loot == "capture") {
-        console.log("Capture!");
-
         SAVE.monsters.indexOf(this.enemy.data.name) === -1 ? SAVE.monsters.push(this.enemy.data.name) && this.updateText("CAPTURED " + this.enemy.data.name + "!!!") : console.log("already captured!");
       } else if (isNaN(loot)) {
-        console.log("Item!");
-
         this.updateText("OBTAINED " + loot + "!!!");
 
         SAVE.player.items.push(loot);
       } else {
-        console.log("Money!");
-
         this.updateText("FOUND " + loot + "!!!");
 
         SAVE.player.money += loot;
@@ -287,12 +272,12 @@ GAME.GAME.prototype = {
     this.player.ult.scale.x = 0.01 * (this.player.data.ult / 1);
 
     // Formula: (random() * maxDmg) * (1 - ((def * 0.01) * defBoost))
-    console.log("ENEMY DMG: " + Math.floor((Math.random() * (this.enemy.data.attack + 1)) * (1 - ((this.player.data.defence * 0.01) * SAVE.player.def_boost))));
+    // console.log("ENEMY DMG: " + Math.floor((Math.random() * (this.enemy.data.attack + 1)) * (1 - ((this.player.data.defence * 0.01) * SAVE.player.def_boost))));
     this.player.data.life -= Math.floor((Math.random() * (this.enemy.data.attack + 1)) * (1 - ((this.player.data.defence * 0.01) * SAVE.player.def_boost)));
     this.player.life.scale.x = 0.05 * (this.player.data.life / 10);
 
     // Formula: (random() * maxDmg) * (1 + dmgBoost * 0.001)
-    console.log("PLAYER DMG: " + Math.floor((Math.random() * (this.player.data.attack + 1)) * (1 + SAVE.player.dmg_boost * 0.01)));
+    // console.log("PLAYER DMG: " + Math.floor((Math.random() * (this.player.data.attack + 1)) * (1 + SAVE.player.dmg_boost * 0.01)));
     this.enemy.data.life -= Math.floor((Math.random() * (this.player.data.attack + 1)) * (1 + SAVE.player.dmg_boost * 0.01));
     this.enemy.life.scale.x = 0.05 * (this.enemy.data.life / 10);
 
