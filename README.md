@@ -1,6 +1,8 @@
 Pocket Smash
 ==============
 
+![alt text](https://github.com/ClarkThyLord/Pocket-Smash/blob/master/preview.jpg)
+
 # About Project
 
 This project is a game for the 2017 game jam hosted by GitHub on itch.io, more about game jam [here](https://itch.io/jam/game-off-2017)
