@@ -6,6 +6,7 @@ GAME.GAME.prototype = {
     // Setup variables
     this.area = 0;
     this.background = null;
+    this.text = null;
 
     this.player = {};
     this.enemy = {};
@@ -21,6 +22,11 @@ GAME.GAME.prototype = {
 
     // Start of scene setup
     this.setupArea();
+
+    this.text = this.add.text(400, 150, "TAP ON THE ENEMY TO ATTACK!!!\nTAP ON YOUR MONSTER TO CHARGE ULT!!!", FONT);
+    this.text.anchor.x = 0.5;
+    this.text.anchor.y = 0.1;
+    this.gui.push(this.text);
 
     var retire = this.add.sprite(475, 50, "game_retire");
     retire.anchor.x = retire.anchor.y = 0.5;
@@ -118,11 +124,17 @@ GAME.GAME.prototype = {
     console.log("PLAYER CHECK!");
     if (this.player.data.xp / (150 * this.player.data.level) >= 1) {
       console.log("Level Up ---");
+
+      this.updateText("LEVEL UP!!!");
+
       console.log(this.player.data);
       this.player.data.xp = this.player.data.xp - (150 * this.player.data.level);
       this.player.data.level += 1;
 
-      this.player.data.life += this.player.data.life * 0.3;
+      if (this.player.data.life < 150) {
+        this.player.data.life += this.player.data.life * 0.3;
+      }
+
       this.player.data.attack += this.player.data.attack * 0.13;
       this.player.data.defence += this.player.data.defence * 0.13;
 
@@ -185,12 +197,19 @@ GAME.GAME.prototype = {
       console.log("Loot: " + loot);
       if (loot == "capture") {
         console.log("Capture!");
-        SAVE.monsters.indexOf(this.enemy.data.name) === -1 ? SAVE.monsters.push(this.enemy.data.name) : console.log("already captured!");
+
+        SAVE.monsters.indexOf(this.enemy.data.name) === -1 ? SAVE.monsters.push(this.enemy.data.name) && this.updateText("CAPTURED " + this.enemy.data.name + "!!!") : console.log("already captured!");
       } else if (isNaN(loot)) {
         console.log("Item!");
+
+        this.updateText("OBTAINED " + loot + "!!!");
+
         SAVE.player.items.push(loot);
       } else {
         console.log("Money!");
+
+        this.updateText("FOUND " + loot + "!!!");
+
         SAVE.player.money += loot;
       }
     }
@@ -275,6 +294,9 @@ GAME.GAME.prototype = {
     if (this.enemy.data.life <= 0) {
       this.monsterDEATH();
     }
+  },
+  updateText: function(text) {
+    this.text.setText(text);
   },
   update: function() {},
   render: function() {}
