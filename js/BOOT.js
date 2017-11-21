@@ -5,7 +5,7 @@ var SAVE = {};
 // Object containing font properties
 var FONT = {
   font: "25px Karmatic_Arcade",
-  fill: "rgb(255, 255, 255)",
+  fill: "rgb(125, 125, 125)",
   boundsAlignH: "center",
   boundsAlignV: "middle"
 };

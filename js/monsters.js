@@ -28,7 +28,7 @@ var MONSTERS = {
     "xp": 0,
     "ult": 0,
     "life": 145,
-    "attack": 10,
+    "attack": 17,
     "defence": 15,
     "drops": [
       "potion",
@@ -49,7 +49,7 @@ var MONSTERS = {
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 75,
+    "life": 86,
     "attack": 17,
     "defence": 13,
     "drops": [
@@ -93,7 +93,7 @@ var MONSTERS = {
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 65,
+    "life": 79,
     "attack": 20,
     "defence": 23,
     "drops": [
@@ -115,7 +115,7 @@ var MONSTERS = {
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 44,
+    "life": 76,
     "attack": 25,
     "defence": 85,
     "drops": [
@@ -159,9 +159,9 @@ var MONSTERS = {
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 12,
+    "life": 120,
     "attack": 42,
-    "defence": 99,
+    "defence": 67,
     "drops": [
       "potion",
       "potion",
@@ -203,7 +203,7 @@ var MONSTERS = {
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 67,
+    "life": 84,
     "attack": 22,
     "defence": 22,
     "drops": [

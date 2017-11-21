@@ -42,6 +42,10 @@ GAME.GAME.prototype = {
     this.setupPlayer();
     this.setupMonster();
 
+    // FOR DEBUGGIN
+    console.log(this.player.data);
+    console.log(this.enemy.data);
+
     // Bring GUI to the top
     for (var key in this.gui) {
       var obj = this.gui[key];
@@ -118,9 +122,9 @@ GAME.GAME.prototype = {
       this.player.data.xp = this.player.data.xp - (150 * this.player.data.level);
       this.player.data.level += 1;
 
-      this.player.data.life += this.player.data.life;
-      this.player.data.attack += this.player.data.attack * 0.12;
-      this.player.data.defence += this.player.data.defence * 0.2;
+      this.player.data.life += this.player.data.life * 0.3;
+      this.player.data.attack += this.player.data.attack * 0.13;
+      this.player.data.defence += this.player.data.defence * 0.13;
 
       console.log(this.player.data);
 
@@ -157,9 +161,9 @@ GAME.GAME.prototype = {
     // Setup monster stats
     this.enemy.data = Object.assign({}, MONSTERS[AREAS[this.area].monsters[pick]]);
     this.enemy.data.level = Math.floor(Math.random() * (this.area + 4)) + 1;
-    this.enemy.data.life = this.enemy.data.life + (this.enemy.data.life * (this.enemy.data.level / 13));
-    this.enemy.data.attack = this.enemy.data.attack + (this.enemy.data.attack * (this.enemy.data.level / 13));
-    this.enemy.data.defence = this.enemy.data.defence + (this.enemy.data.defence * (this.enemy.data.level / 13));
+    this.enemy.data.life = Math.floor(this.enemy.data.life + (this.enemy.data.life * (this.enemy.data.level / 13)));
+    this.enemy.data.attack = Math.floor(this.enemy.data.attack + (this.enemy.data.attack * (this.enemy.data.level / 13)));
+    this.enemy.data.defence = Math.floor(this.enemy.data.defence + (this.enemy.data.defence * (this.enemy.data.level / 13)));
 
     this.enemy.life = this.add.sprite(-100, 0, "icon_life");
     this.enemy.life.anchor.y = 0.5;
@@ -197,9 +201,9 @@ GAME.GAME.prototype = {
 
     this.enemy.data = Object.assign({}, MONSTERS[AREAS[this.area].monsters[pick]]);
     this.enemy.data.level = Math.floor(Math.random() * (this.area + 4)) + 1;
-    this.enemy.data.life = this.enemy.data.life + (this.enemy.data.life * (this.enemy.data.level / 13));
-    this.enemy.data.attack = this.enemy.data.attack + (this.enemy.data.attack * (this.enemy.data.level / 13));
-    this.enemy.data.defence = this.enemy.data.defence + (this.enemy.data.defence * (this.enemy.data.level / 13));
+    this.enemy.data.life = Math.floor(this.enemy.data.life + (this.enemy.data.life * (this.enemy.data.level / 13)));
+    this.enemy.data.attack = Math.floor(this.enemy.data.attack + (this.enemy.data.attack * (this.enemy.data.level / 13)));
+    this.enemy.data.defence = Math.floor(this.enemy.data.defence + (this.enemy.data.defence * (this.enemy.data.level / 13)));
 
     this.enemy.life.scale.x = 0.05 * (this.enemy.data.life / 10);
 
@@ -207,7 +211,7 @@ GAME.GAME.prototype = {
     this.playerCheck();
   },
   monsterULT: function() {
-    this.player.data.ult += 1;
+    this.player.data.ult += SAVE.player.ult_boost;
     if (this.player.data.ult >= 100) {
       this.monsterDEATH();
 
@@ -217,7 +221,7 @@ GAME.GAME.prototype = {
     this.player.ult.scale.x = 0.01 * (this.player.data.ult / 1);
   },
   monsterDMG: function() {
-    this.enemy.data.life -= (Math.floor(Math.random() * (this.player.data.attack + 1)) * (0.01 * this.enemy.data.defence)) * SAVE.player.dmg_boost;
+    this.enemy.data.life -= (Math.floor((Math.random() * (this.enemy.data.attack + 1)) * (1 - ((this.player.data.defence * 0.01) * SAVE.player.def_boost)))) * SAVE.player.dmg_boost;
     if (this.enemy.data.life <= 0) {
       this.monsterDEATH();
     } else {
@@ -255,10 +259,14 @@ GAME.GAME.prototype = {
   attack: function() {
     this.player.ult.scale.x = 0.01 * (this.player.data.ult / 1);
 
-    this.player.data.life -= Math.floor(Math.random() * (this.enemy.data.attack + 1)) * (0.01 * this.player.data.defence - (0.01 * SAVE.player.dmg_boost));
-    this.enemy.data.life -= Math.floor(Math.random() * (this.player.data.attack + 1)) * (0.01 * this.enemy.data.defence);
-
+    // Formula: (random() * maxDmg) * (1 - ((def * 0.01) * defBoost))
+    console.log("ENEMY DMG: " + Math.floor((Math.random() * (this.enemy.data.attack + 1)) * (1 - ((this.player.data.defence * 0.01) * SAVE.player.def_boost))));
+    this.player.data.life -= Math.floor((Math.random() * (this.enemy.data.attack + 1)) * (1 - ((this.player.data.defence * 0.01) * SAVE.player.def_boost)));
     this.player.life.scale.x = 0.05 * (this.player.data.life / 10);
+
+    // Formula: (random() * maxDmg) * (1 + dmgBoost * 0.001)
+    console.log("PLAYER DMG: " + Math.floor((Math.random() * (this.player.data.attack + 1)) * (1 + SAVE.player.dmg_boost * 0.01)));
+    this.enemy.data.life -= Math.floor((Math.random() * (this.player.data.attack + 1)) * (1 + SAVE.player.dmg_boost * 0.01));
     this.enemy.life.scale.x = 0.05 * (this.enemy.data.life / 10);
 
     if (this.player.data.life <= 0) {
