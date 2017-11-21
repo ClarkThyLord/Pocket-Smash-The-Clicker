@@ -1,6 +1,5 @@
 var MONSTERS = {
   "cacus": {
-
     "name": "cacus",
     "type": "earth",
     "level": 0,
@@ -12,19 +11,17 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing"
+      22,
+      42,
+      5,
+      null,
+      null,
+      "capture",
+      "capture",
+      "capture"
     ]
-
   },
   "bree": {
-
     "name": "bree",
     "type": "water",
     "level": 0,
@@ -36,19 +33,17 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
+      22,
+      12,
+      31,
+      null,
+      null,
       "capture",
       "capture",
-      "capture",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing"
+      "capture"
     ]
-
   },
   "bun": {
-
     "name": "bun",
     "type": "wind",
     "level": 0,
@@ -60,19 +55,17 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
+      12,
+      3,
+      4,
+      null,
+      null,
       "capture",
       "capture",
-      "capture",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing"
+      "capture"
     ]
-
   },
   "bunnu": {
-
     "name": "bunnu",
     "type": "light",
     "level": 0,
@@ -84,19 +77,17 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
+      2,
+      71,
+      null,
+      null,
+      null,
+      null,
       "capture",
-      "capture",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing"
+      "capture"
     ]
-
   },
   "frea": {
-
     "name": "frea",
     "type": "dark",
     "level": 0,
@@ -108,19 +99,17 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
+      "potion",
+      "potion",
+      5,
+      12,
+      null,
+      null,
       "capture",
-      "capture",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing"
+      "capture"
     ]
-
   },
   "lolo": {
-
     "name": "lolo",
     "type": "meme",
     "level": 0,
@@ -132,19 +121,17 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
       "capture"
     ]
-
   },
   "pase": {
-
     "name": "pase",
     "type": "meme",
     "level": 0,
@@ -156,19 +143,17 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
       "capture"
     ]
-
   },
   "seriosity": {
-
     "name": "seriosity",
     "type": "meme",
     "level": 0,
@@ -180,19 +165,17 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
       "capture"
     ]
-
   },
   "so": {
-
     "name": "so",
     "type": "meme",
     "level": 0,
@@ -204,19 +187,17 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "capture",
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
       "capture"
     ]
-
   },
   "ugo": {
-
     "name": "ugo",
     "type": "fire",
     "level": 0,
@@ -228,16 +209,14 @@ var MONSTERS = {
     "drops": [
       "potion",
       "potion",
+      17,
+      13,
+      22,
+      null,
+      null,
       "capture",
       "capture",
-      "capture",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing",
-      "nothing"
+      "capture"
     ]
-
   }
-
 };

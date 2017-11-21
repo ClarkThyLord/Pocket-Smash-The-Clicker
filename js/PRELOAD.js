@@ -45,11 +45,13 @@ GAME.PRELOAD.prototype = {
     this.load.image("mm_restart", "./res/main menu/restart.png");
 
     // Load game stuff
-    this.load.image("icon_ult", "./res/game/ultimate.jpg");
-    this.load.image("icon_retire", "./res/game/retire.png");
+    this.load.image("game_death", "./res/game/death.jpg");
+    this.load.image("game_ground", "./res/game/ground.png");
+    this.load.image("game_ult", "./res/game/ultimate.jpg");
+    this.load.image("game_retire", "./res/game/retire.png");
 
     for (var key in AREAS) {
-      this.load.image(AREAS[key].name + "_background", "./res/game/" + AREAS[key].name + ".jpg");
+      this.load.image("background_" + AREAS[key].name, "./res/game/areas/" + AREAS[key].name + ".jpg");
     }
     for (var monster_name in MONSTERS) {
       this.load.image("monster_" + monster_name, "./res/game/monsters/" + monster_name + ".png");
