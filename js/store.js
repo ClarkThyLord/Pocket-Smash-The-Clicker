@@ -1,9 +1,10 @@
 GAME.STORE = function(game) {};
 
 GAME.STORE.prototype = {
-  preload: function() {},
   create: function() {
     // Setup variables
+    this.current = 1;
+    this.items = [];
     this.gui = [];
 
     this.money = null;
@@ -16,6 +17,29 @@ GAME.STORE.prototype = {
     // Start of scene setup
     this.add.sprite(0, 0, "store_background");
 
+    var money = this.add.sprite(135, 550, "icon_money");
+    money.anchor.x = money.anchor.y = 0.5;
+    this.money = this.add.text(50, 0, SAVE.player.money, FONT);
+    this.money.anchor.y = 0.5;
+    money.addChild(this.money);
+    this.gui.push(money);
+    this.gui.push(this.money);
+
+    var left_arrow = this.add.sprite(50, 365, "mm_arrow");
+    left_arrow.alpha = 0.3;
+    left_arrow.anchor.x = left_arrow.anchor.y = 0.5;
+    left_arrow.inputEnabled = true;
+    left_arrow.events.onInputDown.add(this.moveLeft, this);
+    this.gui.push(left_arrow);
+
+    var right_arrow = this.add.sprite(750, 365, "mm_arrow");
+    right_arrow.alpha = 0.3;
+    right_arrow.anchor.x = right_arrow.anchor.y = 0.5;
+    right_arrow.angle = 180;
+    right_arrow.inputEnabled = true;
+    right_arrow.events.onInputDown.add(this.moveRight, this);
+    this.gui.push(right_arrow);
+
     var back = this.add.sprite(695, 570, "store_back");
     back.anchor.x = back.anchor.y = 0.5;
     back.inputEnabled = true;
@@ -26,6 +50,14 @@ GAME.STORE.prototype = {
     this.saveIcon.anchor.x = this.saveIcon.anchor.y = 0.5;
     this.saveIcon.alpha = 0;
     this.gui.push(this.saveIcon);
+
+    this.setupItems();
+
+    // Bring GUI to the top
+    for (var key in this.gui) {
+      var obj = this.gui[key];
+      obj.bringToTop();
+    }
 
     // Setup music according to config
     this.soundIcon = (CONFIGURATION.music) ? this.add.sprite(50, 550, "noise_on") : this.add.sprite(50, 550, "noise_off");
@@ -49,10 +81,48 @@ GAME.STORE.prototype = {
     }
   },
   setupItems: function() {
-    // Bring GUI to the top
-    for (var key in this.gui) {
-      var obj = this.gui[key];
-      obj.bringToTop();
+    var frame, text, item, button, x = 400;
+    for (var item_name in ITEMS) {
+      frame = this.add.sprite(x, 400, "store_frame");
+      frame.anchor.x = frame.anchor.y = 0.5;
+      frame.data.name = item_name;
+      frame.inputEnabled = true;
+      frame.events.onInputDown.add(this.useItem, this);
+      text = this.add.text(0, -125, item_name, FONT);
+      text.anchor.x = text.anchor.y = 0.5;
+      item = this.add.sprite(0, -25, "item_" + item_name);
+      item.anchor.x = item.anchor.y = 0.5;
+      button = this.add.sprite(0, 110, "store_buy");
+      button.anchor.x = button.anchor.y = 0.5;
+      button.data.name = item_name;
+      button.inputEnabled = true;
+      button.events.onInputDown.add(this.buyItem, this);
+      frame.addChild(text);
+      frame.addChild(item);
+      frame.addChild(button);
+      x += 150;
+    }
+  },
+  useItem: function(obj) {
+    console.log("USED: " + obj.data.name);
+  },
+  buyItem: function(obj) {
+    console.log("BOUGHT: " + obj.data.name);
+  },
+  moveLeft: function(obj) {
+    if (this.current !== 1) {
+      this.current -= 1;
+      this.items.forEach(function(item) {
+        item.x += 150;
+      });
+    }
+  },
+  moveRight: function(obj) {
+    if (this.current !== this.monsters.total) {
+      this.current += 1;
+      this.items.forEach(function(item) {
+        item.x -= 150;
+      });
     }
   },
   toggleNoise: function(obj) {
@@ -82,5 +152,8 @@ GAME.STORE.prototype = {
     setTimeout(function(saveIcon) {
       saveIcon.alpha = 0;
     }, 1000, this.saveIcon);
+  },
+  updateText: function(obj) {
+    this.money.setText(SAVE.player.money);
   }
 };

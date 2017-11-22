@@ -50,7 +50,7 @@ GAME.PRELOAD.prototype = {
     this.load.image("game_retire", "./res/game/retire.png");
 
     for (var key in AREAS) {
-      this.load.image("background_" + AREAS[key].name, "./res/game/areas/" + AREAS[key].name + ".jpg");
+      this.load.image("area_" + AREAS[key].name, "./res/game/areas/" + AREAS[key].name + ".jpg");
     }
     for (var monster_name in MONSTERS) {
       this.load.image("monster_" + monster_name, "./res/game/monsters/" + monster_name + ".png");
@@ -58,7 +58,13 @@ GAME.PRELOAD.prototype = {
 
     // Load store stuff
     this.load.image("store_background", "./res/store/store.jpg");
+    this.load.image("store_frame", "./res/store/frame.png");
+    this.load.image("store_buy", "./res/store/buy.png");
     this.load.image("store_back", "./res/store/back.png");
+
+    for (var item_name in ITEMS) {
+      this.load.image("item_" + item_name, "./res/store/items/" + item_name + ".png");
+    }
 
     // Load global stuff
     this.load.image("icon_money", "./res/shared/money.png");

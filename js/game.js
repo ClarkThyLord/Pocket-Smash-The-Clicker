@@ -1,7 +1,6 @@
 GAME.GAME = function(game) {};
 
 GAME.GAME.prototype = {
-  preload: function() {},
   create: function() {
     // Setup variables
     this.area = 0;
@@ -94,9 +93,9 @@ GAME.GAME.prototype = {
     }
 
     if (this.background == null) {
-      this.background = this.add.sprite(0, 0, "background_" + AREAS[this.area].name);
+      this.background = this.add.sprite(0, 0, "area_" + AREAS[this.area].name);
     } {
-      this.background.loadTexture("background_" + AREAS[this.area].name);
+      this.background.loadTexture("area_" + AREAS[this.area].name);
     }
   },
   setupPlayer: function() {
@@ -195,7 +194,7 @@ GAME.GAME.prototype = {
 
     if (loot != null) {
       if (loot == "capture") {
-        SAVE.monsters.indexOf(this.enemy.data.name) === -1 ? SAVE.monsters.push(this.enemy.data.name) && this.updateText("CAPTURED " + this.enemy.data.name + "!!!") : console.log("already captured!");
+        SAVE.monsters.indexOf(this.enemy.data.name) === -1 ? SAVE.monsters.push(this.enemy.data.name) && this.updateText("CAPTURED " + this.enemy.data.name + "!!!") : console.log("");
       } else if (isNaN(loot)) {
         this.updateText("OBTAINED " + loot + "!!!");
 
