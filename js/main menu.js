@@ -194,13 +194,13 @@ GAME.MAINMENU.prototype = {
         "level": 0,
         "xp": 0,
         "money": 0,
-        "items": [
+        "items": {
 
-        ],
+        },
         "life_boost": 0,
-        "dmg_boost": 0,
+        "dmg_boost": 1.25,
         "def_boost": 0,
-        "ult_boost": 0
+        "ult_boost": 2.5
       },
       "monster": {
 

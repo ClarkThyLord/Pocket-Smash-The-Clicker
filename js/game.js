@@ -193,12 +193,18 @@ GAME.GAME.prototype = {
     var loot = this.enemy.data.drops[Math.floor(Math.random() * 10)];
 
     if (loot != null) {
-      if (loot == "capture") {
-        SAVE.monsters.indexOf(this.enemy.data.name) === -1 ? SAVE.monsters.push(this.enemy.data.name) && this.updateText("CAPTURED " + this.enemy.data.name + "!!!") : console.log("");
+      if (loot == "capture" && SAVE.monsters.indexOf(this.enemy.data.name) === -1) {
+        this.updateText("CAPTURED " + this.enemy.data.name + "!!!");
+
+        SAVE.monsters.push(this.enemy.data.name);
       } else if (isNaN(loot)) {
         this.updateText("OBTAINED " + loot + "!!!");
 
-        SAVE.player.items.push(loot);
+        if (loot in SAVE.player.items) {
+          SAVE.player.items[loot] += 1;
+        } else {
+          SAVE.player.items[loot] = 1;
+        }
       } else {
         this.updateText("FOUND " + loot + "!!!");
 

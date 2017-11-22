@@ -5,6 +5,7 @@ GAME.STORE.prototype = {
     // Setup variables
     this.current = 1;
     this.items = [];
+    this.item_counts = {};
     this.gui = [];
 
     this.money = null;
@@ -81,33 +82,51 @@ GAME.STORE.prototype = {
     }
   },
   setupItems: function() {
-    var frame, text, item, button, x = 400;
+    var frame, name, item, count, button, x = 400;
     for (var item_name in ITEMS) {
       frame = this.add.sprite(x, 400, "store_frame");
       frame.anchor.x = frame.anchor.y = 0.5;
       frame.data.name = item_name;
       frame.inputEnabled = true;
       frame.events.onInputDown.add(this.useItem, this);
-      text = this.add.text(0, -125, item_name, FONT);
-      text.anchor.x = text.anchor.y = 0.5;
+      name = this.add.text(0, -125, item_name, FONT);
+      name.anchor.x = name.anchor.y = 0.5;
       item = this.add.sprite(0, -25, "item_" + item_name);
       item.anchor.x = item.anchor.y = 0.5;
+      count = this.add.text(0, 50, SAVE.player.items[item_name] || "0", FONT);
+      count.anchor.x = count.anchor.y = 0.5;
       button = this.add.sprite(0, 110, "store_buy");
       button.anchor.x = button.anchor.y = 0.5;
       button.data.name = item_name;
       button.inputEnabled = true;
       button.events.onInputDown.add(this.buyItem, this);
-      frame.addChild(text);
+      frame.addChild(name);
       frame.addChild(item);
+      frame.addChild(count);
       frame.addChild(button);
+      this.item_counts[item_name] = count;
       x += 150;
     }
   },
   useItem: function(obj) {
-    console.log("USED: " + obj.data.name);
+    if (Object.keys(SAVE.monster).length !== 0) {
+      console.log("USED: " + obj.data.name);
+
+    }
   },
   buyItem: function(obj) {
-    console.log("BOUGHT: " + obj.data.name);
+    if (SAVE.player.money > ITEMS[obj.data.name].cost) {
+      console.log("BOUGHT: " + obj.data.name);
+      SAVE.player.money -= ITEMS[obj.data.name].cost;
+
+      if (obj.data.name in SAVE.player.items) {
+        SAVE.player.items[obj.data.name] += 1;
+      } else {
+        SAVE.player.items[obj.data.name] = 1;
+      }
+
+      this.updateText(obj);
+    }
   },
   moveLeft: function(obj) {
     if (this.current !== 1) {
@@ -118,7 +137,7 @@ GAME.STORE.prototype = {
     }
   },
   moveRight: function(obj) {
-    if (this.current !== this.monsters.total) {
+    if (this.current !== this.items.total) {
       this.current += 1;
       this.items.forEach(function(item) {
         item.x -= 150;
@@ -155,5 +174,7 @@ GAME.STORE.prototype = {
   },
   updateText: function(obj) {
     this.money.setText(SAVE.player.money);
+
+    this.item_counts[obj.data.name].setText(SAVE.player.items[obj.data.name]);
   }
 };
