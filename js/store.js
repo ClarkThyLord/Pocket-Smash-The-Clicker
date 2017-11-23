@@ -93,7 +93,7 @@ GAME.STORE.prototype = {
       name.anchor.x = name.anchor.y = 0.5;
       item = this.add.sprite(0, -25, "item_" + item_name);
       item.anchor.x = item.anchor.y = 0.5;
-      count = this.add.text(0, 50, "Inventory - " + SAVE.player.items[item_name] + "\nCost - " + ITEMS[item_name].cost || "Inventory - 0\nCost - " + ITEMS[item_name].cost, FONT);
+      count = this.add.text(0, 50, "Inventory - " + (SAVE.player.items[item_name] || 0) + "\nCost - " + ITEMS[item_name].cost, FONT);
       count.anchor.x = count.anchor.y = 0.5;
       count.scale.x = count.scale.y = 0.5;
       button = this.add.sprite(0, 110, "store_buy");
