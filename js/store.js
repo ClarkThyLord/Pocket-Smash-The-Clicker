@@ -41,7 +41,7 @@ GAME.STORE.prototype = {
     right_arrow.events.onInputDown.add(this.moveRight, this);
     this.gui.push(right_arrow);
 
-    var back = this.add.sprite(695, 570, "store_back");
+    var back = this.add.sprite(750, 570, "store_back");
     back.anchor.x = back.anchor.y = 0.5;
     back.inputEnabled = true;
     back.events.onInputDown.add(this.back, this);
@@ -93,8 +93,9 @@ GAME.STORE.prototype = {
       name.anchor.x = name.anchor.y = 0.5;
       item = this.add.sprite(0, -25, "item_" + item_name);
       item.anchor.x = item.anchor.y = 0.5;
-      count = this.add.text(0, 50, SAVE.player.items[item_name] || "0", FONT);
+      count = this.add.text(0, 50, "Inventory - " + SAVE.player.items[item_name] + "\nCost - " + ITEMS[item_name].cost || "Inventory - 0\nCost - " + ITEMS[item_name].cost, FONT);
       count.anchor.x = count.anchor.y = 0.5;
+      count.scale.x = count.scale.y = 0.5;
       button = this.add.sprite(0, 110, "store_buy");
       button.anchor.x = button.anchor.y = 0.5;
       button.data.name = item_name;
@@ -175,6 +176,6 @@ GAME.STORE.prototype = {
   updateText: function(obj) {
     this.money.setText(SAVE.player.money);
 
-    this.item_counts[obj.data.name].setText(SAVE.player.items[obj.data.name]);
+    this.item_counts[obj.data.name].setText("Inventory - " + SAVE.player.items[obj.data.name] + "\nCost - " + ITEMS[obj.data.name].cost);
   }
 };

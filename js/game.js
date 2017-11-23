@@ -35,13 +35,13 @@ GAME.GAME.prototype = {
     this.text.anchor.y = 0.1;
     this.gui.push(this.text);
 
-    var retire = this.add.sprite(485, 30, "game_retire");
-    retire.anchor.x = retire.anchor.y = 0.5;
-    retire.inputEnabled = true;
-    retire.events.onInputDown.add(this.retire, this);
-    this.gui.push(retire);
+    var restart = this.add.sprite(750, 30, "icon_restart");
+    restart.anchor.x = restart.anchor.y = 0.5;
+    restart.inputEnabled = true;
+    restart.events.onInputDown.add(this.restart, this);
+    this.gui.push(restart);
 
-    var store = this.add.sprite(695, 30, "icon_store");
+    var store = this.add.sprite(665, 30, "icon_store");
     store.anchor.x = store.anchor.y = 0.5;
     store.inputEnabled = true;
     store.events.onInputDown.add(this.store, this);
@@ -80,7 +80,7 @@ GAME.GAME.prototype = {
     this.sound.destroy();
     this.state.start("STORE");
   },
-  retire: function() {
+  restart: function() {
     SAVE.monster = {};
     this.saveGame();
     this.sound.destroy();
@@ -151,7 +151,7 @@ GAME.GAME.prototype = {
       alpha: 1
     }, 1000, Phaser.Easing.Linear.None, true);
     death.inputEnabled = true;
-    death.events.onInputDown.add(this.retire, this);
+    death.events.onInputDown.add(this.restart, this);
   },
   setupMonster: function() {
     // Chooose a valid monster at random
@@ -206,7 +206,7 @@ GAME.GAME.prototype = {
           SAVE.player.items[loot] = 1;
         }
       } else {
-        this.updateText("FOUND " + loot + "!!!");
+        this.updateText("FOUND " + loot + " COINS!!!");
 
         SAVE.player.money += loot;
       }

@@ -38,17 +38,29 @@ GAME.MAINMENU.prototype = {
     right_arrow.events.onInputDown.add(this.moveRight, this);
     this.gui.push(right_arrow);
 
-    var restart = this.add.sprite(695, 515, "mm_restart");
+    var restart = this.add.sprite(750, 515, "icon_restart");
     restart.anchor.x = restart.anchor.y = 0.5;
     restart.inputEnabled = true;
     restart.events.onInputDown.add(this.restartGame, this);
     this.gui.push(restart);
 
-    var store = this.add.sprite(695, 570, "icon_store");
+    var store = this.add.sprite(665, 515, "icon_store");
     store.anchor.x = store.anchor.y = 0.5;
     store.inputEnabled = true;
     store.events.onInputDown.add(this.store, this);
     this.gui.push(store);
+
+    var help = this.add.sprite(665, 570, "mm_help");
+    help.anchor.x = help.anchor.y = 0.5;
+    help.inputEnabled = true;
+    help.events.onInputDown.add(this.help, this);
+    this.gui.push(help);
+
+    var credits = this.add.sprite(750, 570, "mm_credits");
+    credits.anchor.x = credits.anchor.y = 0.5;
+    credits.inputEnabled = true;
+    credits.events.onInputDown.add(this.credits, this);
+    this.gui.push(credits);
 
     this.type = this.add.sprite(190, 530, "icon_unknown");
     this.type.anchor.x = this.type.anchor.y = 0.5;
@@ -101,13 +113,33 @@ GAME.MAINMENU.prototype = {
       this.sound.play("", 0, 1, true);
     }
   },
+  help: function() {
+    var sprite = this.add.sprite(0, 0, "mm_help1");
+    sprite.data.slide = 1;
+    sprite.inputEnabled = true;
+    sprite.events.onInputDown.add(function(obj) {
+      if (obj.data.slide == 1) {
+        obj.loadTexture("mm_help2");
+      } else if (obj.data.slide == 2) {
+        obj.loadTexture("mm_help3");
+      } else if (obj.data.slide == 3) {
+        console.log("yup");
+        obj.destroy();
+      }
+
+      obj.data.slide += 1;
+    }, this);
+  },
+  credits: function() {
+    console.log("CREDITS!");
+  },
   store: function() {
-    console.log("STORE!");
     this.saveGame();
     this.sound.destroy();
     this.state.start("STORE");
   },
   setupMonsters: function() {
+    this.current = 1;
     if (this.monsters === null) {
       this.monsters = this.add.group();
     } else {

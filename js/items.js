@@ -1,5 +1,5 @@
 var ITEMS = {
-  "potion": {
+  "health potion": {
     "name": "potion",
     "cost": 200
   }
