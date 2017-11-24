@@ -8,6 +8,8 @@ GAME.GAME.prototype = {
     this.text = null;
 
     this.player = {};
+    this.player.action = null;
+
     this.enemy = {};
 
     this.gui = [];
@@ -109,6 +111,13 @@ GAME.GAME.prototype = {
     this.player.monster.events.onInputDown.add(this.monsterULT, this);
     this.player.ground.addChild(this.player.monster);
 
+    this.player.charge = this.add.emitter(0, 0, 100);
+    this.player.charge.makeParticles("game_charge");
+
+    this.player.heal = this.add.emitter(0, 0, 100);
+    this.player.heal.makeParticles("game_heal");
+    this.player.monster.addChild(this.player.heal);
+
     this.player.data = SAVE.monster;
 
     this.player.life = this.add.sprite(-100, 0, "icon_life");
@@ -117,10 +126,13 @@ GAME.GAME.prototype = {
     this.gui.push(this.player.life);
     this.player.ground.addChild(this.player.life);
 
-    this.player.ult = this.add.sprite(300, 150, "game_ult");
+    this.player.ult = this.add.sprite(300, 225, "game_ult");
     this.player.ult.anchor.y = 0.5;
     this.player.ult.scale.x = 0.01 * (this.player.data.ult / 1);
     this.gui.push(this.player.ult);
+  },
+  playerAction: function() {
+
   },
   playerCheck: function() {
     if (this.player.data.xp / (150 * this.player.data.level) >= 1) {
@@ -131,6 +143,7 @@ GAME.GAME.prototype = {
 
       if (this.player.data.life < 600) {
         this.player.data.life += this.player.data.life * 0.3;
+        this.player.heal.start(true, 1000, null, 10);
       }
 
       this.player.data.attack += this.player.data.attack * 0.13;
@@ -163,6 +176,10 @@ GAME.GAME.prototype = {
     this.enemy.monster = this.add.sprite(0, 0, "monster_" + AREAS[this.area].monsters[pick]);
     this.enemy.monster.anchor.x = 0.5;
     this.enemy.monster.anchor.y = 1;
+
+    this.enemy.dmg = this.add.emitter(0, 0, 100);
+    this.enemy.dmg.makeParticles("game_damage");
+
     this.enemy.monster.inputEnabled = true;
     this.enemy.monster.events.onInputDown.add(this.monsterDMG, this);
     this.enemy.ground.addChild(this.enemy.monster);
@@ -184,6 +201,7 @@ GAME.GAME.prototype = {
     // Heal the player
     if (this.player.data.life < 600) {
       this.player.data.life += (this.area + 1) * 50;
+      this.player.heal.start(true, 1000, null, 10);
     }
 
     // Give the player xp
@@ -227,7 +245,7 @@ GAME.GAME.prototype = {
     // Check the player
     this.playerCheck();
   },
-  monsterULT: function() {
+  monsterULT: function(obj, pointer) {
     this.player.data.ult += SAVE.player.ult_boost;
     if (this.player.data.ult >= 100) {
       this.monsterDEATH();
@@ -236,13 +254,21 @@ GAME.GAME.prototype = {
     }
 
     this.player.ult.scale.x = 0.01 * (this.player.data.ult / 1);
+
+    this.player.charge.x = pointer.x;
+    this.player.charge.y = pointer.y;
+    this.player.charge.start(true, 1000, null, 10);
   },
-  monsterDMG: function() {
+  monsterDMG: function(obj, pointer) {
     this.enemy.data.life -= (Math.floor((Math.random() * (this.enemy.data.attack + 1)) * (1 - ((this.player.data.defence * 0.01) * SAVE.player.def_boost)))) * SAVE.player.dmg_boost;
     if (this.enemy.data.life <= 0) {
       this.monsterDEATH();
     } else {
       this.enemy.life.scale.x = 0.05 * (this.enemy.data.life / 10);
+
+      this.enemy.dmg.x = pointer.x;
+      this.enemy.dmg.y = pointer.y;
+      this.enemy.dmg.start(true, 1000, null, 10);
     }
   },
   toggleNoise: function(obj) {

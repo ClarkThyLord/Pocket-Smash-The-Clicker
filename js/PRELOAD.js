@@ -49,6 +49,10 @@ GAME.PRELOAD.prototype = {
     this.load.image("mm_help3", "./res/main menu/help/help_3.jpg");
 
     // Load game stuff
+    this.load.image("game_damage", "./res/game/damage.png");
+    this.load.image("game_charge", "./res/game/charge.png");
+    this.load.image("game_heal", "./res/game/heal.png");
+
     this.load.image("game_death", "./res/game/death.jpg");
     this.load.image("game_ground", "./res/game/ground.png");
     this.load.image("game_ult", "./res/game/ultimate.jpg");
