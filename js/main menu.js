@@ -131,7 +131,16 @@ GAME.MAINMENU.prototype = {
     }, this);
   },
   credits: function() {
-    console.log("CREDITS!");
+    var sprite = this.add.sprite(0, 0, "mm_plain");
+
+    var text = this.add.text(400, 300, "CREDITS\n\nMusic by Eric Matyas\nwww.soundimage.org", FONT);
+    text.anchor.x = text.anchor.y = 0.5;
+    sprite.addChild(text);
+
+    sprite.inputEnabled = true;
+    sprite.events.onInputDown.add(function(obj, pointer) {
+      obj.destroy();
+    }, this);
   },
   store: function() {
     this.saveGame();

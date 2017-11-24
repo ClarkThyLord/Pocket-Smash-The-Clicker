@@ -7,7 +7,7 @@ GAME.PRELOAD = function(game) {
 
 GAME.PRELOAD.prototype = {
   preload: function() {
-    this.add.sprite(0, 0, "mm_load");
+    this.add.sprite(0, 0, "mm_plain");
     this.icon = this.add.sprite(0, 0, "mm_icon");
     this.load.setPreloadSprite(this.icon);
 

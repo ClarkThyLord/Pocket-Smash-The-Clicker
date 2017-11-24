@@ -110,14 +110,16 @@ GAME.STORE.prototype = {
     }
   },
   useItem: function(obj) {
-    if (Object.keys(SAVE.monster).length !== 0) {
-      console.log("USED: " + obj.data.name);
+    if (SAVE.player.items[obj.data.name] >= 1 && (ITEMS[obj.data.name].type == 0 || Object.keys(SAVE.monster).length !== 0)) {
+      console.log("USING " + obj.data.name + "!!!");
+      ITEMS[obj.data.name].use();
+      SAVE.player.items[obj.data.name] -= 1;
 
+      this.updateText(obj);
     }
   },
   buyItem: function(obj) {
     if (SAVE.player.money > ITEMS[obj.data.name].cost) {
-      console.log("BOUGHT: " + obj.data.name);
       SAVE.player.money -= ITEMS[obj.data.name].cost;
 
       if (obj.data.name in SAVE.player.items) {

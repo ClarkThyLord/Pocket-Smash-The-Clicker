@@ -37,7 +37,7 @@ GAME.BOOT.prototype = {
   preload: function() {
     // Load preload things
     this.load.image("mm_icon", "./res/main menu/icon.png");
-    this.load.image("mm_load", "./res/main menu/load.jpg");
+    this.load.image("mm_plain", "./res/main menu/load.jpg");
   },
   create: function() {
     this.state.start("PRELOAD");
