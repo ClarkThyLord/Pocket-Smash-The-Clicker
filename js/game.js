@@ -90,8 +90,8 @@ GAME.GAME.prototype = {
   },
   setupArea: function() {
     this.area = Math.floor(SAVE.monster.level / 5.5);
-    if (this.area > 1) {
-      this.area = 1;
+    if (this.area >= AREAS.length) {
+      this.area = AREAS.length - 1;
     }
 
     if (this.background == null) {
