@@ -32,9 +32,7 @@ GAME.PRELOAD.prototype = {
 
       },
       "monsters": [
-        "cacus",
-        "ugo",
-        "seriosity"
+        "johncena"
       ]
     };
 

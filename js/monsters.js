@@ -44,7 +44,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "ugo": {
+  "ugo": { // woods day
     "name": "ugo",
     "type": "fire",
     "level": 0,
@@ -66,7 +66,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "trii": {
+  "trii": { // river day
     "name": "trii",
     "type": "fire",
     "level": 0,
@@ -132,7 +132,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "liku": {
+  "liku": { // forest day
     "name": "liku",
     "type": "fire",
     "level": 0,
@@ -375,7 +375,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "tri": {
+  "tri": { // woods night
     "name": "tri",
     "type": "water",
     "level": 0,
@@ -419,7 +419,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "suku": {
+  "suku": { // river night
     "name": "suku",
     "type": "water",
     "level": 0,
@@ -639,7 +639,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "krus": {
+  "krus": { // beach day
     "name": "krus",
     "type": "water",
     "level": 0,
@@ -859,7 +859,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "beca": {
+  "beca": { // beach night
     "name": "beca",
     "type": "water",
     "level": 0,
@@ -910,7 +910,7 @@ var MONSTERS = {
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 144,
+    "life": 157,
     "attack": 38,
     "defence": 54,
     "drops": [
@@ -926,7 +926,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "ziite": {
+  "ziite": { // beach night
     "name": "ziite",
     "type": "earth",
     "level": 0,
@@ -1014,7 +1014,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "yole": {
+  "yole": { // beach day
     "name": "yole",
     "type": "earth",
     "level": 0,
@@ -1036,7 +1036,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "triano": {
+  "triano": { // woods night
     "name": "triano",
     "type": "earth",
     "level": 0,
@@ -1080,7 +1080,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "siny": {
+  "siny": { // woods days
     "name": "siny",
     "type": "earth",
     "level": 0,
@@ -1102,7 +1102,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "sefa": {
+  "sefa": { // river night
     "name": "sefa",
     "type": "earth",
     "level": 0,
@@ -1212,7 +1212,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "meza": {
+  "meza": { // river day
     "name": "meza",
     "type": "earth",
     "level": 0,
@@ -1256,7 +1256,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "lili": {
+  "lili": { // forest day
     "name": "lili",
     "type": "earth",
     "level": 0,
@@ -1719,7 +1719,7 @@ var MONSTERS = {
     ]
   },
   // WIND --- LOW LIFE HIGH ATTACK LOW DEFENCE
-  "zomo": {
+  "zomo": { // woods night
     "name": "zomo",
     "type": "wind",
     "level": 0,
@@ -1741,7 +1741,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "yaka": {
+  "yaka": { // woods day river night forest day
     "name": "yaka",
     "type": "wind",
     "level": 0,
@@ -1763,7 +1763,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "staa": {
+  "staa": { // river day beach day
     "name": "staa",
     "type": "wind",
     "level": 0,
@@ -1785,7 +1785,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "site": {
+  "site": { // beach night
     "name": "site",
     "type": "wind",
     "level": 0,
@@ -1962,7 +1962,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "spidda": {
+  "spidda": { // woods night
     "name": "spidda",
     "type": "dark",
     "level": 0,
@@ -2006,8 +2006,8 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "saa": {
-    "name": "saa",
+  "saaa": { // river night
+    "name": "saaa",
     "type": "dark",
     "level": 0,
     "xp": 0,
@@ -2072,7 +2072,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "potu": {
+  "potu": { // beach night
     "name": "potu",
     "type": "dark",
     "level": 0,
@@ -2491,28 +2491,6 @@ var MONSTERS = {
     ]
   },
   // LIGHT --- HIGH LIFE LOW ATTACK HIGH DEFENCE
-  "uni": {
-    "name": "uni",
-    "type": "light",
-    "level": 0,
-    "xp": 0,
-    "ult": 0,
-    "life": 541,
-    "attack": 97,
-    "defence": 45,
-    "drops": [
-      341,
-      42,
-      133,
-      44,
-      12,
-      141,
-      null,
-      null,
-      null,
-      "capture"
-    ]
-  },
   "tora": {
     "name": "tora",
     "type": "light",
@@ -2579,7 +2557,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "taqa": {
+  "teqa": { // woods day
     "name": "teqa",
     "type": "light",
     "level": 0,
@@ -2601,7 +2579,29 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "tebua": {
+  "uni": { // river day
+    "name": "uni",
+    "type": "light",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 541,
+    "attack": 97,
+    "defence": 45,
+    "drops": [
+      341,
+      42,
+      133,
+      44,
+      12,
+      141,
+      null,
+      null,
+      null,
+      "capture"
+    ]
+  },
+  "tebua": { // beach day
     "name": "tebua",
     "type": "light",
     "level": 0,
@@ -2755,7 +2755,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "sammy": {
+  "sammy": { // forest day
     "name": "sammy",
     "type": "light",
     "level": 0,

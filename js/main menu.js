@@ -23,6 +23,33 @@ GAME.MAINMENU.prototype = {
     // Start of scene setup
     this.add.sprite(0, 0, 'mm_background');
 
+    var heart = this.add.sprite(275, 470, "icon_heart");
+    heart.anchor.x = heart.anchor.y = 0.5;
+    heart.scale.x = heart.scale.y = 0.25;
+    this.life = this.add.sprite(325, 470, "icon_life");
+    this.life.anchor.x = 0;
+    this.life.anchor.y = 0.5;
+    this.gui.push(heart);
+    this.gui.push(this.life);
+
+    var sword = this.add.sprite(275, 520, "icon_sword");
+    sword.anchor.x = sword.anchor.y = 0.5;
+    sword.scale.x = sword.scale.y = 0.25;
+    this.attack = this.add.sprite(325, 520, "icon_attack");
+    this.attack.anchor.x = 0;
+    this.attack.anchor.y = 0.5;
+    this.gui.push(sword);
+    this.gui.push(this.attack);
+
+    var shield = this.add.sprite(275, 570, "icon_shield");
+    shield.anchor.x = shield.anchor.y = 0.5;
+    shield.scale.x = shield.scale.y = 0.25;
+    this.defence = this.add.sprite(325, 570, "icon_defence");
+    this.defence.anchor.x = 0;
+    this.defence.anchor.y = 0.5;
+    this.gui.push(shield);
+    this.gui.push(this.defence);
+
     var left_arrow = this.add.sprite(50, 325, "mm_arrow");
     left_arrow.alpha = 0.3;
     left_arrow.anchor.x = left_arrow.anchor.y = 0.5;
@@ -66,33 +93,6 @@ GAME.MAINMENU.prototype = {
     this.type.anchor.x = this.type.anchor.y = 0.5;
     this.type.scale.x = this.type.scale.y = 0.50;
     this.gui.push(this.type);
-
-    var heart = this.add.sprite(275, 470, "icon_heart");
-    heart.anchor.x = heart.anchor.y = 0.5;
-    heart.scale.x = heart.scale.y = 0.25;
-    this.life = this.add.sprite(325, 470, "icon_life");
-    this.life.anchor.x = 0;
-    this.life.anchor.y = 0.5;
-    this.gui.push(heart);
-    this.gui.push(this.life);
-
-    var sword = this.add.sprite(275, 520, "icon_sword");
-    sword.anchor.x = sword.anchor.y = 0.5;
-    sword.scale.x = sword.scale.y = 0.25;
-    this.attack = this.add.sprite(325, 520, "icon_attack");
-    this.attack.anchor.x = 0;
-    this.attack.anchor.y = 0.5;
-    this.gui.push(sword);
-    this.gui.push(this.attack);
-
-    var shield = this.add.sprite(275, 570, "icon_shield");
-    shield.anchor.x = shield.anchor.y = 0.5;
-    shield.scale.x = shield.scale.y = 0.25;
-    this.defence = this.add.sprite(325, 570, "icon_defence");
-    this.defence.anchor.x = 0;
-    this.defence.anchor.y = 0.5;
-    this.gui.push(shield);
-    this.gui.push(this.defence);
 
     this.saveIcon = this.add.sprite(750, 50, "icon_save");
     this.saveIcon.anchor.x = this.saveIcon.anchor.y = 0.5;
@@ -247,9 +247,7 @@ GAME.MAINMENU.prototype = {
 
       },
       "monsters": [
-        "cacus",
-        "ugo",
-        "seriosity"
+        "johncena"
       ]
     };
     this.setupMonsters();
