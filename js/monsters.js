@@ -198,7 +198,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "gira": {
+  "gira": { // castle day
     "name": "gira",
     "type": "fire",
     "level": 0,
@@ -485,7 +485,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "safa": {
+  "safa": { // forest night
     "name": "safa",
     "type": "water",
     "level": 0,
@@ -573,7 +573,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "leka": {
+  "leka": { // castle night
     "name": "leka",
     "type": "water",
     "level": 0,
@@ -1212,7 +1212,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "meza": { // river day
+  "meza": { // river day forest night
     "name": "meza",
     "type": "earth",
     "level": 0,
@@ -1300,7 +1300,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "garu": {
+  "garu": { // castle night
     "name": "garu",
     "type": "earth",
     "level": 0,
@@ -1322,7 +1322,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "gaa": {
+  "gaa": { // castle day
     "name": "gaa",
     "type": "earth",
     "level": 0,
@@ -1763,7 +1763,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "staa": { // river day beach day
+  "staa": { // river day beach day forest night
     "name": "staa",
     "type": "wind",
     "level": 0,
@@ -1785,7 +1785,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "site": { // beach night
+  "site": { // beach night castle day
     "name": "site",
     "type": "wind",
     "level": 0,
@@ -1829,7 +1829,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "bun": {
+  "bun": { // castle night city day
     "name": "bun",
     "type": "wind",
     "level": 0,
@@ -1873,7 +1873,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "beak": {
+  "beak": { // city night
     "name": "beak",
     "type": "wind",
     "level": 0,
@@ -2138,7 +2138,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "leaf": {
+  "leaf": { // forest night
     "name": "leaf",
     "type": "dark",
     "level": 0,
@@ -2292,7 +2292,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "frea": {
+  "frea": { // castle night
     "name": "frea",
     "type": "dark",
     "level": 0,
@@ -2843,7 +2843,7 @@ var MONSTERS = {
       "capture"
     ]
   },
-  "mach": {
+  "mach": { // castle day
     "name": "mach",
     "type": "light",
     "level": 0,

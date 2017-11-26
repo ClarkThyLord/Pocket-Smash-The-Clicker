@@ -247,6 +247,7 @@ GAME.MAINMENU.prototype = {
 
       },
       "monsters": [
+        "cacus",
         "johncena"
       ]
     };
