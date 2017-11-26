@@ -1,18 +1,84 @@
 var MONSTERS = {
   // FIRE --- MED LIFE MED ATTACK LOW DEFENCE
-  "": {
-    "name": "",
+  "zimbo": {
+    "name": "zimbo",
     "type": "fire",
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 0,
-    "attack": 0,
-    "defence": 0,
+    "life": 76,
+    "attack": 87,
+    "defence": 19,
     "drops": [
       null,
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture"
+    ]
+  },
+  "waaq": {
+    "name": "waaq",
+    "type": "fire",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 56,
+    "attack": 94,
+    "defence": 7,
+    "drops": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture",
+      "capture"
+    ]
+  },
+  "ugo": {
+    "name": "ugo",
+    "type": "fire",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 75,
+    "attack": 42,
+    "defence": 11,
+    "drops": [
+      32,
+      22,
+      21,
+      42,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture"
+    ]
+  },
+  "trii": {
+    "name": "trii",
+    "type": "fire",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 65,
+    "attack": 72,
+    "defence": 6,
+    "drops": [
+      31,
+      32,
+      45,
       null,
       null,
       null,
@@ -265,15 +331,59 @@ var MONSTERS = {
     ]
   },
   // WATER --- HIGH LIFE MED ATTACK MED DEFENCE
-  "": {
-    "name": "",
+  "yittu": {
+    "name": "yittu",
     "type": "water",
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 0,
-    "attack": 0,
-    "defence": 0,
+    "life": 213,
+    "attack": 39,
+    "defence": 25,
+    "drops": [
+      "health potion",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture"
+    ]
+  },
+  "uroga": {
+    "name": "uroga",
+    "type": "water",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 188,
+    "attack": 34,
+    "defence": 14,
+    "drops": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture",
+      "capture"
+    ]
+  },
+  "tri": {
+    "name": "tri",
+    "type": "water",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 147,
+    "attack": 36,
+    "defence": 17,
     "drops": [
       null,
       null,
@@ -772,15 +882,169 @@ var MONSTERS = {
     ]
   },
   // EARTH --- HIGH LIFE LOW ATTACK MED DEFENCE
-  "": {
-    "name": "",
+  "zulo": {
+    "name": "zulo",
     "type": "earth",
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 0,
-    "attack": 0,
-    "defence": 0,
+    "life": 144,
+    "attack": 34,
+    "defence": 29,
+    "drops": [
+      "health potion",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture",
+      "capture"
+    ]
+  },
+  "zilla": {
+    "name": "zilla",
+    "type": "earth",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 144,
+    "attack": 38,
+    "defence": 54,
+    "drops": [
+      "health potion",
+      "health potion",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture"
+    ]
+  },
+  "ziite": {
+    "name": "ziite",
+    "type": "earth",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 134,
+    "attack": 14,
+    "defence": 47,
+    "drops": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture",
+      "capture"
+    ]
+  },
+  "ziit": {
+    "name": "ziit",
+    "type": "earth",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 131,
+    "attack": 26,
+    "defence": 21,
+    "drops": [
+      "health potion",
+      "health potion",
+      "health potion",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture",
+      "capture"
+    ]
+  },
+  "zeet": {
+    "name": "zeet",
+    "type": "earth",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 133,
+    "attack": 24,
+    "defence": 45,
+    "drops": [
+      12,
+      14,
+      13,
+      16,
+      17,
+      null,
+      null,
+      null,
+      "capture",
+      "capture"
+    ]
+  },
+  "zam": {
+    "name": "zam",
+    "type": "earth",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 173,
+    "attack": 32,
+    "defence": 37,
+    "drops": [
+      124,
+      152,
+      142,
+      153,
+      134,
+      null,
+      null,
+      null,
+      null,
+      "capture"
+    ]
+  },
+  "yole": {
+    "name": "yole",
+    "type": "earth",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 169,
+    "attack": 21,
+    "defence": 46,
+    "drops": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture",
+      "capture"
+    ]
+  },
+  "triano": {
+    "name": "triano",
+    "type": "earth",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 197,
+    "attack": 24,
+    "defence": 33,
     "drops": [
       null,
       null,
@@ -791,6 +1055,28 @@ var MONSTERS = {
       null,
       null,
       null,
+      "capture"
+    ]
+  },
+  "torro": {
+    "name": "torro",
+    "type": "earth",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 213,
+    "attack": 19,
+    "defence": 32,
+    "drops": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture",
+      "capture",
       "capture"
     ]
   },
@@ -1433,15 +1719,15 @@ var MONSTERS = {
     ]
   },
   // WIND --- LOW LIFE HIGH ATTACK LOW DEFENCE
-  "": {
-    "name": "",
+  "zomo": {
+    "name": "zomo",
     "type": "wind",
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 0,
-    "attack": 0,
-    "defence": 0,
+    "life": 67,
+    "attack": 89,
+    "defence": 14,
     "drops": [
       null,
       null,
@@ -1451,7 +1737,29 @@ var MONSTERS = {
       null,
       null,
       null,
+      "capture",
+      "capture"
+    ]
+  },
+  "yaka": {
+    "name": "yaka",
+    "type": "wind",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 75,
+    "attack": 84,
+    "defence": 11,
+    "drops": [
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture",
       "capture"
     ]
   },
@@ -1588,6 +1896,50 @@ var MONSTERS = {
     ]
   },
   // DARK --- LOW LIFE HIGH ATTACK LOW DEFENCE
+  "zilo": {
+    "name": "zilo",
+    "type": "dark",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 93,
+    "attack": 145,
+    "defence": 5,
+    "drops": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture"
+    ]
+  },
+  "zambo": {
+    "name": "zambo",
+    "type": "dark",
+    "level": 0,
+    "xp": 0,
+    "ult": 0,
+    "life": 56,
+    "attack": 106,
+    "defence": 4,
+    "drops": [
+      "health potion",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "capture"
+    ]
+  },
   "tommera": {
     "name": "tommera",
     "type": "dark",
@@ -2139,22 +2491,22 @@ var MONSTERS = {
     ]
   },
   // LIGHT --- HIGH LIFE LOW ATTACK HIGH DEFENCE
-  "": {
-    "name": "",
+  "uni": {
+    "name": "uni",
     "type": "light",
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 0,
-    "attack": 0,
-    "defence": 0,
+    "life": 541,
+    "attack": 97,
+    "defence": 45,
     "drops": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      341,
+      42,
+      133,
+      44,
+      12,
+      141,
       null,
       null,
       null,
@@ -2844,15 +3196,15 @@ var MONSTERS = {
     ]
   },
   // MEME --- OVERALL OP
-  "": {
-    "name": "",
+  "welp": {
+    "name": "welp",
     "type": "meme",
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 0,
-    "attack": 0,
-    "defence": 0,
+    "life": 541,
+    "attack": 111,
+    "defence": 69,
     "drops": [
       null,
       null,
@@ -2889,7 +3241,7 @@ var MONSTERS = {
     ]
   },
   "sorrow": {
-    "name": "",
+    "name": "sorrow",
     "type": "meme",
     "level": 0,
     "xp": 0,
@@ -2933,7 +3285,7 @@ var MONSTERS = {
     ]
   },
   "sith": {
-    "name": "",
+    "name": "sith",
     "type": "meme",
     "level": 0,
     "xp": 0,
