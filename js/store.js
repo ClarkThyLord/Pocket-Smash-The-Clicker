@@ -4,7 +4,6 @@ GAME.STORE.prototype = {
   create: function() {
     // Setup variables
     this.current = 1;
-    this.items = [];
     this.item_counts = {};
     this.gui = [];
 
@@ -82,6 +81,7 @@ GAME.STORE.prototype = {
     }
   },
   setupItems: function() {
+    this.items = this.add.group();
     var frame, name, item, count, button, x = 400;
     for (var item_name in ITEMS) {
       frame = this.add.sprite(x, 400, "store_frame");
@@ -89,29 +89,39 @@ GAME.STORE.prototype = {
       frame.data.name = item_name;
       frame.inputEnabled = true;
       frame.events.onInputDown.add(this.useItem, this);
+
       name = this.add.text(0, -125, item_name, FONT);
       name.anchor.x = name.anchor.y = 0.5;
+
       item = this.add.sprite(0, -25, "item_" + item_name);
       item.anchor.x = item.anchor.y = 0.5;
+
       count = this.add.text(0, 50, "Inventory - " + (SAVE.player.items[item_name] || 0) + "\nCost - " + ITEMS[item_name].cost, FONT);
       count.anchor.x = count.anchor.y = 0.5;
       count.scale.x = count.scale.y = 0.5;
+
       button = this.add.sprite(0, 110, "store_buy");
       button.anchor.x = button.anchor.y = 0.5;
       button.data.name = item_name;
       button.inputEnabled = true;
       button.events.onInputDown.add(this.buyItem, this);
+
+      // Setup all the children to the frame
       frame.addChild(name);
       frame.addChild(item);
       frame.addChild(count);
       frame.addChild(button);
+
+      // Add the refrenc to the items count
       this.item_counts[item_name] = count;
-      x += 150;
+
+      // Add the "item" to the group of items
+      this.items.add(frame);
+      x += 350;
     }
   },
   useItem: function(obj) {
     if (SAVE.player.items[obj.data.name] >= 1 && (ITEMS[obj.data.name].type == 0 || Object.keys(SAVE.monster).length !== 0)) {
-      console.log("USING " + obj.data.name + "!!!");
       ITEMS[obj.data.name].use();
       SAVE.player.items[obj.data.name] -= 1;
 
@@ -135,15 +145,16 @@ GAME.STORE.prototype = {
     if (this.current !== 1) {
       this.current -= 1;
       this.items.forEach(function(item) {
-        item.x += 150;
+        item.x += 350;
       });
     }
   },
   moveRight: function(obj) {
+    console.log("right");
     if (this.current !== this.items.total) {
       this.current += 1;
       this.items.forEach(function(item) {
-        item.x -= 150;
+        item.x -= 350;
       });
     }
   },

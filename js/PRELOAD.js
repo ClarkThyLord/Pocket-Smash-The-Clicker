@@ -23,6 +23,7 @@ GAME.PRELOAD.prototype = {
         "items": {
 
         },
+        "game_speed": 100,
         "life_boost": 0,
         "dmg_boost": 1.25,
         "def_boost": 0,
