@@ -277,8 +277,7 @@ GAME.MAINMENU.prototype = {
 
       },
       "monsters": [
-        "cacus",
-        "johncena"
+        "cacus"
       ]
     };
     this.setupMonsters();
