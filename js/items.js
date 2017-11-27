@@ -45,7 +45,7 @@ var ITEMS = {
     "cost": 300,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
-      SAVE.player.life_boost += 1;
+      SAVE.player.life_boost += 0.10;
     }
   },
   "permanent attack boost": {
@@ -53,7 +53,7 @@ var ITEMS = {
     "cost": 300,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
-      SAVE.player.dmg_boost += 1;
+      SAVE.player.dmg_boost += 0.25;
     }
   },
   "permanent defence boost": {
@@ -61,7 +61,7 @@ var ITEMS = {
     "cost": 300,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
-      SAVE.player.def_boost += 1;
+      SAVE.player.def_boost += 0.005;
     }
   },
   "permanent general boost": {
@@ -69,9 +69,9 @@ var ITEMS = {
     "cost": 600,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
-      SAVE.player.life_boost += 0.5;
-      SAVE.player.dmg_boost += 0.5;
-      SAVE.player.def_boost += 0.5;
+      SAVE.player.life_boost += 0.05;
+      SAVE.player.dmg_boost += 0.15;
+      SAVE.player.def_boost += 0.0025;
     }
   },
   "permanent speed boost": {
@@ -79,7 +79,9 @@ var ITEMS = {
     "cost": 1000,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
-      SAVE.player.game_speed -= 0.5;
+      if (SAVE.player.game_speed > 1) {
+        SAVE.player.game_speed -= 0.5;
+      }
     }
   },
   "infinite money": {

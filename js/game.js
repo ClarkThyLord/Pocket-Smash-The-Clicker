@@ -21,6 +21,8 @@ GAME.GAME.prototype = {
     this.soundIcon = null;
     this.sound = null;
 
+    this.ending = false;
+
     this.loop = null;
 
     // Start of scene setup
@@ -75,7 +77,17 @@ GAME.GAME.prototype = {
       this.sound.play("", 0, 1, true);
     }
 
-    this.loop = this.time.events.loop(100, this.attack, this);
+    var start = this.add.sprite(0, 0, "game_start");
+    start.alpha = 0;
+    start.inputEnabled = true;
+    start.events.onInputDown.add(function(obj) {
+      obj.destroy();
+
+      this.loop = this.time.events.loop(SAVE.player.game_speed, this.attack, this);
+    }, this);
+    this.add.tween(start).to({
+      alpha: 1
+    }, 1000, Phaser.Easing.Linear.None, true, 0, 1500, true);
   },
   store: function() {
     this.saveGame();
@@ -83,10 +95,14 @@ GAME.GAME.prototype = {
     this.state.start("STORE");
   },
   restart: function() {
-    SAVE.monster = {};
-    this.saveGame();
-    this.sound.destroy();
-    this.state.start("MAINMENU");
+    if (this.ending == false) {
+      this.playerDeath();
+    } else {
+      SAVE.monster = {};
+      this.saveGame();
+      this.sound.destroy();
+      this.state.start("MAINMENU");
+    }
   },
   setupArea: function() {
     this.area = Math.floor(SAVE.monster.level / 5.5);
@@ -131,9 +147,6 @@ GAME.GAME.prototype = {
     this.player.ult.scale.x = 0.01 * (this.player.data.ult / 1);
     this.gui.push(this.player.ult);
   },
-  playerAction: function() {
-
-  },
   playerCheck: function() {
     if (this.player.data.xp / (150 * this.player.data.level) >= 1) {
       this.updateText("LEVEL UP!!!");
@@ -154,6 +167,10 @@ GAME.GAME.prototype = {
     }
   },
   playerDeath: function() {
+    this.ending = true;
+
+    SAVE.player.stats.deaths += 1;
+
     this.time.events.remove(this.loop);
     this.player.life.scale.x = 0.0;
 
@@ -165,6 +182,30 @@ GAME.GAME.prototype = {
     }, 1000, Phaser.Easing.Linear.None, true);
     death.inputEnabled = true;
     death.events.onInputDown.add(this.restart, this);
+
+    var monster = this.add.sprite(400, 250, "monster_" + this.player.data.name);
+    monster.anchor.x = monster.anchor.y = 0.5;
+
+    var sword = this.add.sprite(300, 325, "icon_sword");
+    sword.anchor.x = sword.anchor.y = 0.5;
+    sword.scale.x = sword.scale.y = 0.25;
+    var attack = this.add.sprite(350, 325, "icon_attack");
+    attack.anchor.x = 0;
+    attack.anchor.y = 0.5;
+    attack.scale.x = 0.05 * (this.player.data.attack / 3);
+
+    var shield = this.add.sprite(300, 375, "icon_shield");
+    shield.anchor.x = shield.anchor.y = 0.5;
+    shield.scale.x = shield.scale.y = 0.25;
+    var defence = this.add.sprite(350, 375, "icon_defence");
+    defence.anchor.x = 0;
+    defence.anchor.y = 0.5;
+    defence.scale.x = 0.05 * (this.player.data.defence / 5);
+
+    var text = this.add.text(400, 500, "Level - " + this.player.data.level + "\nKills - " + this.player.data.stats.kills + "\nDamage Dealt - " + this.player.data.stats.dmg_dealt + "\nUltimate Dealt - " + this.player.data.stats.ult_dealt + "\nMoney Total - " + this.player.data.stats.money_total + "\nMonster Captures - " + this.player.data.stats.captures + " - 155", FONT);
+    text.anchor.x = text.anchor.y = 0.5;
+    death.addChild(text);
+
   },
   setupMonster: function() {
     // Chooose a valid monster at random
@@ -204,6 +245,9 @@ GAME.GAME.prototype = {
       this.player.heal.start(true, 1000, null, 10);
     }
 
+    this.player.data.stats.kills += 1;
+    SAVE.player.stats.kills += 1;
+
     // Give the player xp
     this.player.data.xp += this.enemy.data.level * 11;
 
@@ -215,6 +259,9 @@ GAME.GAME.prototype = {
         this.updateText("CAPTURED " + this.enemy.data.name + "!!!");
 
         SAVE.monsters.push(this.enemy.data.name);
+
+        this.player.data.stats.captures += 1;
+        SAVE.player.stats.captures += 1;
       } else if (isNaN(loot)) {
         this.updateText("OBTAINED " + loot + "!!!");
 
@@ -227,6 +274,8 @@ GAME.GAME.prototype = {
         this.updateText("FOUND " + loot + " COINS!!!");
 
         SAVE.player.money += loot;
+        this.player.data.stats.money_total += 1;
+        SAVE.player.stats.money_total += loot;
       }
     }
 
@@ -251,6 +300,8 @@ GAME.GAME.prototype = {
       this.monsterDEATH();
 
       this.player.data.ult = 0;
+      this.player.data.stats.ult_dealt += 1;
+      SAVE.player.stats.ult_dealt += 1;
     }
 
     this.player.ult.scale.x = 0.01 * (this.player.data.ult / 1);
@@ -260,7 +311,12 @@ GAME.GAME.prototype = {
     this.player.charge.start(true, 1000, null, 10);
   },
   monsterDMG: function(obj, pointer) {
-    this.enemy.data.life -= (Math.floor((Math.random() * (this.enemy.data.attack + 1)) * (1 - ((this.player.data.defence * 0.01) * SAVE.player.def_boost)))) * SAVE.player.dmg_boost;
+    var dmg = (Math.floor((Math.random() * (this.enemy.data.attack + 1)) * (1 - ((this.player.data.defence * 0.01) * SAVE.player.def_boost)))) * SAVE.player.dmg_boost;
+
+    this.player.data.stats.dmg_dealt += 1;
+    SAVE.player.stats.dmg_dealt += dmg;
+
+    this.enemy.data.life -= dmg;
     if (this.enemy.data.life <= 0) {
       this.monsterDEATH();
     } else {
@@ -309,7 +365,12 @@ GAME.GAME.prototype = {
 
     // Formula: (random() * maxDmg) * (1 + dmgBoost * 0.001)
     // console.log("PLAYER DMG: " + Math.floor((Math.random() * (this.player.data.attack + 1)) * (1 + SAVE.player.dmg_boost * 0.01)));
-    this.enemy.data.life -= Math.floor((Math.random() * (this.player.data.attack + 1)) * (1 + SAVE.player.dmg_boost * 0.01));
+    var dmg = Math.floor((Math.random() * (this.player.data.attack + 1)) * (1 + SAVE.player.dmg_boost * 0.01));
+
+    this.player.data.stats.dmg_dealt += dmg;
+    SAVE.player.stats.dmg_dealt += dmg;
+
+    this.enemy.data.life -= dmg;
     this.enemy.life.scale.x = 0.05 * (this.enemy.data.life / 10);
 
     if (this.player.data.life <= 0) {

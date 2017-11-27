@@ -65,6 +65,12 @@ GAME.MAINMENU.prototype = {
     right_arrow.events.onInputDown.add(this.moveRight, this);
     this.gui.push(right_arrow);
 
+    var stats = this.add.sprite(750, 50, "mm_stats");
+    stats.anchor.x = stats.anchor.y = 0.5;
+    stats.inputEnabled = true;
+    stats.events.onInputDown.add(this.stats, this);
+    this.gui.push(stats);
+
     var restart = this.add.sprite(750, 515, "icon_restart");
     restart.anchor.x = restart.anchor.y = 0.5;
     restart.inputEnabled = true;
@@ -113,6 +119,17 @@ GAME.MAINMENU.prototype = {
       this.sound.play("", 0, 1, true);
     }
   },
+  stats: function() {
+    var sprite = this.add.sprite(0, 0, "mm_background");
+    sprite.inputEnabled = true;
+    sprite.events.onInputDown.add(function(obj) {
+      obj.destroy();
+    });
+
+    var text = this.add.text(400, 375, "Game Speed - " + SAVE.player.game_speed + "\nLife Boost - " + SAVE.player.life_boost + "%\nAttack Boost - " + SAVE.player.dmg_boost + "\nDefence Boost - " + SAVE.player.def_boost + "\nTotal Deaths - " + SAVE.player.stats.deaths + "\nTotal Kills - " + SAVE.player.stats.kills + "\nDamage Dealt - " + SAVE.player.stats.dmg_dealt + "\nUltimates Dealt - " + SAVE.player.stats.ult_dealt + "\nLifetime Money - " + SAVE.player.stats.money_total + "\nCaptured Monsters - " + SAVE.player.stats.captures + " - 155", FONT);
+    text.anchor.x = text.anchor.y = 0.5;
+    sprite.addChild(text);
+  },
   help: function() {
     var sprite = this.add.sprite(0, 0, "mm_help1");
     sprite.data.slide = 1;
@@ -123,7 +140,6 @@ GAME.MAINMENU.prototype = {
       } else if (obj.data.slide == 2) {
         obj.loadTexture("mm_help3");
       } else if (obj.data.slide == 3) {
-        console.log("yup");
         obj.destroy();
       }
 
@@ -205,9 +221,9 @@ GAME.MAINMENU.prototype = {
 
       info = MONSTERS[obj.data.name];
       this.type.loadTexture("icon_" + info.type);
-      this.life.scale.x = 0.05 * (info.life / 10);
-      this.attack.scale.x = 0.05 * (info.attack / 3);
-      this.defence.scale.x = 0.05 * (info.defence / 5);
+      this.life.scale.x = 0.05 * ((info.life / 10) * (1 + SAVE.player.life_boost));
+      this.attack.scale.x = 0.05 * ((info.attack / 3) * (1 + SAVE.player.dmg_boost));
+      this.defence.scale.x = 0.05 * ((info.defence / 5) * (1 + SAVE.player.def_boost));
 
       this.selected = obj;
     } else if (obj.data.name !== this.selected.data.name) {
@@ -217,13 +233,20 @@ GAME.MAINMENU.prototype = {
 
       info = MONSTERS[obj.data.name];
       this.type.loadTexture("icon_" + info.type);
-      this.life.scale.x = 0.05 * (info.life / 10);
-      this.attack.scale.x = 0.05 * (info.attack / 3);
-      this.defence.scale.x = 0.05 * (info.defence / 5);
+      this.life.scale.x = 0.05 * ((info.life / 10) * (1 + SAVE.player.life_boost));
+      this.attack.scale.x = 0.05 * ((info.attack / 3) * (1 + SAVE.player.dmg_boost));
+      this.defence.scale.x = 0.05 * ((info.defence / 5) * (1 + SAVE.player.def_boost));
 
       this.selected = obj;
     } else {
       SAVE.monster = Object.assign({}, MONSTERS[obj.data.name]);
+      SAVE.monster.stats = {
+        "kills": 0,
+        "dmg_dealt": 0,
+        "ult_dealt": 0,
+        "money_total": 0,
+        "captures": 0
+      };
       this.saveGame();
       this.sound.destroy();
       this.state.start("GAME");
@@ -232,16 +255,23 @@ GAME.MAINMENU.prototype = {
   restartGame: function(obj) {
     SAVE = {
       "player": {
-        "level": 0,
-        "xp": 0,
         "money": 0,
         "items": {
 
         },
+        "game_speed": 100,
         "life_boost": 0,
         "dmg_boost": 1.25,
         "def_boost": 0,
-        "ult_boost": 2.5
+        "ult_boost": 2.5,
+        "stats": {
+          "deaths": 0,
+          "kills": 0,
+          "dmg_dealt": 0,
+          "ult_dealt": 0,
+          "money_total": 0,
+          "captures": 0
+        }
       },
       "monster": {
 
@@ -281,11 +311,5 @@ GAME.MAINMENU.prototype = {
     setTimeout(function(saveIcon) {
       saveIcon.alpha = 0;
     }, 1000, this.saveIcon);
-  },
-  update: function() {
-    // NOTHING
-  },
-  render: function() {
-    // NOTHING
   }
 };

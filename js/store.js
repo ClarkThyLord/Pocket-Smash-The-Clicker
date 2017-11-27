@@ -26,14 +26,14 @@ GAME.STORE.prototype = {
     this.gui.push(this.money);
 
     var left_arrow = this.add.sprite(50, 365, "mm_arrow");
-    left_arrow.alpha = 0.3;
+    left_arrow.alpha = 0.6;
     left_arrow.anchor.x = left_arrow.anchor.y = 0.5;
     left_arrow.inputEnabled = true;
     left_arrow.events.onInputDown.add(this.moveLeft, this);
     this.gui.push(left_arrow);
 
     var right_arrow = this.add.sprite(750, 365, "mm_arrow");
-    right_arrow.alpha = 0.3;
+    right_arrow.alpha = 0.6;
     right_arrow.anchor.x = right_arrow.anchor.y = 0.5;
     right_arrow.angle = 180;
     right_arrow.inputEnabled = true;
@@ -129,8 +129,12 @@ GAME.STORE.prototype = {
     }
   },
   buyItem: function(obj) {
-    if (SAVE.player.money > ITEMS[obj.data.name].cost) {
-      SAVE.player.money -= ITEMS[obj.data.name].cost;
+    if (SAVE.player.money >= ITEMS[obj.data.name].cost) {
+      if (ITEMS[obj.data.name].cost == Infinity && SAVE.player.money == Infinity) {
+        SAVE.player.money = 0;
+      } else {
+        SAVE.player.money -= ITEMS[obj.data.name].cost;
+      }
 
       if (obj.data.name in SAVE.player.items) {
         SAVE.player.items[obj.data.name] += 1;
@@ -150,7 +154,6 @@ GAME.STORE.prototype = {
     }
   },
   moveRight: function(obj) {
-    console.log("right");
     if (this.current !== this.items.total) {
       this.current += 1;
       this.items.forEach(function(item) {

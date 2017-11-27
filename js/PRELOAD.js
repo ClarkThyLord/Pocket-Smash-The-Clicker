@@ -17,8 +17,6 @@ GAME.PRELOAD.prototype = {
     };
     SAVE = JSON.parse(localStorage.getItem("POCKET-SMASH-SAVE")) || {
       "player": {
-        "level": 0,
-        "xp": 0,
         "money": 0,
         "items": {
 
@@ -27,14 +25,21 @@ GAME.PRELOAD.prototype = {
         "life_boost": 0,
         "dmg_boost": 1.25,
         "def_boost": 0,
-        "ult_boost": 2.5
+        "ult_boost": 2.5,
+        "stats": {
+          "deaths": 0,
+          "kills": 0,
+          "dmg_dealt": 0,
+          "ult_dealt": 0,
+          "money_total": 0,
+          "captures": 0
+        }
       },
       "monster": {
 
       },
       "monsters": [
-        "cacus",
-        "johncena"
+        "cacus"
       ]
     };
 
@@ -43,12 +48,15 @@ GAME.PRELOAD.prototype = {
     this.load.image("mm_arrow", "./res/main menu/arrow.png");
     this.load.image("mm_help", "./res/main menu/help.png");
     this.load.image("mm_credits", "./res/main menu/credits.png");
+    this.load.image("mm_stats", "./res/main menu/stats.png");
 
     this.load.image("mm_help1", "./res/main menu/help/help_1.jpg");
     this.load.image("mm_help2", "./res/main menu/help/help_2.jpg");
     this.load.image("mm_help3", "./res/main menu/help/help_3.jpg");
 
     // Load game stuff
+    this.load.image("game_start", "./res/game/start.png");
+
     this.load.image("game_damage", "./res/game/damage.png");
     this.load.image("game_charge", "./res/game/charge.png");
     this.load.image("game_heal", "./res/game/heal.png");
