@@ -117,7 +117,7 @@ GAME.STORE.prototype = {
 
       // Add the "item" to the group of items
       this.items.add(frame);
-      x += 350;
+      x += 400;
     }
   },
   useItem: function(obj) {
@@ -149,7 +149,7 @@ GAME.STORE.prototype = {
     if (this.current !== 1) {
       this.current -= 1;
       this.items.forEach(function(item) {
-        item.x += 350;
+        item.x += 400;
       });
     }
   },
@@ -157,7 +157,7 @@ GAME.STORE.prototype = {
     if (this.current !== this.items.total) {
       this.current += 1;
       this.items.forEach(function(item) {
-        item.x -= 350;
+        item.x -= 400;
       });
     }
   },

@@ -15,24 +15,24 @@ var ITEMS = {
       SAVE.monster.ult += 100;
     }
   },
-  "temporary attack boost": {
-    "name": "temporary attack boost",
+  "temp attack boost": {
+    "name": "temp attack boost",
     "cost": 150,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
       SAVE.monster.attack += 1;
     }
   },
-  "temporary defence boost": {
-    "name": "temporary defence boost",
+  "temp defence boost": {
+    "name": "temp defence boost",
     "cost": 150,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
       SAVE.monster.defence += 1;
     }
   },
-  "temporary general boost": {
-    "name": "temporary general boost",
+  "temp general boost": {
+    "name": "temp general boost",
     "cost": 200,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
@@ -40,32 +40,32 @@ var ITEMS = {
       SAVE.monster.defence += 0.5;
     }
   },
-  "permanent health boost": {
-    "name": "permanent health boost",
+  "perm health boost": {
+    "name": "perm health boost",
     "cost": 300,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
       SAVE.player.life_boost += 0.10;
     }
   },
-  "permanent attack boost": {
-    "name": "permanent attack boost",
+  "perm attack boost": {
+    "name": "perm attack boost",
     "cost": 300,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
       SAVE.player.dmg_boost += 0.25;
     }
   },
-  "permanent defence boost": {
-    "name": "permanent defence boost",
+  "perm defence boost": {
+    "name": "perm defence boost",
     "cost": 300,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
       SAVE.player.def_boost += 0.005;
     }
   },
-  "permanent general boost": {
-    "name": "permanent general boost",
+  "perm general boost": {
+    "name": "perm general boost",
     "cost": 600,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
@@ -74,8 +74,8 @@ var ITEMS = {
       SAVE.player.def_boost += 0.0025;
     }
   },
-  "permanent speed boost": {
-    "name": "permanent speed boost",
+  "perm speed boost": {
+    "name": "perm speed boost",
     "cost": 1000,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
@@ -92,8 +92,8 @@ var ITEMS = {
       SAVE.money = Infinity;
     }
   },
-  "temporary infinite health": {
-    "name": "temporary infinite health",
+  "temp infinite health": {
+    "name": "temp infinite health",
     "cost": Infinity,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
     "use": function() {
