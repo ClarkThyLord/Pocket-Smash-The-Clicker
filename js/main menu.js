@@ -1,245 +1,170 @@
 GAME.MAINMENU = function(game) {};
 
 GAME.MAINMENU.prototype = {
-  preload: function() {},
   create: function() {
     // Setup variables
-    this.gui = [];
-
-    this.current = 1;
-    this.selected = null;
-    this.monsters = null;
-
-    this.type = null;
-    this.life = null;
-    this.attack = null;
-    this.defence = null;
-
-    this.saveIcon = null;
-
-    this.soundIcon = null;
-    this.sound = null;
+    this.current = 0; // Monster we're viewing
+    this.filter = (SAVE.favorites.length !== 0) ? true : false; // Weather to only show favoriteted monster
 
     // Start of scene setup
-    this.add.sprite(0, 0, 'mm_background');
+    // Background image
+    this.add.sprite(0, 0, "G_background");
 
-    var heart = this.add.sprite(275, 470, "icon_heart");
+    var title = this.add.sprite(400, 50, "mm_title");
+    title.anchor.x = title.anchor.y = 0.5;
+
+    // Setup monster managing
+
+    var frame = this.add.sprite(200, 300, "mm_frame");
+    frame.anchor.x = frame.anchor.y = 0.5;
+
+    var monster = (this.filter === true) ? SAVE.favorites[0] : SAVE.monsters[0];
+    this.monster = this.add.sprite(0, 0, "monster_" + monster);
+    this.monster.anchor.x = this.monster.anchor.y = 0.5;
+    this.monster.data.name = monster;
+    frame.addChild(this.monster);
+
+    this.text = this.add.text(0, 125, monster, FONT);
+    this.text.anchor.x = this.text.anchor.y = 0.5;
+    this.monster.addChild(this.text);
+
+    this.star = this.add.sprite(400, 145, (SAVE.favorites.indexOf(this.monster.data.name) !== -1) ? "mm_star_on" : "mm_star_off");
+    this.star.anchor.x = this.star.anchor.y = 0.5;
+    this.star.inputEnabled = true;
+    this.star.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
+
+      // Check if current monster is in favorites
+      var result = SAVE.favorites.indexOf(this.monster.data.name);
+      if (result !== -1) {
+        // Remove monster from favorites if found
+        SAVE.favorites.splice(result, 1);
+        obj.loadTexture("mm_star_off");
+
+        if (this.filter === true && SAVE.favorites.length === 0) {
+          this.filter = false;
+          this.updateMonster();
+        }
+      } else {
+        // Add monster to favorites if not found
+        SAVE.favorites.push(this.monster.data.name);
+        obj.loadTexture("mm_star_on");
+      }
+    }, this);
+
+    this.fav = this.add.sprite(515, 145, "mm_favorites");
+    this.fav.anchor.x = this.fav.anchor.y = 0.5;
+    this.fav.inputEnabled = true;
+    this.fav.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
+
+      if (SAVE.favorites.length !== 0) {
+        this.current = 0;
+        this.filter = true;
+        this.updateMonster();
+      }
+    }, this);
+
+    this.all = this.add.sprite(650, 145, "mm_all");
+    this.all.anchor.x = this.all.anchor.y = 0.5;
+    this.all.inputEnabled = true;
+    this.all.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
+
+      this.current = 0;
+      this.filter = false;
+      this.updateMonster();
+    }, this);
+
+    var heart = this.add.image(425, 250, "G_heart");
     heart.anchor.x = heart.anchor.y = 0.5;
     heart.scale.x = heart.scale.y = 0.25;
-    this.life = this.add.sprite(325, 470, "icon_life");
-    this.life.anchor.x = 0;
+    this.life = this.add.image(150, 0, "G_life");
     this.life.anchor.y = 0.5;
-    this.gui.push(heart);
-    this.gui.push(this.life);
+    this.life.scale.x = this.life.scale.y = 3;
+    heart.addChild(this.life);
 
-    var sword = this.add.sprite(275, 520, "icon_sword");
+    var sword = this.add.image(425, 315, "G_sword");
     sword.anchor.x = sword.anchor.y = 0.5;
     sword.scale.x = sword.scale.y = 0.25;
-    this.attack = this.add.sprite(325, 520, "icon_attack");
-    this.attack.anchor.x = 0;
+    this.attack = this.add.image(150, 0, "G_attack");
     this.attack.anchor.y = 0.5;
-    this.gui.push(sword);
-    this.gui.push(this.attack);
+    this.attack.scale.x = this.attack.scale.y = 3;
+    sword.addChild(this.attack);
 
-    var shield = this.add.sprite(275, 570, "icon_shield");
+    var shield = this.add.image(425, 380, "G_shield");
     shield.anchor.x = shield.anchor.y = 0.5;
     shield.scale.x = shield.scale.y = 0.25;
-    this.defence = this.add.sprite(325, 570, "icon_defence");
-    this.defence.anchor.x = 0;
+    this.defence = this.add.image(150, 0, "G_defence");
     this.defence.anchor.y = 0.5;
-    this.gui.push(shield);
-    this.gui.push(this.defence);
+    this.defence.scale.x = this.defence.scale.y = 3;
+    shield.addChild(this.defence);
 
-    var left_arrow = this.add.sprite(50, 325, "mm_arrow");
-    left_arrow.alpha = 0.3;
-    left_arrow.anchor.x = left_arrow.anchor.y = 0.5;
-    left_arrow.inputEnabled = true;
-    left_arrow.events.onInputDown.add(this.moveLeft, this);
-    this.gui.push(left_arrow);
+    var left = this.add.sprite(125, 545, "mm_arrow");
+    left.anchor.x = left.anchor.y = 0.5;
+    left.inputEnabled = true;
+    left.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
 
-    var right_arrow = this.add.sprite(750, 325, "mm_arrow");
-    right_arrow.alpha = 0.3;
-    right_arrow.anchor.x = right_arrow.anchor.y = 0.5;
-    right_arrow.angle = 180;
-    right_arrow.inputEnabled = true;
-    right_arrow.events.onInputDown.add(this.moveRight, this);
-    this.gui.push(right_arrow);
+      if (this.current > 0) {
+        this.current -= 1;
 
-    var stats = this.add.sprite(750, 50, "mm_stats");
-    stats.anchor.x = stats.anchor.y = 0.5;
-    stats.inputEnabled = true;
-    stats.events.onInputDown.add(this.stats, this);
-    this.gui.push(stats);
-
-    var restart = this.add.sprite(750, 515, "icon_restart");
-    restart.anchor.x = restart.anchor.y = 0.5;
-    restart.inputEnabled = true;
-    restart.events.onInputDown.add(this.restartGame, this);
-    this.gui.push(restart);
-
-    var store = this.add.sprite(665, 515, "icon_store");
-    store.anchor.x = store.anchor.y = 0.5;
-    store.inputEnabled = true;
-    store.events.onInputDown.add(this.store, this);
-    this.gui.push(store);
-
-    var help = this.add.sprite(665, 570, "mm_help");
-    help.anchor.x = help.anchor.y = 0.5;
-    help.inputEnabled = true;
-    help.events.onInputDown.add(this.help, this);
-    this.gui.push(help);
-
-    var credits = this.add.sprite(750, 570, "mm_credits");
-    credits.anchor.x = credits.anchor.y = 0.5;
-    credits.inputEnabled = true;
-    credits.events.onInputDown.add(this.credits, this);
-    this.gui.push(credits);
-
-    this.type = this.add.sprite(190, 530, "icon_unknown");
-    this.type.anchor.x = this.type.anchor.y = 0.5;
-    this.type.scale.x = this.type.scale.y = 0.50;
-    this.gui.push(this.type);
-
-    this.saveIcon = this.add.sprite(750, 50, "icon_save");
-    this.saveIcon.anchor.x = this.saveIcon.anchor.y = 0.5;
-    this.saveIcon.alpha = 0;
-    this.gui.push(this.saveIcon);
-
-    this.setupMonsters();
-
-    // Setup music according to config
-    this.soundIcon = (CONFIGURATION.music) ? this.add.sprite(50, 550, "noise_on") : this.add.sprite(50, 550, "noise_off");
-    this.soundIcon.anchor.x = this.soundIcon.anchor.y = 0.5;
-    this.soundIcon.scale.x = this.soundIcon.scale.y = 0.5;
-    this.soundIcon.inputEnabled = true;
-    this.soundIcon.events.onInputDown.add(this.toggleNoise, this);
-
-    this.sound = this.add.audio("music");
-    if (CONFIGURATION.music) {
-      this.sound.play("", 0, 1, true);
-    }
-  },
-  stats: function() {
-    var sprite = this.add.sprite(0, 0, "mm_background");
-    sprite.inputEnabled = true;
-    sprite.events.onInputDown.add(function(obj) {
-      obj.destroy();
-    });
-
-    var text = this.add.text(400, 375, "Game Speed - " + SAVE.player.game_speed + "\nLife Boost - " + SAVE.player.life_boost + "%\nAttack Boost - " + SAVE.player.dmg_boost + "\nDefence Boost - " + SAVE.player.def_boost + "\nTotal Deaths - " + SAVE.player.stats.deaths + "\nTotal Kills - " + SAVE.player.stats.kills + "\nDamage Dealt - " + SAVE.player.stats.dmg_dealt + "\nUltimates Dealt - " + SAVE.player.stats.ult_dealt + "\nLifetime Money - " + SAVE.player.stats.money_total + "\nCaptured Monsters - " + SAVE.player.stats.captures + " - 155", FONT);
-    text.anchor.x = text.anchor.y = 0.5;
-    sprite.addChild(text);
-  },
-  help: function() {
-    var sprite = this.add.sprite(0, 0, "mm_help1");
-    sprite.data.slide = 1;
-    sprite.inputEnabled = true;
-    sprite.events.onInputDown.add(function(obj) {
-      if (obj.data.slide == 1) {
-        obj.loadTexture("mm_help2");
-      } else if (obj.data.slide == 2) {
-        obj.loadTexture("mm_help3");
-      } else if (obj.data.slide == 3) {
-        obj.destroy();
+        this.updateMonster();
       }
-
-      obj.data.slide += 1;
     }, this);
-  },
-  credits: function() {
-    var sprite = this.add.sprite(0, 0, "mm_plain");
 
-    var text = this.add.text(400, 300, "CREDITS\n\nMusic by Eric Matyas\nwww.soundimage.org", FONT);
-    text.anchor.x = text.anchor.y = 0.5;
-    sprite.addChild(text);
+    var right = this.add.sprite(260, 545, "mm_arrow");
+    right.anchor.x = right.anchor.y = 0.5;
+    right.angle = 180;
+    right.inputEnabled = true;
+    right.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
 
-    sprite.inputEnabled = true;
-    sprite.events.onInputDown.add(function(obj, pointer) {
-      obj.destroy();
+      if ((this.filter === true && this.current < (SAVE.favorites.length - 1)) || (this.filter === false && this.current < (SAVE.monsters.length - 1))) {
+        this.current += 1;
+
+        this.updateMonster();
+      }
     }, this);
-  },
-  store: function() {
-    this.saveGame();
-    this.sound.destroy();
-    this.state.start("STORE");
-  },
-  setupMonsters: function() {
-    this.current = 1;
-    if (this.monsters === null) {
-      this.monsters = this.add.group();
-    } else {
-      this.monsters.destroy();
-      this.monsters = this.add.group();
-    }
 
-    var x = 400;
-    for (var monster_name in SAVE.monsters) {
-      var refrence = MONSTERS[SAVE.monsters[monster_name]];
+    var start = this.add.sprite(605, 500, "mm_start");
+    start.anchor.x = start.anchor.y = 0.5;
+    start.inputEnabled = true;
+    start.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
 
-      var monster = this.add.sprite(x, 300, "monster_" + SAVE.monsters[monster_name]);
-      monster.anchor.x = monster.anchor.y = 0.5;
-      monster.data.name = SAVE.monsters[monster_name];
-      monster.inputEnabled = true;
-      monster.events.onInputDown.add(this.selectMonster, this);
-      var text = this.add.text(0, 110, SAVE.monsters[monster_name], FONT);
-      text.anchor.x = text.anchor.y = 0.5;
-      this.monsters.add(monster);
-      monster.addChild(text);
-      x += 250;
-    }
-
-    // Select the first monster
-    this.selectMonster(this.monsters.getFirst());
-
-    // Bring this.gui to top
-    for (var key in this.gui) {
-      var obj = this.gui[key];
-      obj.bringToTop();
-    }
-  },
-  moveLeft: function(obj) {
-    if (this.current !== 1) {
-      this.current -= 1;
-      this.monsters.forEach(function(monster) {
-        monster.x += 250;
-      });
-    }
-  },
-  moveRight: function(obj) {
-    if (this.current !== this.monsters.total) {
-      this.current += 1;
-      this.monsters.forEach(function(monster) {
-        monster.x -= 250;
-      });
-    }
-  },
-  selectMonster: function(obj) {
-
-    var info;
-    if (this.selected === null) {
-      obj.scale.x = obj.scale.y = 1.25;
-
-      info = MONSTERS[obj.data.name];
-      this.type.loadTexture("icon_" + info.type);
-      this.life.scale.x = 0.05 * ((info.life / 10) * (1 + SAVE.player.life_boost));
-      this.attack.scale.x = 0.05 * ((info.attack / 3) * (1 + SAVE.player.dmg_boost));
-      this.defence.scale.x = 0.05 * ((info.defence / 5) * (1 + SAVE.player.def_boost));
-
-      this.selected = obj;
-    } else if (obj.data.name !== this.selected.data.name) {
-      this.selected.scale.x = this.selected.scale.y = 1;
-
-      obj.scale.x = obj.scale.y = 1.25;
-
-      info = MONSTERS[obj.data.name];
-      this.type.loadTexture("icon_" + info.type);
-      this.life.scale.x = 0.05 * ((info.life / 10) * (1 + SAVE.player.life_boost));
-      this.attack.scale.x = 0.05 * ((info.attack / 3) * (1 + SAVE.player.dmg_boost));
-      this.defence.scale.x = 0.05 * ((info.defence / 5) * (1 + SAVE.player.def_boost));
-
-      this.selected = obj;
-    } else {
-      SAVE.monster = Object.assign({}, MONSTERS[obj.data.name]);
+      // Setup monster for playing
+      SAVE.monster = Object.assign({}, MONSTERS[this.monster.data.name]);
       SAVE.monster.stats = {
         "kills": 0,
         "dmg_dealt": 0,
@@ -247,68 +172,144 @@ GAME.MAINMENU.prototype = {
         "money_total": 0,
         "captures": 0
       };
-      this.saveGame();
-      this.sound.destroy();
+
+      // TODO music
+      this.save();
+
+      // Start the game scene
       this.state.start("GAME");
-    }
-  },
-  restartGame: function(obj) {
-    SAVE = {
-      "player": {
-        "money": 0,
-        "items": {
+    }, this);
 
-        },
-        "game_speed": 100,
-        "life_boost": 0,
-        "dmg_boost": 1.25,
-        "def_boost": 0,
-        "ult_boost": 2.5,
-        "stats": {
-          "deaths": 0,
-          "kills": 0,
-          "dmg_dealt": 0,
-          "ult_dealt": 0,
-          "money_total": 0,
-          "captures": 0
+    var help = this.add.sprite(375, 575, "mm_help");
+    help.anchor.x = help.anchor.y = 0.5;
+    help.inputEnabled = true;
+    help.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
+
+      var slide = this.add.sprite(0, 0, "mm_help1");
+      slide.data.slide = 1;
+      slide.inputEnabled = true;
+      slide.events.onInputDown.add(function(obj, pointer) {
+        if (obj.data.slide == 1) {
+          obj.loadTexture("mm_help2");
+        } else if (obj.data.slide == 2) {
+          obj.loadTexture("mm_help3");
+
+        } else {
+          obj.destroy();
         }
-      },
-      "monster": {
 
-      },
-      "monsters": [
-        "cacus"
-      ]
-    };
-    this.setupMonsters();
-    this.saveGame();
-  },
-  toggleNoise: function(obj) {
-    if (CONFIGURATION.music == true) {
-      this.soundIcon.loadTexture("noise_off");
-      this.sound.stop();
-      CONFIGURATION.music = false;
-    } else {
-      this.soundIcon.loadTexture("noise_on");
+        obj.data.slide += 1;
+      }, this);
+    }, this);
+
+    var stats = this.add.sprite(475, 570, "G_stats");
+    stats.anchor.x = stats.anchor.y = 0.5;
+    stats.inputEnabled = true;
+    stats.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
+
+      var cover = this.add.sprite(0, 0, "G_background");
+      cover.inputEnabled = true;
+      cover.events.onInputDown.add(function(obj, pointer) {
+        obj.destroy();
+      }, this);
+
+      var text = this.add.text(400, 375, "Game Speed - " + SAVE.player.game_speed + "\nLife Boost - " + SAVE.player.life_boost + "%\nAttack Boost - " + SAVE.player.dmg_boost + "\nDefence Boost - " + SAVE.player.def_boost + "\nTotal Deaths - " + SAVE.player.stats.deaths + "\nTotal Kills - " + SAVE.player.stats.kills + "\nDamage Dealt - " + SAVE.player.stats.dmg_dealt + "\nUltimates Dealt - " + SAVE.player.stats.ult_dealt + "\nLifetime Money - " + SAVE.player.stats.money_total + "\nCaptured Monsters - " + SAVE.player.stats.captures + " - 155", FONT);
+      text.anchor.x = text.anchor.y = 0.5;
+      cover.addChild(text);
+    }, this);
+
+    var store = this.add.sprite(605, 570, "G_store");
+    store.anchor.x = store.anchor.y = 0.5;
+    store.inputEnabled = true;
+    store.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
+
+      // TODO music
+      this.save();
+
+      this.state.start("STORE");
+    }, this);
+
+    // Setup saveicon
+    this.saveicon = this.add.sprite(725, 50, "G_logo");
+    this.saveicon.anchor.x = this.saveicon.anchor.y = 0.5;
+    this.saveicon.scale.x = this.saveicon.scale.y = 0.15;
+    this.saveicon.alpha = 0;
+
+    // Setup music according to configurations
+    this.soundIcon = (SAVE.config.sound === true) ? this.add.sprite(735, 570, "G_noise_on") : this.add.sprite(735, 570, "G_noise_off");
+    this.soundIcon.anchor.x = this.soundIcon.anchor.y = 0.5;
+    this.soundIcon.inputEnabled = true;
+    this.soundIcon.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
+
+      if (SAVE.config.sound === true) {
+        SAVE.config.sound = false;
+        obj.loadTexture("G_noise_off");
+        this.sound.stop();
+      } else {
+        SAVE.config.sound = true;
+        obj.loadTexture("G_noise_on");
+        this.sound.play("", 0, 1, true);
+      }
+
+      this.save();
+    }, this);
+
+    this.sound = this.add.audio("G_music");
+    if (SAVE.config.sound === true) {
       this.sound.play("", 0, 1, true);
-      CONFIGURATION.music = true;
     }
-    this.saveConfig();
+
+    // Lastly update viewing monster for whatever reason >_>
+    this.updateMonster();
   },
-  saveConfig: function() {
-    this.saveIcon.alpha = 100;
-    var save = JSON.stringify(CONFIGURATION);
-    localStorage.setItem("POCKET-SMASH-CONFIGURATION", save);
-    setTimeout(function(saveIcon) {
-      saveIcon.alpha = 0;
-    }, 1000, this.saveIcon);
+  updateMonster: function() {
+    var monster = (this.filter === true) ? SAVE.favorites[this.current] : SAVE.monsters[this.current];
+    this.monster.loadTexture("monster_" + monster);
+    this.text.setText(monster);
+    this.monster.data.name = monster;
+
+    // Update favorite icon
+    if (SAVE.favorites.indexOf(this.monster.data.name) !== -1) {
+      this.star.loadTexture("mm_star_on");
+    } else {
+      this.star.loadTexture("mm_star_off");
+    }
+
+    // Update monster stats
+    this.life.scale.x = 0.05 * ((MONSTERS[monster].life / 10) * (1 + SAVE.player.life_boost));
+    this.attack.scale.x = 0.05 * ((MONSTERS[monster].attack / 3) * (1 + SAVE.player.dmg_boost));
+    this.defence.scale.x = 0.05 * ((MONSTERS[monster].defence / 2.5) * (1 + SAVE.player.def_boost));
   },
-  saveGame: function() {
-    this.saveIcon.alpha = 100;
+  save: function() {
+    this.saveicon.alpha = 100;
     var save = JSON.stringify(SAVE);
-    localStorage.setItem("POCKET-SMASH-SAVE", save);
-    setTimeout(function(saveIcon) {
-      saveIcon.alpha = 0;
-    }, 1000, this.saveIcon);
+    localStorage.setItem("PocketSmash", save);
+    setTimeout(function(saveicon) {
+      saveicon.alpha = 0;
+    }, 1000, this.saveicon);
   }
 };

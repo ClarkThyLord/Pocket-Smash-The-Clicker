@@ -1,7 +1,6 @@
-// Object containing game's configuration
-var CONFIGURATION = {};
 // Object containing save state
 var SAVE = {};
+
 // Object containing font properties
 var FONT = {
   font: "25px Karmatic_Arcade",
@@ -35,9 +34,9 @@ GAME.BOOT.prototype = {
     }
   },
   preload: function() {
-    // Load preload things
-    this.load.image("mm_icon", "./res/main menu/icon.png");
-    this.load.image("mm_plain", "./res/main menu/load.jpg");
+    // Preload things for the following scene
+    this.load.image("G_background", "./res/global/background.jpg");
+    this.load.image("G_logo", "./res/global/logo.png");
   },
   create: function() {
     this.state.start("PRELOAD");

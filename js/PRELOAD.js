@@ -1,22 +1,19 @@
 GAME.PRELOAD = function(game) {
   // Setup variables
-  this.icon = null;
+  this.logo = null;
 
   this.ready = false;
 };
 
 GAME.PRELOAD.prototype = {
   preload: function() {
-    this.add.sprite(0, 0, "mm_plain");
-    this.icon = this.add.sprite(0, 0, "mm_icon");
-    this.load.setPreloadSprite(this.icon);
+    this.add.sprite(0, 0, "G_background");
+    this.logo = this.add.sprite(0, 0, "G_logo");
+    this.load.setPreloadSprite(this.logo);
 
-    // Load data; if non then setup data
-    CONFIGURATION = JSON.parse(localStorage.getItem("POCKET-SMASH-CONFIGURATION")) || {
-      "music": true
-    };
-    SAVE = JSON.parse(localStorage.getItem("POCKET-SMASH-SAVE")) || {
-      "player": {
+    // Load saved data, or setup a new game if non is found
+    SAVE = JSON.parse(localStorage.getItem("PocketSmash")) || {
+      "player": { // Player data
         "money": 0,
         "items": {
 
@@ -32,96 +29,125 @@ GAME.PRELOAD.prototype = {
           "dmg_dealt": 0,
           "ult_dealt": 0,
           "money_total": 0,
-          "captures": 0
+          "captures": 1
         }
       },
-      "monster": {
+      "monster": { // Monster data; in-game it will contain a monster object
 
       },
-      "monsters": [
-        "cacus"
-      ]
+      "favorites": [ // Monsters favorited by the user
+        "cacus",
+        "raa"
+      ],
+      "monsters": [ // Monsters captured
+        "cacus",
+        "johncena",
+        "raa",
+        "quna"
+      ],
+      "config": { // Game configurations
+        "sound": true
+      }
     };
 
-    // Load main menu things
-    this.load.image("mm_background", "./res/main menu/menu.jpg");
-    this.load.image("mm_arrow", "./res/main menu/arrow.png");
-    this.load.image("mm_help", "./res/main menu/help.png");
-    this.load.image("mm_credits", "./res/main menu/credits.png");
-    this.load.image("mm_stats", "./res/main menu/stats.png");
+    // Load main menu assets
+    this.load.image("mm_title", "./res/mainmenu/title.png");
+    this.load.image("mm_frame", "./res/mainmenu/frame.png");
+    this.load.image("mm_start", "./res/mainmenu/start.png");
 
-    this.load.image("mm_help1", "./res/main menu/help/help_1.jpg");
-    this.load.image("mm_help2", "./res/main menu/help/help_2.jpg");
-    this.load.image("mm_help3", "./res/main menu/help/help_3.jpg");
+    // Load monster managing images
+    this.load.image("mm_star_on", "./res/mainmenu/star_on.png");
+    this.load.image("mm_star_off", "./res/mainmenu/star_off.png");
+    this.load.image("mm_favorites", "./res/mainmenu/favorite.png");
+    this.load.image("mm_all", "./res/mainmenu/all.png");
+    this.load.image("mm_arrow", "./res/mainmenu/arrow.png");
 
-    // Load game stuff
+    // Load game help images
+    this.load.image("mm_help", "./res/mainmenu/help.png");
+    this.load.image("mm_help1", "./res/mainmenu/help/help_1.jpg");
+    this.load.image("mm_help2", "./res/mainmenu/help/help_2.jpg");
+    this.load.image("mm_help3", "./res/mainmenu/help/help_3.jpg");
+
+    // Load game assets
+    // Load starting message
     this.load.image("game_start", "./res/game/start.png");
 
+    // Load images used in the game
+    this.load.image("game_ult", "./res/game/ultimate.jpg");
+    this.load.image("game_ground", "./res/game/ground.png");
+
+    // Load particles
+    this.load.image("game_heal", "./res/game/heal.png");
     this.load.image("game_damage", "./res/game/damage.png");
     this.load.image("game_charge", "./res/game/charge.png");
-    this.load.image("game_heal", "./res/game/heal.png");
 
+    // Load parting message images
     this.load.image("game_death", "./res/game/death.jpg");
-    this.load.image("game_ground", "./res/game/ground.png");
-    this.load.image("game_ult", "./res/game/ultimate.jpg");
 
+    // Load all the area images(backgrounds)
     for (var key in AREAS) {
       this.load.image("area_" + AREAS[key].name, "./res/game/areas/" + AREAS[key].name + ".jpg");
     }
+
+    // Load all the monster images(background)
     for (var monster_name in MONSTERS) {
       this.load.image("monster_" + monster_name, "./res/game/monsters/" + monster_name + ".png");
     }
 
-    // Load store stuff
+    // Load store assets
     this.load.image("store_background", "./res/store/store.jpg");
     this.load.image("store_frame", "./res/store/frame.png");
     this.load.image("store_buy", "./res/store/buy.png");
     this.load.image("store_back", "./res/store/back.png");
 
+    // Load all the item images
     for (var item_name in ITEMS) {
       this.load.image("item_" + item_name, "./res/store/items/" + item_name + ".png");
     }
 
-    // Load global stuff
-    this.load.image("icon_restart", "./res/shared/restart.png");
+    // Load global assets
+    // Load imagse for icons
+    this.load.image("G_stats", "./res/global/stats.png");
+    this.load.image("G_money", "./res/global/money.png");
+    this.load.image("G_store", "./res/global/store.png");
 
-    this.load.image("icon_money", "./res/shared/money.png");
-    this.load.image("icon_store", "./res/shared/store.png");
+    // Load images for monster types
+    this.load.image("G_earth", "./res/global/type/earth.png");
+    this.load.image("G_wind", "./res/global/type/wind.png");
+    this.load.image("G_water", "./res/global/type/water.png");
+    this.load.image("G_fire", "./res/global/type/fire.png");
+    this.load.image("G_dark", "./res/global/type/dark.png");
+    this.load.image("G_light", "./res/global/type/light.png");
+    this.load.image("G_meme", "./res/global/type/meme.png");
 
-    this.load.image("icon_save", "./res/shared/icon.png");
+    // Load images for monsters stats
+    this.load.image("G_heart", "./res/global/heart.png");
+    this.load.image("G_life", "./res/global/life.jpg");
+    this.load.image("G_sword", "./res/global/sword.png");
+    this.load.image("G_attack", "./res/global/attack.jpg");
+    this.load.image("G_shield", "./res/global/shield.png");
+    this.load.image("G_defence", "./res/global/defence.jpg");
 
-    this.load.image("noise_on", "./res/shared/noise_on.png");
-    this.load.image("noise_off", "./res/shared/noise_off.png");
+    // Load images for noise toggle
+    this.load.image("G_noise_on", "./res/global/noise_on.png");
+    this.load.image("G_noise_off", "./res/global/noise_off.png");
 
-    this.load.image("icon_unknown", "./res/shared/unknown.png");
-    this.load.image("icon_earth", "./res/shared/earth.png");
-    this.load.image("icon_wind", "./res/shared/wind.png");
-    this.load.image("icon_water", "./res/shared/water.png");
-    this.load.image("icon_fire", "./res/shared/fire.png");
-    this.load.image("icon_dark", "./res/shared/dark.png");
-    this.load.image("icon_light", "./res/shared/light.png");
-    this.load.image("icon_meme", "./res/shared/meme.png");
-
-    this.load.image("icon_heart", "./res/shared/heart.png");
-    this.load.image("icon_life", "./res/shared/life.jpg");
-    this.load.image("icon_sword", "./res/shared/sword.png");
-    this.load.image("icon_attack", "./res/shared/attack.jpg");
-    this.load.image("icon_shield", "./res/shared/shield.png");
-    this.load.image("icon_defence", "./res/shared/defence.jpg");
-
-    this.load.audio("music", ["./res/shared/music.mp3"]);
+    // Load sound assets
+    // Load music for entire game
+    this.load.audio("G_music", ["./res/global/music.mp3"]);
   },
   create: function() {
-    this.icon.cropEnabled = false;
+    this.logo.cropEnabled = false;
   },
   update: function() {
-    // Make sure music has finished loading
-    if (this.cache.isSoundDecoded("music") && this.ready == false) {
+    // Make sure all game sounds have finished loading
+    if (this.cache.isSoundDecoded("G_music") && this.ready == false) {
+      this.ready = true;
       if (Object.keys(SAVE.monster).length !== 0) {
-        this.ready = true;
+        // Load game; if saved data on monster is found
         this.state.start("GAME");
       } else {
-        this.ready = true;
+        // Load main menu; if no saved data on monster was found
         this.state.start("MAINMENU");
       }
     }
