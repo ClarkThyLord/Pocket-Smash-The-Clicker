@@ -3,30 +3,16 @@ GAME.GAME = function(game) {};
 GAME.GAME.prototype = {
   create: function() {
     // Setup variables
-    this.area = 0;
-    this.background = null;
-    this.text = null;
-
     this.player = {};
-    this.player.action = null;
-
     this.enemy = {};
 
-    this.gui = [];
-
-    this.money = null;
-
-    this.saveIcon = null;
-
-    this.soundIcon = null;
-    this.sound = null;
-
-    this.ending = false;
-
-    this.loop = null;
+    this.stage = {
+      "num": 0,
+      "object": null
+    };
 
     // Start of scene setup
-    this.setupArea();
+    this.setupStage();
 
     var money = this.add.sprite(150, 50, "icon_money");
     money.anchor.x = money.anchor.y = 0.5;
@@ -34,10 +20,8 @@ GAME.GAME.prototype = {
     this.money.anchor.y = 0.5;
     money.addChild(this.money);
 
-    this.text = this.add.text(400, 150, "TAP ON THE ENEMY TO ATTACK!!!\nTAP ON YOUR MONSTER TO CHARGE ULT!!!", FONT);
-    this.text.anchor.x = 0.5;
-    this.text.anchor.y = 0.1;
-    this.gui.push(this.text);
+    this.announcement = this.add.text(400, 150, "TAP ON THE ENEMY TO ATTACK!!!\nTAP ON YOUR MONSTER TO CHARGE ULTIMATE!!!", FONT);
+    this.announcement.anchor.x = this.announcement.anchor.y = 0.5;
 
     var restart = this.add.sprite(750, 30, "icon_restart");
     restart.anchor.x = restart.anchor.y = 0.5;
@@ -56,24 +40,101 @@ GAME.GAME.prototype = {
     this.saveIcon.alpha = 0;
     this.gui.push(this.saveIcon);
 
-    this.setupPlayer();
-    this.setupMonster();
+    // Setup player
+    // Setup player's ground
+    var ground = this.add.sprite(160, 570, "game_ground");
+    ground.anchor.x = ground.anchor.y = 0.5;
 
-    // Bring GUI to the top
-    for (var key in this.gui) {
-      var obj = this.gui[key];
-      obj.bringToTop();
-    }
+    // Setup player's monster
+    this.player.monster = this.add.sprite(0, 0, "monster_" + SAVE.monster.name);
+    this.player.monster.anchor.x = 0.5; this.player.monster.anchor.y = 1;
+    this.player.monster.inputEnabled = true;
+    this.player.monster.events.onInputDown.add(this.ultimateCharge, this);
+    ground.addChild(this.player.monster);
 
-    // Setup music according to config
-    this.soundIcon = (CONFIGURATION.music) ? this.add.sprite(50, 50, "noise_on") : this.add.sprite(50, 50, "noise_off");
+    // Setup player's charge particles
+    this.player.charge = this.add.emitter(0, 0, 100);
+    this.player.charge.makeParticles("game_charge");
+
+    // Setup player's heal particles
+    this.player.heal = this.add.emitter(0, 0, 100);
+    this.player.heal.makeParticles("game_heal");
+    this.player.monster.addChild(this.player.heal);
+
+    // Make a refrence to the player's monster data
+    this.player.data = SAVE.monster;
+
+    // Setup player's health bar
+    this.player.life = this.add.sprite(-100, 0, "G_life");
+    this.player.life.anchor.y = 0.5;
+    this.player.life.scale.x = 0.05 * (this.player.data.life / 10);
+    ground.addChild(this.player.life);
+
+    // Setup player's ultimate bar
+    this.player.ult = this.add.sprite(300, 225, "G_ult");
+    this.player.ult.anchor.y = 0.5;
+    this.player.ult.scale.x = 0.01 * (this.player.data.ult / 10);
+
+    // Setup enemy
+    // Chooose a valid monster from the area at random
+    var pick = Math.floor(Math.random() * AREAS[0].monsters.length);
+
+    // Setup enemie's ground
+    var ground = this.add.sprite(660, 525, "game_ground");
+    ground.anchor.x = this.enemy.ground.anchor.y = 0.5;
+
+    // Setup enemy monster
+    this.enemy.monster = this.add.sprite(0, 0, "monster_" + AREAS[this.area].monsters[pick]);
+    this.enemy.monster.anchor.x = 0.5;
+    this.enemy.monster.anchor.y = 1;
+    this.enemy.monster.inputEnabled = true;
+    this.enemy.monster.events.onInputDown.add(this.damageMonster, this);
+    ground.addChild(this.enemy.monster);
+
+    // Setup enemie's damage particles
+    this.enemy.dmg = this.add.emitter(0, 0, 100);
+    this.enemy.dmg.makeParticles("game_damage");
+
+    // Setup monster's stats
+    this.enemy.data = Object.assign({}, MONSTERS[AREAS[this.area].monsters[pick]]);
+    this.enemy.data.level = Math.floor(Math.random() * (this.area + 4)) + 1;
+    this.enemy.data.life = Math.floor(this.enemy.data.life + (this.enemy.data.life * (this.enemy.data.level / 13)));
+    this.enemy.data.attack = Math.floor(this.enemy.data.attack + (this.enemy.data.attack * (this.enemy.data.level / 13)));
+    this.enemy.data.defence = Math.floor(this.enemy.data.defence + (this.enemy.data.defence * (this.enemy.data.level / 13)));
+
+    // Setup monster's life bar
+    this.enemy.life = this.add.sprite(-100, 0, "icon_life");
+    this.enemy.life.anchor.y = 0.5;
+    this.enemy.life.scale.x = 0.05 * (this.enemy.data.life / 10);
+    this.enemy.ground.addChild(this.enemy.life);
+
+    // Setup music according to configurations
+    this.soundIcon = (SAVE.config.sound === true) ? this.add.sprite(735, 570, "G_noise_on") : this.add.sprite(735, 570, "G_noise_off");
     this.soundIcon.anchor.x = this.soundIcon.anchor.y = 0.5;
-    this.soundIcon.scale.x = this.soundIcon.scale.y = 0.5;
     this.soundIcon.inputEnabled = true;
-    this.soundIcon.events.onInputDown.add(this.toggleNoise, this);
+    this.soundIcon.events.onInputDown.add(function(obj, pointer) {
+      // Click animation
+      obj.scale.x = obj.scale.y = 1;
+      this.add.tween(obj.scale).to({
+        x: 0.75,
+        y: 0.75
+      }, 100, "Linear", true, 0, 0, true);
 
-    this.sound = this.add.audio("music");
-    if (CONFIGURATION.music) {
+      if (SAVE.config.sound === true) {
+        SAVE.config.sound = false;
+        obj.loadTexture("G_noise_off");
+        this.sound.stop();
+      } else {
+        SAVE.config.sound = true;
+        obj.loadTexture("G_noise_on");
+        this.sound.play("", 0, 1, true);
+      }
+
+      this.save();
+    }, this);
+
+    this.sound = this.add.audio("G_music");
+    if (SAVE.config.sound === true) {
       this.sound.play("", 0, 1, true);
     }
 
@@ -115,37 +176,6 @@ GAME.GAME.prototype = {
     } {
       this.background.loadTexture("area_" + AREAS[this.area].name);
     }
-  },
-  setupPlayer: function() {
-    this.player.ground = this.add.sprite(160, 570, "game_ground");
-    this.player.ground.anchor.x = this.player.ground.anchor.y = 0.5;
-
-    this.player.monster = this.add.sprite(0, 0, "monster_" + SAVE.monster.name);
-    this.player.monster.anchor.x = 0.5;
-    this.player.monster.anchor.y = 1;
-    this.player.monster.inputEnabled = true;
-    this.player.monster.events.onInputDown.add(this.monsterULT, this);
-    this.player.ground.addChild(this.player.monster);
-
-    this.player.charge = this.add.emitter(0, 0, 100);
-    this.player.charge.makeParticles("game_charge");
-
-    this.player.heal = this.add.emitter(0, 0, 100);
-    this.player.heal.makeParticles("game_heal");
-    this.player.monster.addChild(this.player.heal);
-
-    this.player.data = SAVE.monster;
-
-    this.player.life = this.add.sprite(-100, 0, "icon_life");
-    this.player.life.anchor.y = 0.5;
-    this.player.life.scale.x = 0.05 * (this.player.data.life / 10);
-    this.gui.push(this.player.life);
-    this.player.ground.addChild(this.player.life);
-
-    this.player.ult = this.add.sprite(300, 225, "game_ult");
-    this.player.ult.anchor.y = 0.5;
-    this.player.ult.scale.x = 0.01 * (this.player.data.ult / 1);
-    this.gui.push(this.player.ult);
   },
   playerCheck: function() {
     if (this.player.data.xp / (150 * this.player.data.level) >= 1) {
@@ -206,37 +236,6 @@ GAME.GAME.prototype = {
     text.anchor.x = text.anchor.y = 0.5;
     death.addChild(text);
 
-  },
-  setupMonster: function() {
-    // Chooose a valid monster at random
-    var pick = Math.floor(Math.random() * AREAS[this.area].monsters.length);
-
-    this.enemy.ground = this.add.sprite(660, 525, "game_ground");
-    this.enemy.ground.anchor.x = this.enemy.ground.anchor.y = 0.5;
-
-    this.enemy.monster = this.add.sprite(0, 0, "monster_" + AREAS[this.area].monsters[pick]);
-    this.enemy.monster.anchor.x = 0.5;
-    this.enemy.monster.anchor.y = 1;
-
-    this.enemy.dmg = this.add.emitter(0, 0, 100);
-    this.enemy.dmg.makeParticles("game_damage");
-
-    this.enemy.monster.inputEnabled = true;
-    this.enemy.monster.events.onInputDown.add(this.monsterDMG, this);
-    this.enemy.ground.addChild(this.enemy.monster);
-
-    // Setup monster stats
-    this.enemy.data = Object.assign({}, MONSTERS[AREAS[this.area].monsters[pick]]);
-    this.enemy.data.level = Math.floor(Math.random() * (this.area + 4)) + 1;
-    this.enemy.data.life = Math.floor(this.enemy.data.life + (this.enemy.data.life * (this.enemy.data.level / 13)));
-    this.enemy.data.attack = Math.floor(this.enemy.data.attack + (this.enemy.data.attack * (this.enemy.data.level / 13)));
-    this.enemy.data.defence = Math.floor(this.enemy.data.defence + (this.enemy.data.defence * (this.enemy.data.level / 13)));
-
-    this.enemy.life = this.add.sprite(-100, 0, "icon_life");
-    this.enemy.life.anchor.y = 0.5;
-    this.enemy.life.scale.x = 0.05 * (this.enemy.data.life / 10);
-    this.gui.push(this.enemy.life);
-    this.enemy.ground.addChild(this.enemy.life);
   },
   monsterDEATH: function() {
     // Heal the player

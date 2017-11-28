@@ -73,7 +73,6 @@ GAME.PRELOAD.prototype = {
     this.load.image("game_start", "./res/game/start.png");
 
     // Load images used in the game
-    this.load.image("game_ult", "./res/game/ultimate.jpg");
     this.load.image("game_ground", "./res/game/ground.png");
 
     // Load particles
@@ -121,6 +120,7 @@ GAME.PRELOAD.prototype = {
     this.load.image("G_meme", "./res/global/type/meme.png");
 
     // Load images for monsters stats
+    this.load.image("G_ult", "./res/global/ultimate.jpg");
     this.load.image("G_heart", "./res/global/heart.png");
     this.load.image("G_life", "./res/global/life.jpg");
     this.load.image("G_sword", "./res/global/sword.png");
