@@ -4,22 +4,21 @@ GAME.MAINMENU.prototype = {
   create: function() {
     // Setup variables
     this.current = 0; // Monster we're viewing
-    this.filter = (SAVE.favorites.length !== 0) ? true : false; // Weather to only show favoriteted monster
+    this.filtering = (SAVE.favorites.length !== 0) ? true : false; // Weather to only show favoriteted monster
 
     // Start of scene setup
     // Background image
-    this.add.sprite(0, 0, "G_background");
+    this.add.image(0, 0, "G_background");
 
-    var title = this.add.sprite(400, 50, "mm_title");
+    var title = this.add.image(400, 50, "mm_title");
     title.anchor.x = title.anchor.y = 0.5;
 
     // Setup monster managing
-
-    var frame = this.add.sprite(200, 300, "mm_frame");
+    var frame = this.add.image(200, 300, "mm_frame");
     frame.anchor.x = frame.anchor.y = 0.5;
 
-    var monster = (this.filter === true) ? SAVE.favorites[0] : SAVE.monsters[0];
-    this.monster = this.add.sprite(0, 0, "monster_" + monster);
+    var monster = (this.filtering === true) ? SAVE.favorites[0] : SAVE.monsters[0];
+    this.monster = this.add.image(0, 0, "monster_" + monster);
     this.monster.anchor.x = this.monster.anchor.y = 0.5;
     this.monster.data.name = monster;
     frame.addChild(this.monster);
@@ -46,8 +45,12 @@ GAME.MAINMENU.prototype = {
         SAVE.favorites.splice(result, 1);
         obj.loadTexture("mm_star_off");
 
-        if (this.filter === true && SAVE.favorites.length === 0) {
-          this.filter = false;
+        if (this.filtering === true && SAVE.favorites.length === 0) {
+          this.filter.loadTexture("mm_all");
+          this.filtering = false;
+          this.updateMonster();
+        } else if (this.filtering === true) {
+          this.current = 0;
           this.updateMonster();
         }
       } else {
@@ -57,10 +60,10 @@ GAME.MAINMENU.prototype = {
       }
     }, this);
 
-    this.fav = this.add.sprite(515, 145, "mm_favorites");
-    this.fav.anchor.x = this.fav.anchor.y = 0.5;
-    this.fav.inputEnabled = true;
-    this.fav.events.onInputDown.add(function(obj, pointer) {
+    this.filter = this.add.sprite(575, 145, "mm_" + ((SAVE.favorites.length !== 0) ? "favorites" : "all"));
+    this.filter.anchor.x = this.filter.anchor.y = 0.5;
+    this.filter.inputEnabled = true;
+    this.filter.events.onInputDown.add(function(obj, pointer) {
       // Click animation
       obj.scale.x = obj.scale.y = 1;
       this.add.tween(obj.scale).to({
@@ -68,27 +71,19 @@ GAME.MAINMENU.prototype = {
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
 
-      if (SAVE.favorites.length !== 0) {
+      if (this.filtering === false && SAVE.favorites.length !== 0) {
+        obj.loadTexture("mm_favorites");
+
+        this.filtering = true;
         this.current = 0;
-        this.filter = true;
+        this.updateMonster();
+      } else if (this.filtering === true) {
+        obj.loadTexture("mm_all");
+
+        this.filtering = false;
+        this.current = 0;
         this.updateMonster();
       }
-    }, this);
-
-    this.all = this.add.sprite(650, 145, "mm_all");
-    this.all.anchor.x = this.all.anchor.y = 0.5;
-    this.all.inputEnabled = true;
-    this.all.events.onInputDown.add(function(obj, pointer) {
-      // Click animation
-      obj.scale.x = obj.scale.y = 1;
-      this.add.tween(obj.scale).to({
-        x: 0.75,
-        y: 0.75
-      }, 100, "Linear", true, 0, 0, true);
-
-      this.current = 0;
-      this.filter = false;
-      this.updateMonster();
     }, this);
 
     var heart = this.add.image(425, 250, "G_heart");
@@ -114,6 +109,10 @@ GAME.MAINMENU.prototype = {
     this.defence.anchor.y = 0.5;
     this.defence.scale.x = this.defence.scale.y = 3;
     shield.addChild(this.defence);
+
+    this.type = this.add.sprite(450, 465, "G_earth");
+    this.type.anchor.x = this.type.anchor.y = 0.5;
+    this.type.scale.x = this.type.scale.y = 0.50;
 
     var left = this.add.sprite(125, 545, "mm_arrow");
     left.anchor.x = left.anchor.y = 0.5;
@@ -145,7 +144,7 @@ GAME.MAINMENU.prototype = {
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
 
-      if ((this.filter === true && this.current < (SAVE.favorites.length - 1)) || (this.filter === false && this.current < (SAVE.monsters.length - 1))) {
+      if ((this.filtering === true && this.current < (SAVE.favorites.length - 1)) || (this.filtering === false && this.current < (SAVE.monsters.length - 1))) {
         this.current += 1;
 
         this.updateMonster();
@@ -167,16 +166,16 @@ GAME.MAINMENU.prototype = {
       SAVE.monster = Object.assign({}, MONSTERS[this.monster.data.name]);
       SAVE.monster.stats = {
         "kills": 0,
+        "dmg_received": 0,
         "dmg_dealt": 0,
         "ult_dealt": 0,
         "money_total": 0,
         "captures": 0
       };
 
-      // TODO music
+      this.sound.destroy();
       this.save();
 
-      // Start the game scene
       this.state.start("GAME");
     }, this);
 
@@ -225,6 +224,10 @@ GAME.MAINMENU.prototype = {
         obj.destroy();
       }, this);
 
+      var title = this.add.image(400, 75, "G_stats_title");
+      title.anchor.x = title.anchor.y = 0.5;
+      cover.addChild(title);
+
       var text = this.add.text(400, 375, "Game Speed - " + SAVE.player.game_speed + "\nLife Boost - " + SAVE.player.life_boost + "%\nAttack Boost - " + SAVE.player.dmg_boost + "\nDefence Boost - " + SAVE.player.def_boost + "\nTotal Deaths - " + SAVE.player.stats.deaths + "\nTotal Kills - " + SAVE.player.stats.kills + "\nDamage Dealt - " + SAVE.player.stats.dmg_dealt + "\nUltimates Dealt - " + SAVE.player.stats.ult_dealt + "\nLifetime Money - " + SAVE.player.stats.money_total + "\nCaptured Monsters - " + SAVE.player.stats.captures + " - 155", FONT);
       text.anchor.x = text.anchor.y = 0.5;
       cover.addChild(text);
@@ -241,7 +244,7 @@ GAME.MAINMENU.prototype = {
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
 
-      // TODO music
+      this.sound.destroy();
       this.save();
 
       this.state.start("STORE");
@@ -287,7 +290,7 @@ GAME.MAINMENU.prototype = {
     this.updateMonster();
   },
   updateMonster: function() {
-    var monster = (this.filter === true) ? SAVE.favorites[this.current] : SAVE.monsters[this.current];
+    var monster = (this.filtering === true) ? SAVE.favorites[this.current] : SAVE.monsters[this.current];
     this.monster.loadTexture("monster_" + monster);
     this.text.setText(monster);
     this.monster.data.name = monster;
@@ -303,6 +306,7 @@ GAME.MAINMENU.prototype = {
     this.life.scale.x = 0.05 * ((MONSTERS[monster].life / 10) * (1 + SAVE.player.life_boost));
     this.attack.scale.x = 0.05 * ((MONSTERS[monster].attack / 3) * (1 + SAVE.player.dmg_boost));
     this.defence.scale.x = 0.05 * ((MONSTERS[monster].defence / 2.5) * (1 + SAVE.player.def_boost));
+    this.type.loadTexture("G_" + MONSTERS[monster].type);
   },
   save: function() {
     this.saveicon.alpha = 100;

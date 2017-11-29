@@ -1416,9 +1416,9 @@ var MONSTERS = {
     "level": 0,
     "xp": 0,
     "ult": 0,
-    "life": 184,
-    "attack": 13,
-    "defence": 43,
+    "life": 242,
+    "attack": 23,
+    "defence": 87,
     "drops": [
       "health potion",
       32,

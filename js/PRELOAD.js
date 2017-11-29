@@ -18,14 +18,16 @@ GAME.PRELOAD.prototype = {
         "items": {
 
         },
-        "game_speed": 100,
+        "game_speed": 400,
         "life_boost": 0,
         "dmg_boost": 1.25,
         "def_boost": 0,
-        "ult_boost": 2.5,
+        "ult_boost": 5,
         "stats": {
+          "level_ups": 0,
           "deaths": 0,
           "kills": 0,
+          "dmg_received": 0,
           "dmg_dealt": 0,
           "ult_dealt": 0,
           "money_total": 0,
@@ -71,6 +73,7 @@ GAME.PRELOAD.prototype = {
     // Load game assets
     // Load starting message
     this.load.image("game_start", "./res/game/start.png");
+    this.load.image("game_retire", "./res/game/retire.png");
 
     // Load images used in the game
     this.load.image("game_ground", "./res/game/ground.png");
@@ -79,9 +82,6 @@ GAME.PRELOAD.prototype = {
     this.load.image("game_heal", "./res/game/heal.png");
     this.load.image("game_damage", "./res/game/damage.png");
     this.load.image("game_charge", "./res/game/charge.png");
-
-    // Load parting message images
-    this.load.image("game_death", "./res/game/death.jpg");
 
     // Load all the area images(backgrounds)
     for (var key in AREAS) {
@@ -94,7 +94,6 @@ GAME.PRELOAD.prototype = {
     }
 
     // Load store assets
-    this.load.image("store_background", "./res/store/store.jpg");
     this.load.image("store_frame", "./res/store/frame.png");
     this.load.image("store_buy", "./res/store/buy.png");
     this.load.image("store_back", "./res/store/back.png");
@@ -107,6 +106,7 @@ GAME.PRELOAD.prototype = {
     // Load global assets
     // Load imagse for icons
     this.load.image("G_stats", "./res/global/stats.png");
+    this.load.image("G_stats_title", "./res/global/stats_title.png");
     this.load.image("G_money", "./res/global/money.png");
     this.load.image("G_store", "./res/global/store.png");
 
