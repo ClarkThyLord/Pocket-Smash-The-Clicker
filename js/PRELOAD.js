@@ -41,9 +41,7 @@ GAME.PRELOAD.prototype = {
 
       ],
       "monsters": [ // Monsters captured
-        "cacus",
-        "raa",
-        "quna"
+        "cacus"
       ],
       "config": { // Game configurations
         "sound": true
@@ -134,13 +132,14 @@ GAME.PRELOAD.prototype = {
     // Load sound assets
     // Load music for entire game
     this.load.audio("G_music", ["./res/global/music.mp3"]);
+    this.load.audio("G_click", ["./res/global/click.mp3"]);
   },
   create: function() {
     this.logo.cropEnabled = false;
   },
   update: function() {
     // Make sure all game sounds have finished loading
-    if (this.cache.isSoundDecoded("G_music") && this.ready == false) {
+    if (this.cache.isSoundDecoded("G_music") && this.cache.isSoundDecoded("G_click") && this.ready == false) {
       this.ready = true;
       if (Object.keys(SAVE.monster).length !== 0) {
         // Load game; if saved data on monster is found

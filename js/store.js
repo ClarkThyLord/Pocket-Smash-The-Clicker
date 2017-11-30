@@ -6,13 +6,6 @@ GAME.STORE.prototype = {
     this.current = 1;
     this.item_counts = {};
 
-    this.money = null;
-
-    this.saveIcon = null;
-
-    this.soundIcon = null;
-    this.sound = null;
-
     // Start of scene setup
     this.add.sprite(0, 0, "G_background");
     var title = this.add.image(400, 100, "store_title");
@@ -63,6 +56,9 @@ GAME.STORE.prototype = {
     this.money.anchor.y = 0.5;
     money.addChild(this.money);
 
+    this.announcement = this.add.text(400, 200, "TAP ON A ITEM TO USE IT!!!", FONT);
+    this.announcement.anchor.x = this.announcement.anchor.y = 0.5;
+
     var left_arrow = this.add.sprite(50, 365, "mm_arrow");
     left_arrow.alpha = 0.6;
     left_arrow.anchor.x = left_arrow.anchor.y = 0.5;
@@ -74,6 +70,10 @@ GAME.STORE.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       // Move all the items to the left if there is another item to the right
       if (this.current !== 1) {
@@ -96,6 +96,10 @@ GAME.STORE.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       // Move all the items to the right if there is another item to the left
       if (this.current !== this.items.total) {
@@ -116,16 +120,24 @@ GAME.STORE.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       var slide = this.add.sprite(0, 0, "mm_help1");
       slide.data.slide = 1;
       slide.inputEnabled = true;
       slide.events.onInputDown.add(function(obj, pointer) {
+        // Click sound
+        if (SAVE.config.sound === true) {
+          this.click.play();
+        }
+
         if (obj.data.slide == 1) {
           obj.loadTexture("mm_help2");
         } else if (obj.data.slide == 2) {
           obj.loadTexture("mm_help3");
-
         } else {
           obj.destroy();
         }
@@ -145,8 +157,11 @@ GAME.STORE.prototype = {
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
 
+      this.click.destroy();
+      this.music.destroy();
+
       this.save();
-      this.sound.destroy();
+
       if (Object.keys(SAVE.monster).length === 0) {
         this.state.start("MAINMENU");
       } else {
@@ -171,24 +186,30 @@ GAME.STORE.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       if (SAVE.config.sound === true) {
         SAVE.config.sound = false;
         obj.loadTexture("G_noise_off");
-        this.sound.stop();
+        this.music.stop();
       } else {
         SAVE.config.sound = true;
         obj.loadTexture("G_noise_on");
-        this.sound.play("", 0, 1, true);
+        this.music.play("", 0, 1, true);
       }
 
       this.save();
     }, this);
 
-    this.sound = this.add.audio("G_music");
+    this.music = this.add.audio("G_music");
     if (SAVE.config.sound === true) {
-      this.sound.play("", 0, 1, true);
+      this.music.play("", 0, 1, true);
     }
+
+    this.click = this.add.audio("G_click");
   },
   itemBuy: function(obj, pointer) {
     // Click animation
@@ -197,6 +218,10 @@ GAME.STORE.prototype = {
       x: 0.75,
       y: 0.75
     }, 100, "Linear", true, 0, 0, true);
+    // Click sound
+    if (SAVE.config.sound === true) {
+      this.click.play();
+    }
 
     // Buy the item and add it to the players inventory
     if (SAVE.player.money >= ITEMS[obj.data.name].cost) {
@@ -212,7 +237,11 @@ GAME.STORE.prototype = {
         SAVE.player.items[obj.data.name] = 1;
       }
 
-      this.updateText(obj);
+      if (ITEMS[obj.data.name].on_buy == true) {
+        this.itemUse(obj, pointer);
+      } else {
+        this.updateText(obj, ("BOUGHT " + obj.data.name));
+      }
     }
   },
   itemUse: function(obj, pointer) {
@@ -222,12 +251,16 @@ GAME.STORE.prototype = {
       x: 0.75,
       y: 0.75
     }, 100, "Linear", true, 0, 0, true);
+    // Click sound
+    if (SAVE.config.sound === true) {
+      this.click.play();
+    }
 
     if (SAVE.player.items[obj.data.name] >= 1 && (ITEMS[obj.data.name].type == 0 || Object.keys(SAVE.monster).length !== 0)) {
       ITEMS[obj.data.name].use();
       SAVE.player.items[obj.data.name] -= 1;
 
-      this.updateText(obj);
+      this.updateText(obj, ((ITEMS[obj.data.name].on_buy === true) ? ("BOUGHT AND USED " + obj.data.name) : ("USED " + obj.data.name)));
     }
   },
   save: function() {
@@ -238,7 +271,10 @@ GAME.STORE.prototype = {
       saveicon.alpha = 0;
     }, 1000, this.saveicon);
   },
-  updateText: function(obj) {
+  updateText: function(obj, text) {
+    // Update the announcement
+    this.announcement.setText(text);
+
     // Update money view
     this.money.setText(SAVE.player.money);
 

@@ -107,16 +107,24 @@ GAME.GAME.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       var slide = this.add.sprite(0, 0, "mm_help1");
       slide.data.slide = 1;
       slide.inputEnabled = true;
       slide.events.onInputDown.add(function(obj, pointer) {
+        // Click sound
+        if (SAVE.config.sound === true) {
+          this.click.play();
+        }
+
         if (obj.data.slide == 1) {
           obj.loadTexture("mm_help2");
         } else if (obj.data.slide == 2) {
           obj.loadTexture("mm_help3");
-
         } else {
           obj.destroy();
         }
@@ -135,6 +143,10 @@ GAME.GAME.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       this.stats();
     }, this);
@@ -157,8 +169,11 @@ GAME.GAME.prototype = {
     store.anchor.x = store.anchor.y = 0.5;
     store.inputEnabled = true;
     store.events.onInputDown.add(function() {
+      this.click.destroy();
+      this.music.destroy();
+
       this.save();
-      this.sound.destroy();
+
       this.state.start("STORE");
     }, this);
 
@@ -173,28 +188,39 @@ GAME.GAME.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       if (SAVE.config.sound === true) {
         SAVE.config.sound = false;
         obj.loadTexture("G_noise_off");
-        this.sound.stop();
+        this.music.stop();
       } else {
         SAVE.config.sound = true;
         obj.loadTexture("G_noise_on");
-        this.sound.play("", 0, 1, true);
+        this.music.play("", 0, 1, true);
       }
 
       this.save();
     }, this);
 
-    this.sound = this.add.audio("G_music");
+    this.music = this.add.audio("G_music");
     if (SAVE.config.sound === true) {
-      this.sound.play("", 0, 1, true);
+      this.music.play("", 0, 1, true);
     }
+
+    this.click = this.add.audio("G_click");
 
     var cover = this.add.sprite(0, 0, "G_background");
     cover.inputEnabled = true;
     cover.events.onInputDown.add(function(obj) {
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
+
       obj.destroy();
 
       // Start the game's cycle
@@ -438,6 +464,11 @@ GAME.GAME.prototype = {
       if (this.ending === true) {
         this.retire();
       } else {
+        // Click sound
+        if (SAVE.config.sound === true) {
+          this.click.play();
+        }
+
         obj.destroy();
       }
     }, this);
@@ -477,8 +508,12 @@ GAME.GAME.prototype = {
       this.playerDeath();
     } else {
       SAVE.monster = {};
-      this.sound.destroy();
+
+      this.click.destroy();
+      this.music.destroy();
+
       this.save();
+
       this.state.start("MAINMENU");
     }
   },

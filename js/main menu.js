@@ -37,6 +37,10 @@ GAME.MAINMENU.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       // Check if current monster is in favorites
       var result = SAVE.favorites.indexOf(this.monster.data.name);
@@ -70,6 +74,10 @@ GAME.MAINMENU.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       if (this.filtering === false && SAVE.favorites.length !== 0) {
         obj.loadTexture("mm_favorites");
@@ -124,6 +132,10 @@ GAME.MAINMENU.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       if (this.current > 0) {
         this.current -= 1;
@@ -143,6 +155,10 @@ GAME.MAINMENU.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       if ((this.filtering === true && this.current < (SAVE.favorites.length - 1)) || (this.filtering === false && this.current < (SAVE.monsters.length - 1))) {
         this.current += 1;
@@ -173,7 +189,8 @@ GAME.MAINMENU.prototype = {
         "captures": 0
       };
 
-      this.sound.destroy();
+      this.click.destroy();
+      this.music.destroy();
       this.save();
 
       this.state.start("GAME");
@@ -189,16 +206,24 @@ GAME.MAINMENU.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       var slide = this.add.sprite(0, 0, "mm_help1");
       slide.data.slide = 1;
       slide.inputEnabled = true;
-      slide.events.onInputDown.add(function(obj, pointer) {
+      slide.events.onInputDown.add(function(obj, pointer) { // Click sound
+        // Click sound
+        if (SAVE.config.sound === true) {
+          this.click.play();
+        }
+
         if (obj.data.slide == 1) {
           obj.loadTexture("mm_help2");
         } else if (obj.data.slide == 2) {
           obj.loadTexture("mm_help3");
-
         } else {
           obj.destroy();
         }
@@ -217,10 +242,19 @@ GAME.MAINMENU.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       var cover = this.add.sprite(0, 0, "G_background");
       cover.inputEnabled = true;
       cover.events.onInputDown.add(function(obj, pointer) {
+        // Click sound
+        if (SAVE.config.sound === true) {
+          this.click.play();
+        }
+
         obj.destroy();
       }, this);
 
@@ -244,7 +278,9 @@ GAME.MAINMENU.prototype = {
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
 
-      this.sound.destroy();
+      this.click.destroy();
+      this.music.destroy();
+
       this.save();
 
       this.state.start("STORE");
@@ -267,24 +303,30 @@ GAME.MAINMENU.prototype = {
         x: 0.75,
         y: 0.75
       }, 100, "Linear", true, 0, 0, true);
+      // Click sound
+      if (SAVE.config.sound === true) {
+        this.click.play();
+      }
 
       if (SAVE.config.sound === true) {
         SAVE.config.sound = false;
         obj.loadTexture("G_noise_off");
-        this.sound.stop();
+        this.music.stop();
       } else {
         SAVE.config.sound = true;
         obj.loadTexture("G_noise_on");
-        this.sound.play("", 0, 1, true);
+        this.music.play("", 0, 1, true);
       }
 
       this.save();
     }, this);
 
-    this.sound = this.add.audio("G_music");
+    this.music = this.add.audio("G_music");
     if (SAVE.config.sound === true) {
-      this.sound.play("", 0, 1, true);
+      this.music.play("", 0, 1, true);
     }
+
+    this.click = this.add.audio("G_click");
 
     // Lastly update viewing monster for whatever reason >_>
     this.updateMonster();
