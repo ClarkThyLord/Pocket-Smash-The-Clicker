@@ -273,7 +273,7 @@ GAME.GAME.prototype = {
       this.playerHeal();
 
       // Update stats
-      this.player.data.stats.level_ups += 1;
+      SAVE.player.stats.level_ups += 1;
 
       this.player.data.xp = this.player.data.xp - (150 * this.player.data.level);
       this.player.data.level += 1;
@@ -467,7 +467,7 @@ GAME.GAME.prototype = {
     defence.scale.x = 0.05 * (this.player.data.defence / 5);
     cover.addChild(defence);
 
-    var text = this.add.text(400, 500, "Level - " + this.player.data.level + "\nKills - " + this.player.data.stats.kills + "\nDamage Dealt - " + this.player.data.stats.dmg_dealt + "\nUltimate Dealt - " + this.player.data.stats.ult_dealt + "\nMoney Total - " + this.player.data.stats.money_total + "\nMonster Captures - " + this.player.data.stats.captures + " - 155", FONT);
+    var text = this.add.text(400, 500, "Level - " + this.player.data.level + "\nKills - " + this.player.data.stats.kills + "\nDamage Dealt - " + this.player.data.stats.dmg_dealt + "\nDamage Received - " + this.player.data.stats.dmg_received + "\nUltimates Dealt - " + this.player.data.stats.ult_dealt + "\nMoney Total - " + this.player.data.stats.money_total + "\nMonster Captures - " + this.player.data.stats.captures + " - 155", FONT);
     text.anchor.x = text.anchor.y = 0.5;
     cover.addChild(text);
   },
@@ -483,7 +483,9 @@ GAME.GAME.prototype = {
     }
   },
   updateText: function(text) {
+    // Update the announcement
     this.announcement.setText(text);
+    // Update money view
     this.money.setText(SAVE.player.money);
   },
   save: function() {

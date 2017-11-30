@@ -3,6 +3,7 @@ var ITEMS = {
     "name": "health potion",
     "cost": 250,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": false, // Weather item should be used on buy
     "use": function() {
       SAVE.monster.life += 100;
     }
@@ -11,6 +12,7 @@ var ITEMS = {
     "name": "ultimate potion",
     "cost": 200,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": false, // Weather item should be used on buy
     "use": function() {
       SAVE.monster.ult += 100;
     }
@@ -19,6 +21,7 @@ var ITEMS = {
     "name": "temp attack boost",
     "cost": 150,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": false, // Weather item should be used on buy
     "use": function() {
       SAVE.monster.attack += 1;
     }
@@ -27,6 +30,7 @@ var ITEMS = {
     "name": "temp defence boost",
     "cost": 150,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": false, // Weather item should be used on buy
     "use": function() {
       SAVE.monster.defence += 1;
     }
@@ -35,6 +39,7 @@ var ITEMS = {
     "name": "temp general boost",
     "cost": 200,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": false, // Weather item should be used on buy
     "use": function() {
       SAVE.monster.attack += 0.5;
       SAVE.monster.defence += 0.5;
@@ -44,6 +49,7 @@ var ITEMS = {
     "name": "perm health boost",
     "cost": 300,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": true, // Weather item should be used on buy
     "use": function() {
       SAVE.player.life_boost += 0.10;
     }
@@ -52,6 +58,7 @@ var ITEMS = {
     "name": "perm attack boost",
     "cost": 300,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": true, // Weather item should be used on buy
     "use": function() {
       SAVE.player.dmg_boost += 0.25;
     }
@@ -60,6 +67,7 @@ var ITEMS = {
     "name": "perm defence boost",
     "cost": 300,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": true, // Weather item should be used on buy
     "use": function() {
       SAVE.player.def_boost += 0.005;
     }
@@ -68,6 +76,7 @@ var ITEMS = {
     "name": "perm general boost",
     "cost": 600,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": true, // Weather item should be used on buy
     "use": function() {
       SAVE.player.life_boost += 0.05;
       SAVE.player.dmg_boost += 0.15;
@@ -78,6 +87,7 @@ var ITEMS = {
     "name": "perm speed boost",
     "cost": 1000,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": true, // Weather item should be used on buy
     "use": function() {
       if (SAVE.player.game_speed > 1) {
         SAVE.player.game_speed -= 0.5;
@@ -88,6 +98,7 @@ var ITEMS = {
     "name": "infinite money",
     "cost": 100000,
     "type": 0, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": true, // Weather item should be used on buy
     "use": function() {
       SAVE.money = Infinity;
     }
@@ -96,6 +107,7 @@ var ITEMS = {
     "name": "temp infinite health",
     "cost": Infinity,
     "type": 1, // 0: can be used anywhere, 1: can only be used ingame
+    "on_buy": false, // Weather item should be used on buy
     "use": function() {
       SAVE.monster.life = Infinity;
     }

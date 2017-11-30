@@ -228,7 +228,7 @@ GAME.MAINMENU.prototype = {
       title.anchor.x = title.anchor.y = 0.5;
       cover.addChild(title);
 
-      var text = this.add.text(400, 375, "Game Speed - " + SAVE.player.game_speed + "\nLife Boost - " + SAVE.player.life_boost + "%\nAttack Boost - " + SAVE.player.dmg_boost + "\nDefence Boost - " + SAVE.player.def_boost + "\nTotal Deaths - " + SAVE.player.stats.deaths + "\nTotal Kills - " + SAVE.player.stats.kills + "\nDamage Dealt - " + SAVE.player.stats.dmg_dealt + "\nUltimates Dealt - " + SAVE.player.stats.ult_dealt + "\nLifetime Money - " + SAVE.player.stats.money_total + "\nCaptured Monsters - " + SAVE.player.stats.captures + " - 155", FONT);
+      var text = this.add.text(400, 375, "Game Speed - " + SAVE.player.game_speed + "\nLife Boost - " + SAVE.player.life_boost + "%\nAttack Boost - " + SAVE.player.dmg_boost + "\nDefence Boost - " + SAVE.player.def_boost + "\nTotal Levelups - " + SAVE.player.stats.level_ups + "\nTotal Deaths - " + SAVE.player.stats.deaths + "\nTotal Kills - " + SAVE.player.stats.kills + "\nDamage Received - " + SAVE.player.stats.dmg_received + "\nDamage Dealt - " + SAVE.player.stats.dmg_dealt + "\nUltimates Dealt - " + SAVE.player.stats.ult_dealt + "\nLifetime Money - " + SAVE.player.stats.money_total + "\nCaptured Monsters - " + SAVE.player.stats.captures + " - 155", FONT);
       text.anchor.x = text.anchor.y = 0.5;
       cover.addChild(text);
     }, this);

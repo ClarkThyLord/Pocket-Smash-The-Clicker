@@ -38,12 +38,10 @@ GAME.PRELOAD.prototype = {
 
       },
       "favorites": [ // Monsters favorited by the user
-        "cacus",
-        "raa"
+
       ],
       "monsters": [ // Monsters captured
         "cacus",
-        "johncena",
         "raa",
         "quna"
       ],
@@ -94,6 +92,7 @@ GAME.PRELOAD.prototype = {
     }
 
     // Load store assets
+    this.load.image("store_title", "./res/store/title.png");
     this.load.image("store_frame", "./res/store/frame.png");
     this.load.image("store_buy", "./res/store/buy.png");
     this.load.image("store_back", "./res/store/back.png");
