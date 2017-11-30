@@ -48,3 +48,6 @@ detested the constant grinding and repetition that was needed to be able to enjo
 So, to make a long story short, I had this rep sitting around without use, and wanted the name 
 “Pocket-Smash” for my game jam submission. Which is why I recycled the rep for my game jam 
 project. Meaning nothing in this rep was worked on previous to the game jam.
+
+
+![alt text](https://github.com/ClarkThyLord/Pocket-Smash/blob/master/LICENSE.jpg)
