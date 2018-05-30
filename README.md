@@ -3,7 +3,7 @@ Pocket Smash
 
 ![alt text](https://github.com/ClarkThyLord/Pocket-Smash/blob/master/preview.jpg)
 
-> old rep, new game!
+> Old rep, new game!
 
 # About Project
 
@@ -43,7 +43,8 @@ Since, at the time, we weren't doing anything too important in class I started t
 of possible games I can develop for the game jam, with the "throwback" theme on my mind.
 Soon enough, I started thinking about pokemon and how much
 I enjoyed the fights and collection of pokemon; but, at the same time I
-detested the constant grinding and repetition that was needed to be able to enjoy those things. Which lead me to this game game where I can have everything I love without the stuff I hate.
+detested the constant grinding and repetition that was needed to be able to enjoy those things.
+Which lead me to this game game where I can have everything I love without the stuff I hate.
 
 So, to make a long story short, I had this rep sitting around without use, and wanted the name 
 “Pocket-Smash” for my game jam submission. Which is why I recycled the rep for my game jam 
